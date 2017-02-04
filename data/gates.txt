@@ -1,0 +1,27 @@
+// Created with X3 Editor 0.0.20
+47;25;
+0;0;0;0;0;-1;3731;others\argon_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_NORTH;
+0;0;0;0;0;-1;3731;others\argon_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_SOUTH;
+0;0;0;0;0;-1;3731;others\argon_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_WEST;
+0;0;0;0;0;-1;3731;others\argon_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_EAST;
+477;0;0;0;0;-1;3731;others\argon_gate_destroyed_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_XENON;
+0;0;0;0;0;-1;16101;others\terran_catapult_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_T_NORTH;
+0;0;0;0;0;-1;16101;others\terran_catapult_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_T_SOUTH;
+0;0;0;0;0;-1;16101;others\terran_catapult_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_T_WEST;
+0;0;0;0;0;-1;16101;others\terran_catapult_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_T_EAST;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_NORTH;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_SOUTH;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_WEST;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_EAST;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_UP;
+0;0;0;0;0;-1;3731;others\terraformer_gate_active_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_DOWN;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_NORTH;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_SOUTH;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_WEST;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_EAST;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_UP;
+0;0;0;0;0;-1;3731;others\terraformer_gate_inactive_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_HUB_INACTIVE_DOWN;
+0;0;0;0;0;-1;3731;patch20\terran_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_TJ_NORTH;
+0;0;0;0;0;-1;3731;patch20\terran_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_TJ_SOUTH;
+0;0;0;0;0;-1;3731;patch20\terran_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_TJ_EAST;
+0;0;0;0;0;-1;3731;patch20\terran_gate_scene;128;10000;25;1;0;10000;-100000;0;0;SS_WG_TJ_WEST;

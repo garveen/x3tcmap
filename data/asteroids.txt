@@ -1,0 +1,12 @@
+// Created with X3 Editor 0.0.20
+47;10;
+environments\asteroids\asteroid_A_ClassMine;0;0;0;0;0;3721;0;59;0;environments\asteroids\AtoCDE_scene_dummypositions;128;10000;25;1;0;10000;-100000;0;0;SS_ASTEROID_01;
+environments\asteroids\asteroid_B_ClassMine;0;0;0;0;0;3721;0;60;0;environments\asteroids\BtoCDE_scene_dummypositions;128;10000;25;1;0;10000;-100000;0;0;SS_ASTEROID_02;
+environments\asteroids\asteroid_C_ClassOne;0;0;0;0;0;3721;0;61;0;environments\asteroids\CtoFGH_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_03;
+environments\asteroids\asteroid_D_ClassOne;0;0;0;0;0;3721;0;62;0;environments\asteroids\DtoFGH_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_04;
+environments\asteroids\asteroid_E_ClassOne;0;0;0;0;0;3721;0;63;0;environments\asteroids\EtoFGH_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_05;
+environments\asteroids\asteroid_F_ClassTwo;0;0;0;0;0;3721;0;64;0;environments\asteroids\FtoIJ_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_06;
+environments\asteroids\asteroid_G_ClassTwo;0;0;0;0;0;3721;0;65;0;environments\asteroids\GtoIJ_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_07;
+environments\asteroids\asteroid_H_ClassTwo;0;0;0;0;0;3721;0;66;0;environments\asteroids\HtoIJ_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_08;
+environments\asteroids\asteroid_I_ClassThree;0;0;0;0;0;3721;0;67;0;environments\asteroids\ItoJ_scene_dummypositions;128;0;0;0;0;0;-100000;0;0;SS_ASTEROID_09;
+environments\asteroids\asteroid_J_ClassCollect;0;0;0;0;0;3721;0;0;0;0;1;0;0;0;0;0;-100000;0;0;SS_ASTEROID_10;
