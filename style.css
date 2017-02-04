@@ -36,3 +36,4 @@ body{font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei;color:whi
 .map-visual-area{position: absolute;left: 25%;top:25%;width: 50%;height: 50%;border: 1px solid #aaa}
 
 .sector-name{font-size: 16px}
+iframe{position: absolute;right:0px;}
