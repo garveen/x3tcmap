@@ -230,11 +230,15 @@ function overlay(x, y, zoom){
 
     })
     sector.gates.forEach(function(gate) {
-        var gidMap = {
+        var sMap = {
             0: 'N',
             1: 'S',
             2: 'W',
-            3: 'E'
+            3: 'E',
+            5: 'N',
+            6: 'S',
+            7: 'W',
+            8: 'E'
         };
 
         var div = document.createElement('div');
@@ -249,7 +253,7 @@ function overlay(x, y, zoom){
             overlay(gate.gx, gate.gy)
         }
 
-        div.innerHTML = gidMap[gate.gid]
+        div.innerHTML = sMap[gate.s]
         map.appendChild(div)
 
     })
