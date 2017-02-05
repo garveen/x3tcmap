@@ -15,6 +15,7 @@ $cellGapY = 10;
 $cellGapX = 10;
 
 $lineWidth = 10;
+$fontSize = 12;
 
 $pathPrefix = 'docs/';
 

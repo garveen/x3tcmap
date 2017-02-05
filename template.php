@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="<?=$pathPrefix;?>style.css" type="text/css" />
         <style>
             .sector{width: <?=$cellWidth;?>px;height: <?=$cellHeight;?>px}
-            .line.jump{height:<?=$lineWidth;?>px;}
+            .line.jump,.modal-coordinate{height:<?=$fontSize;?>px;}
         </style>
     </head>
     <body>
@@ -14,7 +14,7 @@
 
         </div>
 
-         <div id="modal-overlay">
+        <div id="modal-overlay">
             <div class="modal-data">
                 <div class='modal-header'>
                     <span class='sector-name' onclick='switchImage()'></span>
@@ -25,11 +25,13 @@
                     </div>
                 </div>
                 <div class='modal-footer'>
-                    <div class='modal-coordinate'></div>
-                    <button id='btn-zoomin' onclick="zoomin()"></button>
-                    <button id='btn-zoomout' onclick="zoomout()"></button>
-                    <button id='btn-direction' onclick="switchDirection()"></button>
-                    <button id='btn-close' onclick="closeModal()"></button>
+                    <div class='modal-coordinate'>&nbsp;</div>
+                    <div class='controls'>
+                        <button id='btn-zoomin' onclick="zoomin()"></button>
+                        <button id='btn-zoomout' onclick="zoomout()"></button>
+                        <button id='btn-direction' onclick="switchDirection()"></button>
+                        <button id='btn-close' onclick="closeModal()"></button>
+                    </div>
                 </div>
             </div>
             <div class="modal-background" onclick="closeModal()"></div>

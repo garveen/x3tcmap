@@ -184,7 +184,12 @@ function overlay(x, y, zoom){
     currX = x;
     currY = y;
     var iconSize = 31;
+    var mapSize = window.innerHeight - 200;
+
     var map = document.getElementsByClassName('modal-map')[0];
+    map.style.height = map.style.width = '' + mapSize + 'px';
+    // get actual height
+    mapSize = map.clientHeight
     if(zoom == 2) {
         map.innerHTML = '<div class="map-visual-area"></div>';
     } else {
@@ -193,18 +198,13 @@ function overlay(x, y, zoom){
     var sector = sectors[x+"_"+y];
     document.getElementsByClassName('sector-name')[0].innerHTML = translations[sector.name] + ' [' + x + ', ' + y + ']'
     var size = sector.size * zoom
-    console.log(sector)
-
-    var width = 500;
-    var height = 500;
 
 
     var calcPosition = function(el) {
         return {x: (el.x + size) / size / 2, y: (el.y + size) / size / 2, z: (el.z + size) / size / 2};
     };
-    var calcStyle = function(position, icon) {
-        if (typeof icon =='undefined') icon = {w: 0, h: 0}
-        return 'left: ' + (position.x * width - icon.w / 2) + 'px;top: ' + (height - position[direction] * height + icon.h / 2) + 'px;';
+    var calcStyle = function(position) {
+        return 'left: ' + (position.x * mapSize) + 'px;top: ' + (mapSize - position[direction] * mapSize) + 'px;';
     };
     var calcKiloMeter = function(el) {
         return 'x: ' + (el.x / 500000).toFixed(2) + 'km y: ' + (el.y / 500000).toFixed(2) + 'km z: '+ (el.z / 500000).toFixed(2) + 'km'
@@ -219,7 +219,7 @@ function overlay(x, y, zoom){
                 var div = document.createElement('div');
                 div.className = 'map-object';
                 var position = calcPosition(object);
-                var style = calcStyle(position, icons[object.icon]) + 'width:'+icons[object.icon].w+'px;height:'+icons[object.icon].h+'px;background:url('+pathPrefix+image+') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
+                var style = calcStyle(position) + 'width:'+icons[object.icon].w+'px;height:'+icons[object.icon].h+'px;background:url('+pathPrefix+image+') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
                 div.style.cssText = style
                 div.onmouseover = function() {
                     document.getElementsByClassName('modal-coordinate')[0].innerHTML = translations[object.name] + ' ' + calcKiloMeter(object)

@@ -11,6 +11,8 @@ $lineWidth = 10;
 
 $pathPrefix = '';
 
+$fontSize = 12;
+
 $tc = '';
 $ap = '';
 
