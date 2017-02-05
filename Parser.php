@@ -150,7 +150,7 @@ class Parser
             $pages[(int) $page['id']] = $page;
         }
         foreach ($this->pageIds as $pageId) {
-            foreach (['%d', '30%04d', '35%04d'] as $pattern) {
+            foreach (['%d', '30%04d', '35%04d', '38%04d'] as $pattern) {
                 $actualPageId = sprintf($pattern, $pageId);
                 // var_dump($actualPageId);
                 if (isset($pages[$actualPageId])) {
