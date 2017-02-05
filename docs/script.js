@@ -80,12 +80,14 @@ function show() {
         span.className = 'race'
         span.innerHTML = races[sector.race]
         sectorDiv.appendChild(span)
-        ;['safety', 'stations'].forEach(function (type) {
-            var span  = document.createElement('span')
-            span.className = type
-            span.innerHTML = sector[type]
-            sectorDiv.appendChild(span)
-        })
+        var span  = document.createElement('span')
+        span.className = 'safety'
+        span.innerHTML = translations[sector.safety]
+        sectorDiv.appendChild(span)
+        var span  = document.createElement('span')
+        span.className = 'stations'
+        span.innerHTML = sector.stations
+        sectorDiv.appendChild(span)
         container.appendChild(sectorDiv)
     }
     document.body.replaceChild(container, document.getElementById('container'))
