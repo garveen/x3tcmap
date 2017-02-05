@@ -2,7 +2,7 @@
 class Parser
 {
 
-    public $pageIds = [7, 1000, 17, 195, 1266, 35, 1903, 1906];
+    public $pageIds = [7, 1000, 17, 195, 1266, 35, 1903, 1906, 1951];
 
     // public $objectTypes => [
     //     '18'
@@ -124,10 +124,9 @@ class Parser
         }
         do {
             $translation = preg_replace_callback('~\{\s*(\d+)\s*,\s*(\d+)\s*\}~', function ($matches) use ($pageId) {
-                if (isset($this->translation[$pageId][$matches[2]])) {
-                    return $this->translation[$pageId][$matches[2]];
+                if (isset($this->translation[$matches[1]][$matches[2]])) {
+                    return $this->translation[$matches[1]][$matches[2]];
                 }
-
             }, $translation, -1, $count);
         } while ($count);
         $translation = preg_replace('~\(.+\)~', '', $translation);
