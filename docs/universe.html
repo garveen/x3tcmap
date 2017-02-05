@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title id='document-title'>X3 Universe Map</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <style>
+            .sector{width: 150px;height: 50px}
+            .line.jump,.modal-coordinate{height:12px;}
+        </style>
+    </head>
+    <body>
+        <div id='container'>
+
+        </div>
+
+        <div id="modal-overlay">
+            <div class="modal-data">
+                <div class='modal-header'>
+                    <span class='sector-name' onclick='switchImage()'></span>
+                    <iframe src="https://ghbtns.com/github-btn.html?user=garveen&repo=x3tcmap&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="24px"></iframe>
+                </div>
+                <div class="modal-content">
+                    <div class='modal-map'>
+                        <div id='container-2d' style='display:none'></div>
+                        <div id='container-3d'></div>
+                    </div>
+                </div>
+                <div class='modal-footer'>
+                    <div class='modal-coordinate'>&nbsp;</div>
+                    <div class='controls'>
+                        <span id='controls-2d' style='display: none'>
+                            <button id='btn-zoomin' onclick="zoomin()"></button>
+                            <button id='btn-zoomout' onclick="zoomout()"></button>
+                            <button id='btn-direction' onclick="switchDirection()"></button>
+                        </span>
+                        <span id='controls-3d'>
+                            <button id='btn-moregrids' onclick="moreGrids()">Show Y-Grids</button>
+                        </span>
+                        <button id='btn-3d' onclick="switchRender()">2D</button>
+                        <button id='btn-close' onclick="closeModal()"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-background" onclick="closeModal()"></div>
+        </div>
+        <script>
+            var cellWidth = 150;
+            var cellHeight = 50;
+            var cellGapY = 10;
+            var cellGapX = 10;
+
+            var lineWidth = 10;
+            var pathPrefix = '';
+
+            var isDynamic = false;
+
+            var languages = {"49":"German","48":"Polish","44":"English","42":"Czech","39":"Italian","34":"Spanish","33":"French","7":"Russian","86":"Simplified Chinese","88":"Traditional Chinese"};
+
+                    </script>
+        <script src="three/three.min.js"></script>
+        <script src="three/OrbitControls.js"></script>
+        <script src="three/Projector.js"></script>
+        <script src="three/CanvasRenderer.js"></script>
+        <script src="script.js"></script>
+        <script>
+
+        </script>
+    </body>
+</html>
