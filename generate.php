@@ -41,7 +41,7 @@ foreach (Parser::$languageMap as $code => $languageName) {
             ],
 
         ] as $k => $v) {
-            $html .= "var {$k} = " . json_encode($v, JSON_UNESCAPED_UNICODE) . ';';
+            $html .= "var {$k} = " . json_encode($v, JSON_UNESCAPED_UNICODE) . ";\n";
         }
         $html .= 'show();';
 
