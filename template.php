@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset='utf-8'/>
-        <title>X3 <?=strtoupper($map);?> Universe Map for <?=$languageName;?></title>
+        <title id='document-title'>X3 Universe Map</title>
         <link rel="stylesheet" href="<?=$pathPrefix;?>style.css" type="text/css" />
         <style>
             .sector{width: <?=$cellWidth;?>px;height: <?=$cellHeight;?>px}
@@ -34,7 +34,6 @@
             </div>
             <div class="modal-background" onclick="closeModal()"></div>
         </div>
-        <script src="<?=$pathPrefix;?>script.js"></script>
         <script>
             var cellWidth = <?=$cellWidth;?>;
             var cellHeight = <?=$cellHeight;?>;
@@ -43,21 +42,13 @@
 
             var lineWidth = <?=$lineWidth;?>;
             var pathPrefix = '<?=$pathPrefix;?>';
-            var sectors = <?=json_encode($parser->sectors, JSON_UNESCAPED_UNICODE);?>;
-            var races = <?=json_encode($parser->translation['1266'], JSON_UNESCAPED_UNICODE);?>;
-            var texts = {
-                'zoomin': <?=json_encode($parser->translation[1903][10863], JSON_UNESCAPED_UNICODE)?>,
-                'zoomout': <?=json_encode($parser->translation[1903][10864], JSON_UNESCAPED_UNICODE)?>,
-                'direction': <?=json_encode($parser->translation[1903][10861], JSON_UNESCAPED_UNICODE)?>,
-                'close': <?=json_encode($parser->translation[1906][302], JSON_UNESCAPED_UNICODE)?>,
-                'gate': <?=json_encode($parser->translation[17][3731], JSON_UNESCAPED_UNICODE)?>,
-                'gate_T': <?=json_encode($parser->translation[17][16101], JSON_UNESCAPED_UNICODE);?>
 
-            };
-            var icons = <?=json_encode($parser->iconUsed, JSON_UNESCAPED_UNICODE);?>;
-            var translations = <?=json_encode($parser->translationUsed, JSON_UNESCAPED_UNICODE);?>;
-            init();
+            var isDynamic = <?=json_encode($isDynamic);?>;
 
+            var languages = <?=json_encode(Parser::$languageMap);?>;
+
+            <?=$appendScript;?>
         </script>
+        <script src="<?=$pathPrefix;?>script.js"></script>
     </body>
 </html>

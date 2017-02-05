@@ -3,8 +3,21 @@ var zooming, currX, currY;
 var image = 'gui/gui_master_newest.png'
 var e1 = document.getElementById('modal-overlay');
 var direction = 'z';
+var QueryString;
+var lang;
+var map;
 
-var init = function () {
+init();
+if(isDynamic) {
+    show();
+}
+
+var colorIndex = 0;
+
+function show() {
+    console.log(QueryString)
+    document.getElementById('document-title').innerHTML = 'X3 ' + map.toUpperCase() + ' Universe Map for ' + languages[lang];
+
     ['zoomin', 'zoomout', 'direction', 'close'].forEach(function (k) {
         document.getElementById('btn-' + k).innerHTML = texts[k]
     })
@@ -41,7 +54,6 @@ var init = function () {
         var sectorDiv = document.createElement('div')
         sectorDiv.className = 'sector race-' + sector.race
         sectorDiv.style.cssText = 'left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px'
-        console.log('left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px')
         sectorDiv.x = sector.x
         sectorDiv.y = sector.y
 
@@ -79,18 +91,18 @@ var init = function () {
     document.body.replaceChild(container, document.getElementById('container'))
 }
 
-var isNeighbour = function (sector, gate) {
+function isNeighbour(sector, gate) {
     return Math.abs(sector.x - gate.gx) + Math.abs(sector.y - gate.gy) == 1;
 };
 
-var calcLeft = function (x) {
+function calcLeft(x) {
     return x * (cellWidth + cellGapX);
 };
-var calcTop = function (y) {
+function calcTop(y) {
     return y * (cellHeight + cellGapY);
 };
 
-var lineStyle = function (sector, gate) {
+function lineStyle(sector, gate) {
     if (sector.x > gate.gx || sector.y > gate.gy) {
         return false;
     }
@@ -109,8 +121,7 @@ var lineStyle = function (sector, gate) {
     return "left:" + myLeft + "px;top:" + myTop + "px;width:" + width + "px;height:" + height + "px";
 };
 
-var colorIndex = 0;
-var jumpStyle = function (sector, gate) {
+function jumpStyle(sector, gate) {
     if (sector.x > gate.gx) {
         return false;
     }
@@ -244,3 +255,38 @@ function overlay(x, y, zoom){
 
 }
 
+
+function init() {
+    // stackoverflow-oriented programming
+    QueryString = function () {
+      // This function is anonymous, is executed immediately and
+      // the return value is assigned to QueryString!
+      var query_string = {};
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+            // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+          query_string[pair[0]] = decodeURIComponent(pair[1]);
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+          var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+          query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+          query_string[pair[0]].push(decodeURIComponent(pair[1]));
+        }
+      }
+      return query_string;
+    }();
+    lang = typeof QueryString.lang != 'undefined' ? QueryString.lang : '44'
+    map = typeof QueryString.map != 'undefined' ? QueryString.map : 'tc'
+
+    if(!isDynamic) {
+        var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = '' + map + lang + '.js';
+        document.body.appendChild(js);
+    }
+}
