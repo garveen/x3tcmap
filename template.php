@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset='utf-8'/>
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <title>X3 <?=strtoupper($map);?> Universe Map for <?=$languageName;?></title>
+        <link rel="stylesheet" href="<?=$pathPrefix;?>style.css" type="text/css" />
         <style>
             .sector{width: <?=$cellWidth;?>px;height: <?=$cellHeight;?>px}
             .line.jump{height:<?=$lineWidth;?>px;}
@@ -25,31 +26,31 @@
                 </div>
                 <div class='modal-footer'>
                     <div class='modal-coordinate'></div>
-                    <button id='btn-zoomin' onclick="zoomin()">放大</button>
-                    <button id='btn-zoomout' onclick="zoomout()">缩小</button>
-                    <button id='btn-direction' onclick="switchDirection()">换坐标</button>
-                    <button id='btn-close' onclick="closeModal()">关闭</button>
+                    <button id='btn-zoomin' onclick="zoomin()"></button>
+                    <button id='btn-zoomout' onclick="zoomout()"></button>
+                    <button id='btn-direction' onclick="switchDirection()"></button>
+                    <button id='btn-close' onclick="closeModal()"></button>
                 </div>
             </div>
             <div class="modal-background" onclick="closeModal()"></div>
         </div>
-        <script src="script.js"></script>
+        <script src="<?=$pathPrefix;?>script.js"></script>
         <script>
-            var cellWidth = <?=$cellWidth?>;
-            var cellHeight = <?=$cellHeight?>;
-            var cellGapY = <?=$cellGapY?>;
-            var cellGapX = <?=$cellGapX?>;
+            var cellWidth = <?=$cellWidth;?>;
+            var cellHeight = <?=$cellHeight;?>;
+            var cellGapY = <?=$cellGapY;?>;
+            var cellGapX = <?=$cellGapX;?>;
 
-            var lineWidth = <?=$lineWidth?>;
-            var sectors = <?=json_encode($parser->sectors, JSON_UNESCAPED_UNICODE)?>;
-            var races = <?=json_encode($parser->translation['1266'], JSON_UNESCAPED_UNICODE)?>;
+            var lineWidth = <?=$lineWidth;?>;
+            var sectors = <?=json_encode($parser->sectors, JSON_UNESCAPED_UNICODE);?>;
+            var races = <?=json_encode($parser->translation['1266'], JSON_UNESCAPED_UNICODE);?>;
             var texts = {
-                'zoomin': '<?=$parser->translation[1903][10863]?>',
-                'zoomout': '<?=$parser->translation[1903][10864]?>',
-                'direction': '<?=$parser->translation[1903][10861]?>',
-                'close': '<?=$parser->translation[1906][302]?>',
-                'gate': '<?=$parser->translation[17][3731]?>',
-                'gate_T': '<?=$parser->translation[17][16101]?>'
+                'zoomin': <?=json_encode($parser->translation[1903][10863], JSON_UNESCAPED_UNICODE)?>,
+                'zoomout': <?=json_encode($parser->translation[1903][10864], JSON_UNESCAPED_UNICODE)?>,
+                'direction': <?=json_encode($parser->translation[1903][10861], JSON_UNESCAPED_UNICODE)?>,
+                'close': <?=json_encode($parser->translation[1906][302], JSON_UNESCAPED_UNICODE)?>,
+                'gate': <?=json_encode($parser->translation[17][3731], JSON_UNESCAPED_UNICODE)?>,
+                'gate_T': <?=json_encode($parser->translation[17][16101], JSON_UNESCAPED_UNICODE);?>
             }
             init();
 

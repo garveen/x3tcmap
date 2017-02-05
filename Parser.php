@@ -83,6 +83,19 @@ class Parser
         3 => 'E',
     ];
 
+    public static $languageMap = [
+        49 => 'German',
+        48 => 'Polish',
+        44 => 'English',
+        42 => 'Czech',
+        39 => 'Italian',
+        34 => 'Spanish',
+        33 => 'French',
+        07 => 'Russian',
+        86 => 'Simplified Chinese',
+        88 => 'Traditional Chinese',
+    ];
+
     public function __construct($langFile = false, $universeXmlFiles = false)
     {
         $this->parseText();

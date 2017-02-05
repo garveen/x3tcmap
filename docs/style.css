@@ -7,20 +7,20 @@ body{font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei;color:whi
 .name{position: absolute;top:0;left:3px;}
 .race{position: absolute;bottom: 0px;left:3px;}
 .safety{position: absolute;bottom:0px;right:3px;}
-.stations{position: absolute;bottom: 0px;left:50%;transform:translateX(-50%);}
-.race-Unknown{background-color: #333}
-.race-Argon{background-color: #058}
-.race-Split{background-color: #535008}
-.race-Paranid{background-color: #402542}
-.race-Boron{background-color: #362080}
-.race-Teladi{background-color: #1d401d}
-.race-Xenon{background-color: #5a1919}
-.race-Pirates{background-color: black}
-.race-Terran{background-color: #142c50}
-.race-Goner{background-color: #432}
-.race-Yaki{background-color: #555}
-.race-Khaak{background-color: red}
-/*.race-ATF{background-color: #}*/
+.stations{position: absolute;right: 3px; top:50%;transform:translateY(-50%);}
+
+.race-1{background-color: #058} /* Argon */
+.race-2{background-color: #362080} /* Boron */
+.race-3{background-color: #535008} /* Split */
+.race-4{background-color: #402542} /* Paranid */
+.race-5{background-color: #1d401d} /* Teladi */
+.race-6{background-color: #5a1919} /* Xenon */
+.race-7{background-color: red} /* Kha'ak */
+.race-8{background-color: black} /* Pirates */
+.race-9{background-color: #432} /* Goner */
+.race-14{background-color: #333} /* Unknown */
+.race-18{background-color: #142c50} /* Terran */
+.race-19{background-color: #555} /* Yaki */
 
 .line{background-color: white;position: absolute;}
 .line.jump{background-color: red;transform-origin:top left;}

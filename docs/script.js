@@ -39,7 +39,7 @@ var init = function () {
     for(var coordinate in sectors) {
         var sector = sectors[coordinate];
         var sectorDiv = document.createElement('div')
-        sectorDiv.className = 'sector race-' + races[sector.race].replace("'", '')
+        sectorDiv.className = 'sector race-' + sector.race
         sectorDiv.style = 'left:' + calcLeft(sector.x) + 'px;top:' + calcTop(sector.y) + 'px'
         sectorDiv.x = sector.x
         sectorDiv.y = sector.y

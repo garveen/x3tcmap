@@ -9,17 +9,30 @@ $cellGapX = 10;
 
 $lineWidth = 10;
 
-foreach (['chinese', 'english'] as $language) {
-    foreach (['', 'ap'] as $map) {
-        $parser = new Parser("lang/{$language}.xml", ["maps/x3{$map}_universe.xml", "maps/x3_universe_2.0.xml"]);
+$pathPrefix = '';
+
+$tc = '';
+$ap = '';
+
+foreach (Parser::$languageMap as $code => $languageName) {
+    foreach (['tc', 'ap'] as $map) {
+        $code = sprintf('%02d', $code);
+        $parser = new Parser("lang/0001-L0{$code}.xml", ["maps/x3{$map}_universe.xml", "maps/x3_universe_2.0.xml"]);
         ob_start();
         include 'template.php';
         $content = ob_get_clean();
-        file_put_contents("{$map}{$language}.html", $content);
+        $name = "{$map}{$code}.html";
+        file_put_contents("docs/{$name}", $content);
+        $$map .= "<a href='{$name}'>{$languageName}</a><br>";
     }
 }
-
-if (file_exists('index.html')) {
-    unlink('index.html');
-}
-rename('english.html', 'index.html');
+$html = <<<HTML
+X3:TC Terran Conflict Universe Map: <br>
+$tc
+<br>
+<br>
+<br>
+X3:AP Albion Prelude Universe Map: <br>
+$ap
+HTML;
+file_put_contents('docs/index.html', $html);
