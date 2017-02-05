@@ -16,4 +16,8 @@ foreach (['chinese', 'english'] as $language) {
     $content = ob_get_clean();
     file_put_contents("{$language}.html", $content);
 }
+
+if (file_exists('index.html')) {
+	unlink('index.html');
+}
 rename('english.html', 'index.html');

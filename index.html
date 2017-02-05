@@ -17,6 +17,7 @@
             <div class="modal-data">
                 <div class='modal-header'>
                     <span class='sector-name' onclick='switchImage()'></span>
+                    <iframe src="https://ghbtns.com/github-btn.html?user=garveen&repo=x3tcmap&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="24px"></iframe>
                 </div>
                 <div class="modal-content">
                     <div class="modal-map">
