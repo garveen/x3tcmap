@@ -42,6 +42,7 @@
             var cellGapX = <?=$cellGapX;?>;
 
             var lineWidth = <?=$lineWidth;?>;
+            var pathPrefix = '<?=$pathPrefix;?>';
             var sectors = <?=json_encode($parser->sectors, JSON_UNESCAPED_UNICODE);?>;
             var races = <?=json_encode($parser->translation['1266'], JSON_UNESCAPED_UNICODE);?>;
             var texts = {
@@ -51,7 +52,10 @@
                 'close': <?=json_encode($parser->translation[1906][302], JSON_UNESCAPED_UNICODE)?>,
                 'gate': <?=json_encode($parser->translation[17][3731], JSON_UNESCAPED_UNICODE)?>,
                 'gate_T': <?=json_encode($parser->translation[17][16101], JSON_UNESCAPED_UNICODE);?>
-            }
+
+            };
+            var icons = <?=json_encode($parser->iconUsed, JSON_UNESCAPED_UNICODE);?>;
+            var translations = <?=json_encode($parser->translationUsed, JSON_UNESCAPED_UNICODE);?>;
             init();
 
         </script>

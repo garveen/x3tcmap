@@ -50,7 +50,7 @@ var init = function () {
 
         var span = document.createElement('span')
         span.className = 'name'
-        names = sector.name.split('|')
+        names = translations[sector.name].split('|')
         span.innerHTML = names[0]
         sectorDiv.appendChild(span)
         if(typeof names[1] != 'undefined') {
@@ -177,7 +177,7 @@ function overlay(x, y, zoom){
         map.innerHTML = '';
     }
     var sector = sectors[x+"_"+y];
-    document.getElementsByClassName('sector-name')[0].innerHTML = sector.name + ' [' + x + ', ' + y + ']'
+    document.getElementsByClassName('sector-name')[0].innerHTML = translations[sector.name] + ' [' + x + ', ' + y + ']'
     var size = sector.size * zoom
     console.log(sector)
 
@@ -204,10 +204,10 @@ function overlay(x, y, zoom){
                 var div = document.createElement('div');
                 div.className = 'map-object';
                 var position = calcPosition(object);
-                var style = calcStyle(position) + 'width:'+object.icon.w+'px;height:'+object.icon.h+'px;background:url('+image+') no-repeat -' + object.icon.l + 'px -' + object.icon.t + 'px';
+                var style = calcStyle(position) + 'width:'+icons[object.icon].w+'px;height:'+icons[object.icon].h+'px;background:url('+pathPrefix+image+') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
                 div.style = style
                 div.onmouseover = function() {
-                    document.getElementsByClassName('modal-coordinate')[0].innerHTML = object.name + ' ' + calcKiloMeter(object)
+                    document.getElementsByClassName('modal-coordinate')[0].innerHTML = translations[object.name] + ' ' + calcKiloMeter(object)
                 }
                 map.appendChild(div);
             })
@@ -228,7 +228,7 @@ function overlay(x, y, zoom){
         div.style = calcStyle(position);
         div.onmouseover = function() {
             console.log(gate.s)
-            document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + sectors[gate.gx+'_'+gate.gy].name + '] ' + calcKiloMeter(gate)
+            document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[sectors[gate.gx+'_'+gate.gy].name] + '] ' + calcKiloMeter(gate)
         }
         div.onclick = function() {
             overlay(gate.gx, gate.gy)

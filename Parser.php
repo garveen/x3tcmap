@@ -107,8 +107,12 @@ class Parser
         }
     }
 
-    public function translate($id, $pageId)
+    public function translate($pageId, $id)
     {
+        if(isset($this->translationUsedMap[$pageId][$id])) {
+            return $this->translationUsedMap[$pageId][$id];
+        }
+
         $translation = false;
 
         if (isset($this->translation[$pageId][$id])) {
@@ -128,13 +132,18 @@ class Parser
         } while ($count);
         $translation = preg_replace('~\(.+\)~', '', $translation);
 
-        return $translation;
+        $length = count($this->translationUsed);
+        $this->translationUsedMap[$pageId][$id] = $length;
+        $this->translationUsed[$length] = $translation;
+        return $length;
 
     }
 
     public function parseLanguage($langFile)
     {
         $this->translation = [];
+        $this->translationUsed = [];
+        $this->translationUsedMap = [];
         $language = simplexml_load_file($langFile);
         $pages = [];
         foreach ($language->page as $page) {
@@ -190,6 +199,8 @@ class Parser
             $universeXmlFiles = [$universeXmlFiles];
         }
         $sectors = [];
+        $iconUsed = [];
+        $iconUsedMap = [];
         foreach ($universeXmlFiles as $universeXmlFile) {
 
             $universe = simplexml_load_file($universeXmlFile);
@@ -205,12 +216,12 @@ class Parser
                 $race = (int) $sectorXml['r'];
                 $coordinate = "{$x}_{$y}";
                 if (!isset($sectors[$coordinate])) {
-                    $sectors[$coordinate] = $sector = new Sector($this->translate($langId, 7), $x, $y, $race);
+                    $sectors[$coordinate] = $sector = new Sector($this->translate(7, $langId), $x, $y, $race);
                 } else {
                     $sector = $sectors[$coordinate];
                 }
                 $sector->size = (int) $sectorXml['size'];
-                $sector->safety = ((int) $sectorXml['f']) == 0 ? $this->translate(753, 35) : $this->translate(752, 35);
+                $sector->safety = ((int) $sectorXml['f']) == 0 ? $this->translate(35, 753) : $this->translate(35, 752);
 
                 foreach ($sectorXml as $object) {
                     $mainType = (string) $object['t'];
@@ -244,14 +255,24 @@ class Parser
                             break;
                         case '17':
                             // asteroids
-                            $icon = 'ICON_TRG_ASTEROID';
+                        case '5':
+                            // (station) trading docks
+                        case '6':
+                            // (station) factories / shipyards
                         default:
+                            $icon = $this->objects[$type]['icon'];
+                            if(!isset($iconUsedMap[$icon])) {
+                                $length = count($iconUsed);
+                                $iconUsedMap[$icon] = $length;
+                                $iconUsed[$length] = $this->objects[$icon];
+                            }
+                            $icon = $iconUsedMap[$icon];
                             $sector->objects[$mainType][$subType][] = [
                                 'x' => $objectX,
                                 'y' => $objectY,
                                 'z' => $objectZ,
-                                'icon' => $this->objects[$this->objects[$type]['icon']],
-                                'name' => $this->translate($typeInfo['id'], 17),
+                                'icon' => $icon,
+                                'name' => $this->translate(17, $typeInfo['id']),
                             ];
                     }
                 }
@@ -273,6 +294,7 @@ class Parser
             $sector->stations = $stations;
         }
         $this->sectors = $sectors;
+        $this->iconUsed = $iconUsed;
     }
 
 }
