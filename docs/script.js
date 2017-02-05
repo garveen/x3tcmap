@@ -22,7 +22,7 @@ var init = function () {
                 }
                 var div = document.createElement('div');
                 div.className = 'line';
-                div.style = style;
+                div.style.cssText = style;
                 container.appendChild(div)
             } else {
                 var style = jumpStyle(sector, gate)
@@ -31,7 +31,7 @@ var init = function () {
                 }
                 var div = document.createElement('div');
                 div.className = 'line jump';
-                div.style = style;
+                div.style.cssText = style;
                 container.appendChild(div)
             }
         })
@@ -40,7 +40,8 @@ var init = function () {
         var sector = sectors[coordinate];
         var sectorDiv = document.createElement('div')
         sectorDiv.className = 'sector race-' + sector.race
-        sectorDiv.style = 'left:' + calcLeft(sector.x) + 'px;top:' + calcTop(sector.y) + 'px'
+        sectorDiv.style.cssText = 'left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px'
+        console.log('left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px')
         sectorDiv.x = sector.x
         sectorDiv.y = sector.y
 
@@ -188,8 +189,9 @@ function overlay(x, y, zoom){
     var calcPosition = function(el) {
         return {x: (el.x + size) / size / 2, y: (el.y + size) / size / 2, z: (el.z + size) / size / 2};
     };
-    var calcStyle = function(position) {
-        return 'left:' + ( position.x * (width)) + 'px;top:' + (height - position[direction] * (height ) ) + 'px;';
+    var calcStyle = function(position, icon) {
+        if (typeof icon =='undefined') icon = {w: 0, h: 0}
+        return 'left: ' + (position.x * width - icon.w / 2) + 'px;top: ' + (height - position[direction] * height + icon.h / 2) + 'px;';
     };
     var calcKiloMeter = function(el) {
         return 'x: ' + (el.x / 500000).toFixed(2) + 'km y: ' + (el.y / 500000).toFixed(2) + 'km z: '+ (el.z / 500000).toFixed(2) + 'km'
@@ -204,8 +206,8 @@ function overlay(x, y, zoom){
                 var div = document.createElement('div');
                 div.className = 'map-object';
                 var position = calcPosition(object);
-                var style = calcStyle(position) + 'width:'+icons[object.icon].w+'px;height:'+icons[object.icon].h+'px;background:url('+pathPrefix+image+') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
-                div.style = style
+                var style = calcStyle(position, icons[object.icon]) + 'width:'+icons[object.icon].w+'px;height:'+icons[object.icon].h+'px;background:url('+pathPrefix+image+') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
+                div.style.cssText = style
                 div.onmouseover = function() {
                     document.getElementsByClassName('modal-coordinate')[0].innerHTML = translations[object.name] + ' ' + calcKiloMeter(object)
                 }
@@ -225,7 +227,7 @@ function overlay(x, y, zoom){
         var div = document.createElement('div');
         div.className = 'map-gate';
         var position = calcPosition(gate);
-        div.style = calcStyle(position);
+        div.style.cssText = calcStyle(position);
         div.onmouseover = function() {
             console.log(gate.s)
             document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[sectors[gate.gx+'_'+gate.gy].name] + '] ' + calcKiloMeter(gate)
