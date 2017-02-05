@@ -23,7 +23,7 @@ body{font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei;color:whi
 .race-19{background-color: #555} /* Yaki */
 
 .line{background-color: white;position: absolute;}
-.line.jump{background-color: red;transform-origin:top left;}
+.line.jump{transform-origin:top left;}
 
 #modal-overlay {visibility: hidden;color: black }
 .modal-header{padding:10px 0;}

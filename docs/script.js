@@ -6,13 +6,13 @@ var direction = 'z';
 var QueryString;
 var lang;
 var map;
+var colorIndex = 0;
 
 init();
 if(isDynamic) {
     show();
 }
 
-var colorIndex = 0;
 
 function show() {
     console.log(QueryString)
