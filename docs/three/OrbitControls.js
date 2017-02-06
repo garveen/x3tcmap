@@ -138,6 +138,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 			if ( scope.autoRotate && state === STATE.NONE ) {
 
 				rotateLeft( getAutoRotationAngle() );
+				rotateUp( -getAutoRotationAngle() );
 
 			}
 

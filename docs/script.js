@@ -1,5 +1,6 @@
+'use strict';
 var zooming, currX, currY;
-var image = 'gui/gui_master_newest.png'
+var image = 'gui/gui_master_newest.png';
 var e1 = document.getElementById('modal-overlay');
 var direction = 'z';
 var QueryString;
@@ -14,86 +15,106 @@ var camera;
 var controls;
 var sectorSize;
 var render3D = false;
-init();
-if (isDynamic) {
-    show();
-}
+var ThreeInited = false;
+
+var sMap = {
+    0: 'N',
+    1: 'S',
+    2: 'W',
+    3: 'E',
+    5: 'N',
+    6: 'S',
+    7: 'W',
+    8: 'E'
+};
+
 
 function show() {
+    'use strict';
     document.getElementById('document-title').innerHTML = 'X3 ' + map.toUpperCase() + ' Universe Map for ' + languages[lang];
-    ['zoomin', 'zoomout', 'direction', 'close'].forEach(function(k) {
-        document.getElementById('btn-' + k).innerHTML = texts[k]
-    })
+    ['zoomin', 'zoomout', 'direction', 'close'].forEach(function (k) {
+        document.getElementById('btn-' + k).innerHTML = texts[k];
+    });
     var html = '';
     var container = document.createElement('div');
     container.id = 'container';
-    for (var coordinate in sectors) {
-        var sector = sectors[coordinate];
-        sector.gates.forEach(function(gate) {
+    var sector;
+    var style;
+    var className;
+
+    var isNeighbour = function (sector, gate) {
+        return Math.abs(sector.x - gate.gx) + Math.abs(sector.y - gate.gy) == 1;
+    };
+    Object.keys(sectors).forEach(function (sectorIndex) {
+        sector = sectors[sectorIndex];
+        if (!sector.gates) {
+            return true;
+        }
+        sector.gates.forEach(function (gate) {
             if (isNeighbour(sector, gate)) {
-                var style = lineStyle(sector, gate)
+                style = lineStyle(sector, gate);
                 if (!style) {
                     return true;
                 }
-                var className = 'line';
+                className = 'line';
             } else {
-                var style = jumpStyle(sector, gate)
+                style = jumpStyle(sector, gate);
                 if (!style) {
                     return true;
                 }
-                var className = 'line jump';
+                className = 'line jump';
             }
             var div = document.createElement('div');
             div.className = className;
             div.style.cssText = style;
-            container.appendChild(div)
-        })
-    }
-    for (var coordinate in sectors) {
-        var sector = sectors[coordinate];
-        var sectorDiv = document.createElement('div')
-        sectorDiv.className = 'sector race-' + sector.race
-        sectorDiv.style.cssText = 'left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px'
-        sectorDiv.x = sector.x
-        sectorDiv.y = sector.y
-        sectorDiv.onclick = function(evt) {
-            overlay(this.x, this.y)
-        }
-        var span = document.createElement('span')
-        span.className = 'name'
-        names = translations[sector.name].split('|')
-        span.innerHTML = names[0]
-        sectorDiv.appendChild(span)
+            container.appendChild(div);
+        });
+    });
+    var sectorDiv;
+    Object.keys(sectors).forEach(function (sectorIndex) {
+        sector = sectors[sectorIndex];
+
+        sectorDiv = document.createElement('div');
+        sectorDiv.className = 'sector race-' + sector.race;
+        sectorDiv.style.cssText = 'left: ' + calcLeft(sector.x) + 'px;top: ' + calcTop(sector.y) + 'px';
+        sectorDiv.x = sector.x;
+        sectorDiv.y = sector.y;
+        sectorDiv.onclick = function (evt) {
+            overlay(this.x, this.y);
+        };
+        var span;
+        span = document.createElement('span');
+        span.className = 'name';
+        var names = translations[sector.name].split('|');
+        span.innerHTML = names[0];
+        sectorDiv.appendChild(span);
         if (typeof names[1] != 'undefined') {
-            var span = document.createElement('span')
-            span.className = 'translated'
-            span.innerHTML = names[1]
-            sectorDiv.appendChild(span)
+            span = document.createElement('span');
+            span.className = 'translated';
+            span.innerHTML = names[1];
+            sectorDiv.appendChild(span);
         }
-        var span = document.createElement('span')
-        span.className = 'position'
-        span.innerHTML = sector.x + ' ' + sector.y
-        sectorDiv.appendChild(span)
-        var span = document.createElement('span')
-        span.className = 'race'
-        span.innerHTML = races[sector.race]
-        sectorDiv.appendChild(span)
-        var span = document.createElement('span')
-        span.className = 'safety'
-        span.innerHTML = translations[sector.safety]
-        sectorDiv.appendChild(span)
-        var span = document.createElement('span')
-        span.className = 'stations'
-        span.innerHTML = sector.stations
-        sectorDiv.appendChild(span)
-        container.appendChild(sectorDiv)
-    }
-    document.body.replaceChild(container, document.getElementById('container'))
+        span = document.createElement('span');
+        span.className = 'position';
+        span.innerHTML = sector.x + ' ' + sector.y;
+        sectorDiv.appendChild(span);
+        span = document.createElement('span');
+        span.className = 'race';
+        span.innerHTML = races[sector.race];
+        sectorDiv.appendChild(span);
+        span = document.createElement('span');
+        span.className = 'safety';
+        span.innerHTML = translations[sector.safety];
+        sectorDiv.appendChild(span);
+        span = document.createElement('span');
+        span.className = 'stations';
+        span.innerHTML = sector.stations;
+        sectorDiv.appendChild(span);
+        container.appendChild(sectorDiv);
+    });
+    document.body.replaceChild(container, document.getElementById('container'));
 }
 
-function isNeighbour(sector, gate) {
-    return Math.abs(sector.x - gate.gx) + Math.abs(sector.y - gate.gy) == 1;
-};
 
 function calcLeft(x) {
     return x * (cellWidth + cellGapX);
@@ -128,7 +149,10 @@ function jumpStyle(sector, gate) {
     if (sector.x == gate.gx && sector.y > gate.gy) {
         return false;
     }
-    colors = ['orange', 'red', 'green',
+    var colors = [
+        'orange',
+        'red',
+        'green',
         // 'yellow',
         'blue',
         // 'pink',
@@ -137,12 +161,13 @@ function jumpStyle(sector, gate) {
     if (colorIndex >= colors.length) {
         colorIndex = 0;
     }
-    color = colors[colorIndex];
-    myLeft = calcLeft(sector.x + 0.5);
-    myTop = calcTop(sector.y + 0.5);
-    dx = calcLeft(gate.gx - sector.x);
-    dy = calcTop(gate.gy - sector.y);
-    length = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+    var color = colors[colorIndex];
+    var myLeft = calcLeft(sector.x + 0.5);
+    var myTop = calcTop(sector.y + 0.5);
+    var dx = calcLeft(gate.gx - sector.x);
+    var dy = calcTop(gate.gy - sector.y);
+    var length = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+    var rad;
     if (dx == 0) {
         rad = Math.PI / 2;
     } else {
@@ -152,8 +177,8 @@ function jumpStyle(sector, gate) {
 };
 
 function switchImage() {
-    image = image == 'gui/gui_master_diff.png' ? 'gui/gui_master_newest.png' : 'gui/gui_master_diff.png'
-    overlay(currX, currY, zooming)
+    image = image == 'gui/gui_master_diff.png' ? 'gui/gui_master_newest.png' : 'gui/gui_master_diff.png';
+    overlay(currX, currY, zooming);
 }
 
 function switchDirection() {
@@ -174,7 +199,14 @@ function closeModal() {
     direction = 'z';
 }
 
+function calcKiloMeter(el) {
+    return 'x: ' + (el.x / 500000).toFixed(2) + 'km y: ' + (el.y / 500000).toFixed(2) + 'km z: ' + (el.z / 500000).toFixed(2) + 'km';
+};
+
+
 function overlay(x, y, zoom) {
+    e1.style.visibility = "visible";
+
     if (typeof zoom == 'undefined') {
         zoom = 2;
     }
@@ -186,28 +218,30 @@ function overlay(x, y, zoom) {
     var map = document.getElementsByClassName('modal-map')[0];
     map.style.height = map.style.width = '' + mapSize + 'px';
     // get actual height
-    mapSize = map.clientHeight
+    mapSize = map.clientHeight;
     var sector = sectors[x + "_" + y];
     document.getElementsByClassName('sector-name')[0].innerHTML = translations[sector.name] + ' [' + x + ', ' + y + ']'
     if (render3D) {
-        renderThree(sector)
+        renderThree(sector);
     } else {
-        renderDom(sector, zoom)
+        renderDom(sector, zoom);
     }
-    e1.style.visibility = "visible";
 }
 
 function renderThree(sector) {
-    mapSize = Math.ceil(mapSize / 2) * 2
-    if (group) {
-        scene.remove(group)
+    if (!ThreeInited) {
+        initThree();
     }
-    group = new THREE.Group()
-    var loader = new THREE.TextureLoader()
-    var spriteMap = loader.load(pathPrefix + "gui/gui_master_newest.png", function(xxx) {
-        var width = xxx.image.width
-        var height = xxx.image.height
-        sectorSize = sector.size
+    mapSize = Math.ceil(mapSize / 2) * 2;
+    if (group) {
+        scene.remove(group);
+    }
+    group = new THREE.Group();
+    var loader = new THREE.TextureLoader();
+    var spriteMap = loader.load(pathPrefix + "gui/gui_master_newest.png", function (baseTexture) {
+        var width = baseTexture.image.width;
+        var height = baseTexture.image.height;
+        sectorSize = sector.size;
         camera.left = -mapSize / 2;
         camera.right = mapSize / 2;
         camera.top = mapSize / 2;
@@ -218,15 +252,16 @@ function renderThree(sector) {
         camera.position.y = mapSize * 2;
         camera.position.z = 0;
         camera.updateProjectionMatrix();
-        controls.rotateLeft(Math.PI / 2)
-        renderer.setSize(mapSize, mapSize);;
-        [17, 5, 6].forEach(function(index) {
+        controls.rotateLeft(Math.PI / 2);
+        renderer.setSize(mapSize, mapSize);
+        var ratio = sectorSize * 2 / mapSize;
+        [17, 5, 6].forEach(function (index) {
             if (typeof sector.objects[index] == 'undefined') {
                 return true;
             }
             for (var subType in sector.objects[index]) {
-                sector.objects[index][subType].forEach(function(object, index) {
-                    var spriteMap = xxx.clone()
+                sector.objects[index][subType].forEach(function (object, index) {
+                    var spriteMap = baseTexture.clone()
                     var icon = icons[object.icon]
                     var texture = spriteMap.clone();
                     spriteMap.offset = new THREE.Vector2(icon.l / width, 1 - (parseInt(icon.t) + parseInt(icon.h)) / height)
@@ -237,121 +272,146 @@ function renderThree(sector) {
                         color: 0xffffff
                     });
                     var sprite = new THREE.Sprite(spriteMaterial);
-                    sprite.icon = icon
-                    sprite.scale.set(icon.w, icon.h, 1)
-                    sprite.position.set(object.z * mapSize / sectorSize / 2, object.y * mapSize / sectorSize / 2, object.x * mapSize / sectorSize / 2)
+                    sprite.icon = icon;
+                    sprite.scale.set(icon.w, icon.h, 1);
+                    sprite.position.set(object.z / ratio, object.y / ratio, object.x / ratio);
+                    sprite.coordinateText = translations[object.name] + ' ' + calcKiloMeter(object)
+
                     group.add(sprite)
                 })
             }
         });
-        sector.gates.forEach(function(gate) {
-            var sMap = {
-                0: 'N',
-                1: 'S',
-                2: 'W',
-                3: 'E',
-                5: 'N',
-                6: 'S',
-                7: 'W',
-                8: 'E'
-            };
+
+        sector.gates.forEach(function (gate) {
             var canvas = document.createElement('canvas');
             var context = canvas.getContext('2d');
             canvas.height = 16;
-            canvas.width = 8
+            canvas.width = 16;
             var metrics = context.measureText(sMap[gate.s]);
             var textWidth = metrics.width;
             context.font = "12px Helvetica, Tahoma, Arial";
             context.fillStyle = "rgb(249,185,111)";
-            context.fillText(sMap[gate.s], 0, 12)
-            var texture = new THREE.Texture(canvas)
+            context.fillText(sMap[gate.s], 0, 12);
+            var texture = new THREE.Texture(canvas);
             texture.needsUpdate = true;
             var spriteMaterial = new THREE.SpriteMaterial({
                 map: texture
             });
             var sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(8, 16, 1.0);
+            sprite.scale.set(16, 16, 1.0);
             sprite.icon = {
-                w: 8,
+                w: 16,
                 h: 16
             }
-            sprite.position.set(gate.z * mapSize / sectorSize / 2, gate.y * mapSize / sectorSize / 2, gate.x * mapSize / sectorSize / 2)
-            group.add(sprite)
+            sprite.position.set(gate.z / ratio, gate.y / ratio, gate.x / ratio)
+            sprite.coordinateText = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
+                sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
+            group.add(sprite);
         })
-        scene.add(group)
-        render()
-        controls.update()
+        scene.add(group);
+        controls.update();
+        if (false) {
+            window.setTimeout(function(){
+                controls.autoRotate = true;
+                function animate() {
+                    requestAnimationFrame( animate );
+
+                    controls.update();
+                    render();
+                }
+                animate();
+            },10000);
+
+        }
+
+        var raycaster = new THREE.Raycaster();
+        var mouse = new THREE.Vector2();
+
+        var rect = document.getElementById('container-3d').getBoundingClientRect();
+        var left = rect.left;
+        var top = rect.top;
+        function onMouseMove( event ) {
+
+            // calculate mouse position in normalized device coordinates
+            // (-1 to +1) for both components
+
+            mouse.x = (( event.clientX - left) / mapSize ) * 2 - 1;
+            mouse.y = - (( event.clientY - top) / mapSize ) * 2 + 1;
+            if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
+                return;
+            }
+            raycaster.setFromCamera( mouse, camera );
+            var intersects = raycaster.intersectObjects( group.children );
+            if (intersects[0]) {
+                document.getElementsByClassName('modal-coordinate')[0].innerHTML = intersects[0].object.coordinateText;
+            }
+            // render();
+
+
+        }
+        window.addEventListener( 'mousemove', onMouseMove , false);
+
     })
 }
 
 function renderDom(sector, zoom) {
-    var map = document.getElementById('container-2d')
+    var map = document.getElementById('container-2d');
     if (zoom == 2) {
         map.innerHTML = '<div class="map-visual-area"></div>';
     } else {
         map.innerHTML = '';
     }
-    var size = sector.size * zoom
-    var calcPosition = function(el) {
+    var size = sector.size * zoom;
+    var calcPosition = function (el) {
         return {
             x: (el.x + size) / size / 2,
             y: (el.y + size) / size / 2,
             z: (el.z + size) / size / 2
         };
     };
-    var calcStyle = function(position) {
+    var calcStyle = function (position) {
         return 'left: ' + (position.x * mapSize) + 'px;top: ' + (mapSize - position[direction] * mapSize) + 'px;';
     };
-    var calcKiloMeter = function(el) {
-        return 'x: ' + (el.x / 500000).toFixed(2) + 'km y: ' + (el.y / 500000).toFixed(2) + 'km z: ' + (el.z / 500000).toFixed(2) + 'km'
-    };
-    [17, 5, 6].forEach(function(index) {
+    [17, 5, 6].forEach(function (index) {
         if (typeof sector.objects[index] == 'undefined') {
             return true;
         }
         for (var subType in sector.objects[index]) {
-            sector.objects[index][subType].forEach(function(object, index) {
+            sector.objects[index][subType].forEach(function (object, index) {
                 var div = document.createElement('div');
                 div.className = 'map-object';
                 var position = calcPosition(object);
-                var style = calcStyle(position) + 'width:' + icons[object.icon].w + 'px;height:' + icons[object.icon].h + 'px;background:url(' + pathPrefix + image + ') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
-                div.style.cssText = style
-                div.onmouseover = function() {
-                    document.getElementsByClassName('modal-coordinate')[0].innerHTML = translations[object.name] + ' ' + calcKiloMeter(object)
+                var style = calcStyle(position) + 'width:' + icons[object.icon].w + 'px;height:' + icons[object.icon].h + 'px;background:url(' +
+                    pathPrefix + image + ') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
+                div.style.cssText = style;
+                div.onmouseover = function () {
+                    document.getElementsByClassName('modal-coordinate')[0].innerHTML =
+                        translations[object.name] + ' ' + calcKiloMeter(object)
                 }
                 map.appendChild(div);
             })
         }
     })
-    sector.gates.forEach(function(gate) {
-        var sMap = {
-            0: 'N',
-            1: 'S',
-            2: 'W',
-            3: 'E',
-            5: 'N',
-            6: 'S',
-            7: 'W',
-            8: 'E'
-        };
+    sector.gates.forEach(function (gate) {
         var div = document.createElement('div');
         div.className = 'map-gate';
         var position = calcPosition(gate);
         div.style.cssText = calcStyle(position);
-        div.onmouseover = function() {
-            document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
+        div.onmouseover = function () {
+            document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
+                sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
         }
-        div.onclick = function() {
-            overlay(gate.gx, gate.gy)
+        div.onclick = function () {
+            overlay(gate.gx, gate.gy);
         }
-        div.innerHTML = sMap[gate.s]
-        map.appendChild(div)
+        div.innerHTML = sMap[gate.s];
+        map.appendChild(div);
     })
 }
 
 function init() {
     // stackoverflow-oriented programming
-    QueryString = function() {
+    QueryString = function () {
         // This function is anonymous, is executed immediately and
         // the return value is assigned to QueryString!
         var query_string = {};
@@ -373,20 +433,20 @@ function init() {
         }
         return query_string;
     }();
-    lang = typeof QueryString.lang != 'undefined' ? QueryString.lang : '44'
-    map = typeof QueryString.map != 'undefined' ? QueryString.map : 'tc'
+    lang = typeof QueryString.lang != 'undefined' ? QueryString.lang : '44';
+    map = typeof QueryString.map != 'undefined' ? QueryString.map : 'tc';
     if (!isDynamic) {
         var js = document.createElement("script");
         js.type = "text/javascript";
         js.src = '' + map + lang + '.js';
         document.body.appendChild(js);
     }
-    initThree()
 }
 
 function initThree() {
+    ThreeInited = true;
     var mapSize = 500;
-    var container = document.getElementsByClassName('modal-map')[0];
+    var container = document.getElementById('container-3d');
     var max = 1000;
     camera = new THREE.OrthographicCamera(-max, max, max, -max, -max, max);
     scene = new THREE.Scene();
@@ -423,26 +483,23 @@ function initThree() {
     renderer.setClearColor('rgb(13,18,29)');
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mapSize, mapSize);
-    container.appendChild(renderer.domElement);
     controls = new THREE.OrbitControls(camera, renderer.domElement)
     controls.mouseButtons = {
         ORBIT: THREE.MOUSE.LEFT,
         ZOOM: THREE.MOUSE.RIGHT,
         PAN: THREE.MOUSE.MIDDLE
     }
-    controls.addEventListener('change', function(evt) {
+    controls.addEventListener('change', function (evt) {
         if (group) {
-            var zoom = evt.target.object.zoom
-            group.children.forEach(function(sprite) {
+            var zoom = evt.target.object.zoom;
+            group.children.forEach(function (sprite) {
                 sprite.scale.set(sprite.icon.w / zoom, sprite.icon.h / zoom, 1)
-            })
+            });
         }
-        render()
+        render();
     })
-    controls.update()
-    var container = document.getElementById('container-3d');
+    controls.update();
     container.appendChild(renderer.domElement);
-    render()
 }
 
 function render() {
@@ -451,8 +508,13 @@ function render() {
 
 function switchRender() {
     render3D = !render3D;
-    document.getElementById('controls-2d').style.display = render3D ? 'none' : 'inline-block'
-    document.getElementById('container-2d').style.display = render3D ? 'none' : 'block'
-    document.getElementById('container-3d').style.display = render3D ? 'block' : 'none'
-    overlay(currX, currY)
+    document.getElementById('controls-2d').style.display = render3D ? 'none' : 'inline-block';
+    document.getElementById('container-2d').style.display = render3D ? 'none' : 'block';
+    document.getElementById('container-3d').style.display = render3D ? 'block' : 'none';
+    overlay(currX, currY);
+}
+
+init();
+if (isDynamic) {
+    show();
 }
