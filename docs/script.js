@@ -261,11 +261,45 @@ function renderThree(sector) {
                 })
             }
         } );
+
+        sector.gates.forEach(function(gate) {
+            var sMap = {
+                0: 'N',
+                1: 'S',
+                2: 'W',
+                3: 'E',
+                5: 'N',
+                6: 'S',
+                7: 'W',
+                8: 'E'
+            };
+
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = 16;
+            canvas.width = 8
+            var metrics = context.measureText( sMap[gate.s] );
+            var textWidth = metrics.width;
+            context.font = "12px Helvetica, Tahoma, Arial";
+            context.fillStyle = "rgb(249,185,111)";
+            context.fillText(sMap[gate.s], 0, 12)
+            var texture = new THREE.Texture(canvas)
+            texture.needsUpdate = true;
+            var spriteMaterial = new THREE.SpriteMaterial( { map: texture } );
+            var sprite = new THREE.Sprite( spriteMaterial );
+            sprite.scale.set(8,16,1.0);
+            sprite.icon = {
+                w: 8,
+                h: 16
+            }
+            sprite.position.set(gate.z * mapSize / sectorSize / 2, gate.y * mapSize / sectorSize / 2, gate.x * mapSize / sectorSize / 2)
+            group.add(sprite)
+        })
+
         scene.add(group)
 
         render()
         controls.update()
-        window.setTimeout(render, 2000);
     } )
 
 }

@@ -56,10 +56,10 @@
 
             <?=$appendScript;?>
         </script>
-        <script src="<?=$pathPrefix;?>three.min.js"></script>
-        <script src="<?=$pathPrefix;?>OrbitControls.js"></script>
-        <script src="<?=$pathPrefix;?>Projector.js"></script>
-        <script src="<?=$pathPrefix;?>CanvasRenderer.js"></script>
+        <script src="<?=$pathPrefix;?>three/three.min.js"></script>
+        <script src="<?=$pathPrefix;?>three/OrbitControls.js"></script>
+        <script src="<?=$pathPrefix;?>three/Projector.js"></script>
+        <script src="<?=$pathPrefix;?>three/CanvasRenderer.js"></script>
         <script src="<?=$pathPrefix;?>script.js"></script>
         <script>
 
