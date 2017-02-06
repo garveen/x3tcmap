@@ -204,7 +204,7 @@ function renderThree(sector) {
     }
     group = new THREE.Group()
     var loader = new THREE.TextureLoader()
-    var spriteMap = loader.load("docs/gui/gui_master_newest.png", function(xxx) {
+    var spriteMap = loader.load(pathPrefix + "gui/gui_master_newest.png", function(xxx) {
         var width = xxx.image.width
         var height = xxx.image.height
         sectorSize = sector.size
