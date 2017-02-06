@@ -1,3 +1,3 @@
-#[DEMO](https://garveen.github.io/x3tcmap/docs/)
+#[DEMO](https://garveen.github.io/x3tcmap/)
 
-#[中文演示](https://garveen.github.io/x3tcmap/docs/tc44.html)
+#[中文演示](https://garveen.github.io/x3tcmap/)
