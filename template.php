@@ -21,15 +21,20 @@
                     <iframe src="https://ghbtns.com/github-btn.html?user=garveen&repo=x3tcmap&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="24px"></iframe>
                 </div>
                 <div class="modal-content">
-                    <div class="modal-map">
+                    <div class='modal-map'>
+                        <div id='container-2d'></div>
+                        <div id='container-3d' style='display:none'></div>
                     </div>
                 </div>
                 <div class='modal-footer'>
                     <div class='modal-coordinate'>&nbsp;</div>
                     <div class='controls'>
-                        <button id='btn-zoomin' onclick="zoomin()"></button>
-                        <button id='btn-zoomout' onclick="zoomout()"></button>
-                        <button id='btn-direction' onclick="switchDirection()"></button>
+                        <span id='controls-2d'>
+                            <button id='btn-zoomin' onclick="zoomin()"></button>
+                            <button id='btn-zoomout' onclick="zoomout()"></button>
+                            <button id='btn-direction' onclick="switchDirection()"></button>
+                        </span>
+                        <button id='btn-3d' onclick="switchRender()">3D (Experimental)</button>
                         <button id='btn-close' onclick="closeModal()"></button>
                     </div>
                 </div>
@@ -51,6 +56,13 @@
 
             <?=$appendScript;?>
         </script>
+        <script src="<?=$pathPrefix;?>three.min.js"></script>
+        <script src="<?=$pathPrefix;?>OrbitControls.js"></script>
+        <script src="<?=$pathPrefix;?>Projector.js"></script>
+        <script src="<?=$pathPrefix;?>CanvasRenderer.js"></script>
         <script src="<?=$pathPrefix;?>script.js"></script>
+        <script>
+
+        </script>
     </body>
 </html>

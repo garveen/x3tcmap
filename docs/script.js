@@ -7,15 +7,24 @@ var QueryString;
 var lang;
 var map;
 var colorIndex = 0;
+var mapSize;
+
+var group;
+var renderer;
+var scene;
+var camera;
+var controls;
+
+var sectorSize;
+
+var render3D = false;
 
 init();
 if(isDynamic) {
     show();
 }
 
-
 function show() {
-    console.log(QueryString)
     document.getElementById('document-title').innerHTML = 'X3 ' + map.toUpperCase() + ' Universe Map for ' + languages[lang];
 
     ['zoomin', 'zoomout', 'direction', 'close'].forEach(function (k) {
@@ -33,20 +42,18 @@ function show() {
                 if (!style) {
                     return true;
                 }
-                var div = document.createElement('div');
-                div.className = 'line';
-                div.style.cssText = style;
-                container.appendChild(div)
+                var className = 'line';
             } else {
                 var style = jumpStyle(sector, gate)
                 if (!style) {
                     return true;
                 }
-                var div = document.createElement('div');
-                div.className = 'line jump';
-                div.style.cssText = style;
-                container.appendChild(div)
+                var className = 'line jump';
             }
+            var div = document.createElement('div');
+            div.className = className;
+            div.style.cssText = style;
+            container.appendChild(div)
         })
     }
     for(var coordinate in sectors) {
@@ -184,19 +191,93 @@ function overlay(x, y, zoom){
     currX = x;
     currY = y;
     var iconSize = 31;
-    var mapSize = window.innerHeight - 200;
+    mapSize = window.innerHeight - 200;
 
     var map = document.getElementsByClassName('modal-map')[0];
     map.style.height = map.style.width = '' + mapSize + 'px';
     // get actual height
     mapSize = map.clientHeight
+
+    var sector = sectors[x+"_"+y];
+    document.getElementsByClassName('sector-name')[0].innerHTML = translations[sector.name] + ' [' + x + ', ' + y + ']'
+
+    if(render3D) {
+        renderThree(sector)
+    } else {
+        renderDom(sector, zoom)
+    }
+
+    e1.style.visibility = "visible";
+
+}
+
+function renderThree(sector) {
+    mapSize = Math.ceil(mapSize / 2) * 2
+    if(group) {
+        scene.remove(group)
+    }
+    group = new THREE.Group()
+    var loader = new THREE.TextureLoader()
+    var spriteMap = loader.load( "docs/gui/gui_master_newest.png", function(xxx) {
+        var width = xxx.image.width
+        var height = xxx.image.height
+
+        sectorSize = sector.size
+
+        camera.left = - mapSize / 2;
+        camera.right = mapSize / 2;
+        camera.top = mapSize / 2;
+        camera.bottom = - mapSize / 2;
+        camera.near = 0;
+        camera.far = mapSize * 4;
+        camera.position.x = 0;
+        camera.position.y = mapSize * 2;
+        camera.position.z = 0;
+        camera.updateProjectionMatrix();
+        controls.rotateLeft(Math.PI / 2)
+        renderer.setSize( mapSize, mapSize );
+
+
+        ;[17, 5, 6].forEach(function(index) {
+            if (typeof sector.objects[index] == 'undefined') {
+                return true;
+            }
+            for (var subType in sector.objects[index]) {
+                sector.objects[index][subType].forEach(function(object, index){
+                    var spriteMap = xxx.clone()
+                    var icon = icons[object.icon]
+
+                    var texture = spriteMap.clone();
+                    spriteMap.offset = new THREE.Vector2(icon.l / width, 1 - (parseInt(icon.t) + parseInt(icon.h)) / height)
+                    spriteMap.repeat = new THREE.Vector2(icon.w / width, icon.h / height)
+                    spriteMap.needsUpdate = true
+                    var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
+                    var sprite = new THREE.Sprite( spriteMaterial );
+                    sprite.icon = icon
+                    sprite.scale.set(icon.w, icon.h, 1)
+                    sprite.position.set(object.z * mapSize / sectorSize / 2, object.y * mapSize / sectorSize / 2, object.x * mapSize / sectorSize / 2)
+                    group.add(sprite)
+
+                })
+            }
+        } );
+        scene.add(group)
+
+        render()
+        controls.update()
+        window.setTimeout(render, 2000);
+    } )
+
+}
+
+function renderDom(sector, zoom) {
+    var map = document.getElementById('container-2d')
     if(zoom == 2) {
         map.innerHTML = '<div class="map-visual-area"></div>';
     } else {
         map.innerHTML = '';
     }
-    var sector = sectors[x+"_"+y];
-    document.getElementsByClassName('sector-name')[0].innerHTML = translations[sector.name] + ' [' + x + ', ' + y + ']'
+
     var size = sector.size * zoom
 
 
@@ -246,7 +327,6 @@ function overlay(x, y, zoom){
         var position = calcPosition(gate);
         div.style.cssText = calcStyle(position);
         div.onmouseover = function() {
-            console.log(gate.s)
             document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[sectors[gate.gx+'_'+gate.gy].name] + '] ' + calcKiloMeter(gate)
         }
         div.onclick = function() {
@@ -257,8 +337,6 @@ function overlay(x, y, zoom){
         map.appendChild(div)
 
     })
-    e1.style.visibility = "visible";
-
 }
 
 
@@ -295,4 +373,85 @@ function init() {
         js.src = '' + map + lang + '.js';
         document.body.appendChild(js);
     }
+    initThree()
 }
+
+function initThree() {
+    var mapSize = 500;
+    var container = document.getElementsByClassName('modal-map')[0];
+    var max = 1000;
+
+    camera = new THREE.OrthographicCamera( -max, max, max, -max, - max, max );
+
+    scene = new THREE.Scene();
+
+    // Grid
+    var size = 500, step = 50;
+
+    var geometry = new THREE.Geometry();
+
+    for ( var i = - size; i <= size; i += step ) {
+
+        geometry.vertices.push( new THREE.Vector3( - size, 0, i ) );
+        geometry.vertices.push( new THREE.Vector3(   size, 0, i ) );
+
+        geometry.vertices.push( new THREE.Vector3( i, 0, - size ) );
+        geometry.vertices.push( new THREE.Vector3( i, 0,   size ) );
+
+    }
+
+    var material = new THREE.LineBasicMaterial( { color: 'rgb(38,39,62)', opacity: 1 } );
+
+    var line = new THREE.LineSegments( geometry, material );
+    scene.add( line );
+    var geometry = new THREE.Geometry();
+
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3(   size, 0, 0 ) );
+
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3( 0, 0,   size ) );
+
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3( 0, size,0 ) );
+    var material = new THREE.LineBasicMaterial( { color: 'rgb(61,62,99)', opacity: 1 } );
+
+    var line = new THREE.LineSegments( geometry, material );
+    scene.add( line );
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor( 'rgb(13,18,29)' );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( mapSize, mapSize );
+    container.appendChild( renderer.domElement );
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement)
+    controls.mouseButtons = {ORBIT: THREE.MOUSE.LEFT, ZOOM: THREE.MOUSE.RIGHT, PAN: THREE.MOUSE.MIDDLE}
+
+    controls.addEventListener('change', function(evt) {
+        if(group) {
+            var zoom = evt.target.object.zoom
+            group.children.forEach(function(sprite) {
+                sprite.scale.set(sprite.icon.w / zoom, sprite.icon.h / zoom,  1)
+            })
+        }
+        render()
+    })
+    controls.update()
+    var container = document.getElementById('container-3d');
+    container.appendChild( renderer.domElement );
+
+    render()
+}
+function render() {
+    renderer.render(scene, camera);
+}
+function switchRender() {
+    render3D = !render3D;
+    document.getElementById('controls-2d').style.display = render3D ? 'none' : 'inline-block'
+    document.getElementById('container-2d').style.display = render3D ? 'none' : 'block'
+    document.getElementById('container-3d').style.display = render3D ? 'block' : 'none'
+
+    overlay(currX, currY)
+}
+
