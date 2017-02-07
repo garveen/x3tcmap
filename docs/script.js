@@ -17,6 +17,7 @@ var sectorSize;
 var render3D = false;
 var ThreeInited = false;
 
+
 var sMap = {
     0: 'N',
     1: 'S',
@@ -242,14 +243,8 @@ function renderThree(sector) {
         var width = baseTexture.image.width;
         var height = baseTexture.image.height;
         sectorSize = sector.size;
-        camera.left = -mapSize / 2;
-        camera.right = mapSize / 2;
-        camera.top = mapSize / 2;
-        camera.bottom = -mapSize / 2;
-        camera.near = 0;
-        camera.far = mapSize * 4;
         camera.position.x = 0;
-        camera.position.y = mapSize * 2;
+        camera.position.y = mapSize / 1.4;
         camera.position.z = 0;
         camera.updateProjectionMatrix();
         controls.rotateLeft(Math.PI / 2);
@@ -287,11 +282,11 @@ function renderThree(sector) {
             var context = canvas.getContext('2d');
             canvas.height = 16;
             canvas.width = 16;
+            context.font = "12px Helvetica, Tahoma, Arial";
             var metrics = context.measureText(sMap[gate.s]);
             var textWidth = metrics.width;
-            context.font = "12px Helvetica, Tahoma, Arial";
             context.fillStyle = "rgb(249,185,111)";
-            context.fillText(sMap[gate.s], 0, 12);
+            context.fillText(sMap[gate.s], 8 - Math.round(textWidth / 2), 12);
             var texture = new THREE.Texture(canvas);
             texture.needsUpdate = true;
             var spriteMaterial = new THREE.SpriteMaterial({
@@ -323,33 +318,6 @@ function renderThree(sector) {
             },10000);
 
         }
-
-        var raycaster = new THREE.Raycaster();
-        var mouse = new THREE.Vector2();
-
-        var rect = document.getElementById('container-3d').getBoundingClientRect();
-        var left = rect.left;
-        var top = rect.top;
-        function onMouseMove( event ) {
-
-            // calculate mouse position in normalized device coordinates
-            // (-1 to +1) for both components
-
-            mouse.x = (( event.clientX - left) / mapSize ) * 2 - 1;
-            mouse.y = - (( event.clientY - top) / mapSize ) * 2 + 1;
-            if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
-                return;
-            }
-            raycaster.setFromCamera( mouse, camera );
-            var intersects = raycaster.intersectObjects( group.children );
-            if (intersects[0]) {
-                document.getElementsByClassName('modal-coordinate')[0].innerHTML = intersects[0].object.coordinateText;
-            }
-            // render();
-
-
-        }
-        window.addEventListener( 'mousemove', onMouseMove , false);
 
     })
 }
@@ -448,7 +416,7 @@ function initThree() {
     var mapSize = 500;
     var container = document.getElementById('container-3d');
     var max = 1000;
-    camera = new THREE.OrthographicCamera(-max, max, max, -max, -max, max);
+    camera = new THREE.PerspectiveCamera(90, 1, 1, 10000000);
     scene = new THREE.Scene();
     // Grid
     var size = 500,
@@ -472,7 +440,31 @@ function initThree() {
     geometry.vertices.push(new THREE.Vector3(0, 0, 0));
     geometry.vertices.push(new THREE.Vector3(0, 0, size));
     geometry.vertices.push(new THREE.Vector3(0, 0, 0));
-    geometry.vertices.push(new THREE.Vector3(0, size, 0));
+    geometry.vertices.push(new THREE.Vector3(0, size / 2, 0));
+
+    ['x', 'z'].forEach(function (letter, index) {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height = 32;
+        canvas.width = 32;
+        context.font = "24px Helvetica, Tahoma, Arial";
+        var metrics = context.measureText(letter);
+        var textWidth = metrics.width;
+        context.fillStyle = "white";
+        context.fillText(letter,  16 - Math.round(textWidth / 2), 16);
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        var spriteMaterial = new THREE.SpriteMaterial({
+            map: texture
+        });
+        var sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(32, 32, 1.0);
+        sprite.position.set(size * (index == 1), 0, size * (index == 0))
+        scene.add(sprite);
+    })
+
+
+
     var material = new THREE.LineBasicMaterial({
         color: 'rgb(61,62,99)',
         opacity: 1
@@ -483,6 +475,44 @@ function initThree() {
     renderer.setClearColor('rgb(13,18,29)');
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mapSize, mapSize);
+    setControls();
+
+
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var rect = document.getElementById('container-3d').getBoundingClientRect();
+    var left = rect.left;
+    var top = rect.top;
+    function onMouseMove( event ) {
+
+        // calculate mouse position in normalized device coordinates
+        // (-1 to +1) for both components
+
+        mouse.x = (( event.clientX - left) / mapSize ) * 2 - 1;
+        mouse.y = - (( event.clientY - top) / mapSize ) * 2 + 1;
+        if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
+            return;
+        }
+        raycaster.setFromCamera( mouse, camera );
+        var intersects = raycaster.intersectObjects( group.children );
+        if (intersects[0]) {
+            document.getElementsByClassName('modal-coordinate')[0].innerHTML = intersects[0].object.coordinateText;
+        }
+        // render();
+
+
+    }
+    window.addEventListener( 'mousemove', onMouseMove , false);
+
+
+    container.appendChild(renderer.domElement);
+}
+
+function setControls() {
+    if (controls) {
+        controls.dispose();
+    }
     controls = new THREE.OrbitControls(camera, renderer.domElement)
     controls.mouseButtons = {
         ORBIT: THREE.MOUSE.LEFT,
@@ -499,7 +529,6 @@ function initThree() {
         render();
     })
     controls.update();
-    container.appendChild(renderer.domElement);
 }
 
 function render() {
