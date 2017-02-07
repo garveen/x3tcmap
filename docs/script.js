@@ -295,7 +295,7 @@ function renderThree(sector) {
                 map: texture
             });
             var sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(16, 16, 1.0);
+            sprite.scale.set(16, 16, 0);
             sprite.icon = {
                 w: 16,
                 h: 16
@@ -303,6 +303,7 @@ function renderThree(sector) {
             sprite.position.set(gate.z / ratio, gate.y / ratio, gate.x / ratio)
             sprite.coordinateText = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
                 sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
+            sprite.isGate = true;
             group.add(sprite);
         })
         scene.add(group);
@@ -420,7 +421,7 @@ function initThree() {
     var mapSize = 500;
     var container = document.getElementById('container-3d');
     var max = 1000;
-    camera = new THREE.PerspectiveCamera(90, 1, 1, 10000000);
+    camera = new THREE.PerspectiveCamera(90, 1, 0.1, 10000000);
     scene = new THREE.Scene();
     // Grid
     var size = 500,
@@ -470,7 +471,7 @@ function initThree() {
             map: texture
         });
         var sprite = new THREE.Sprite(spriteMaterial);
-        sprite.scale.set(32, 32, 1.0);
+        sprite.scale.set(32, 32, 0);
         sprite.position.set(size * (index == 1), 0, size * (index == 0))
         scene.add(sprite);
     })
@@ -488,22 +489,45 @@ function initThree() {
     container3DRect = document.getElementById('container-3d').getBoundingClientRect();
     container3DRect.mapSize = mapSize;
 
+    function onClick(event) {
+        mouse.x = ((event.clientX - container3DRect.left) / container3DRect.mapSize) * 2 - 1;
+        mouse.y = - ((event.clientY - container3DRect.top) / container3DRect.mapSize) * 2 + 1;
+        if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
+            return;
+        }
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(group.children);
+        if (intersects[0] && intersects[0].object.isGate) {
+            var gate = intersects[0].object;
+            camera.position.copy(gate.position);
+            camera.position.x *= 0.9;
+            camera.position.y *= 0.9;
+            camera.position.z *= 0.9;
+            controls.update();
+        }
+    }
+
     function onMouseMove( event ) {
 
         // calculate mouse position in normalized device coordinates
         // (-1 to +1) for both components
 
-        mouse.x = (( event.clientX - container3DRect.left) / container3DRect.mapSize ) * 2 - 1;
-        mouse.y = - (( event.clientY - container3DRect.top) / container3DRect.mapSize ) * 2 + 1;
+        mouse.x = ((event.clientX - container3DRect.left) / container3DRect.mapSize) * 2 - 1;
+        mouse.y = - ((event.clientY - container3DRect.top) / container3DRect.mapSize) * 2 + 1;
         if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
             return;
         }
-        raycaster.setFromCamera( mouse, camera );
-        var intersects = raycaster.intersectObjects( group.children );
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(group.children);
         if (intersects[0] && intersects[0].object) {
             var object = intersects[0].object;
             if (object.coordinateText) {
                 document.getElementsByClassName('modal-coordinate')[0].innerHTML = object.coordinateText;
+            }
+            if (object.isGate) {
+                container.style.cursor = "pointer";
+            } else {
+                container.style.cursor = "";
             }
             if (!moreGridsLine) {
                 return;
@@ -532,12 +556,17 @@ function initThree() {
             coordinateLine.object = object;
             scene.add(coordinateLine);
             render();
+        } else {
+            if (container.style.cursor) {
+                container.style.cursor = "";
+            }
         }
 
 
 
     }
-    window.addEventListener( 'mousemove', onMouseMove , false);
+    container.addEventListener( 'mousemove', onMouseMove , false);
+    container.addEventListener( 'click', onClick , false);
 
 
     container.appendChild(renderer.domElement);
