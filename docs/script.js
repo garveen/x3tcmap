@@ -16,7 +16,9 @@ var controls;
 var sectorSize;
 var render3D = false;
 var ThreeInited = false;
-
+var container3DRect;
+var moreGridsLine;
+var coordinateLine;
 
 var sMap = {
     0: 'N',
@@ -318,6 +320,8 @@ function renderThree(sector) {
             },10000);
 
         }
+        container3DRect = document.getElementById('container-3d').getBoundingClientRect();
+        container3DRect.mapSize = mapSize;
 
     })
 }
@@ -428,9 +432,10 @@ function initThree() {
         geometry.vertices.push(new THREE.Vector3(i, 0, -size));
         geometry.vertices.push(new THREE.Vector3(i, 0, size));
     }
+
     var material = new THREE.LineBasicMaterial({
         color: 'rgb(38,39,62)',
-        opacity: 1
+        opacity: 0.5
     });
     var line = new THREE.LineSegments(geometry, material);
     scene.add(line);
@@ -441,6 +446,13 @@ function initThree() {
     geometry.vertices.push(new THREE.Vector3(0, 0, size));
     geometry.vertices.push(new THREE.Vector3(0, 0, 0));
     geometry.vertices.push(new THREE.Vector3(0, size / 2, 0));
+
+    var material = new THREE.LineBasicMaterial({
+        color: 'rgb(61,62,99)',
+        opacity: 1
+    });
+    var line = new THREE.LineSegments(geometry, material);
+    scene.add(line);
 
     ['x', 'z'].forEach(function (letter, index) {
         var canvas = document.createElement('canvas');
@@ -463,14 +475,6 @@ function initThree() {
         scene.add(sprite);
     })
 
-
-
-    var material = new THREE.LineBasicMaterial({
-        color: 'rgb(61,62,99)',
-        opacity: 1
-    });
-    var line = new THREE.LineSegments(geometry, material);
-    scene.add(line);
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor('rgb(13,18,29)');
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -481,25 +485,55 @@ function initThree() {
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
 
-    var rect = document.getElementById('container-3d').getBoundingClientRect();
-    var left = rect.left;
-    var top = rect.top;
+    container3DRect = document.getElementById('container-3d').getBoundingClientRect();
+    container3DRect.mapSize = mapSize;
+
     function onMouseMove( event ) {
 
         // calculate mouse position in normalized device coordinates
         // (-1 to +1) for both components
 
-        mouse.x = (( event.clientX - left) / mapSize ) * 2 - 1;
-        mouse.y = - (( event.clientY - top) / mapSize ) * 2 + 1;
+        mouse.x = (( event.clientX - container3DRect.left) / container3DRect.mapSize ) * 2 - 1;
+        mouse.y = - (( event.clientY - container3DRect.top) / container3DRect.mapSize ) * 2 + 1;
         if (mouse.x < -1 || mouse.x > 1 || mouse.y < -1 || mouse.y > 1) {
             return;
         }
         raycaster.setFromCamera( mouse, camera );
         var intersects = raycaster.intersectObjects( group.children );
-        if (intersects[0]) {
-            document.getElementsByClassName('modal-coordinate')[0].innerHTML = intersects[0].object.coordinateText;
+        if (intersects[0] && intersects[0].object) {
+            var object = intersects[0].object;
+            if (object.coordinateText) {
+                document.getElementsByClassName('modal-coordinate')[0].innerHTML = object.coordinateText;
+            }
+            if (!moreGridsLine) {
+                return;
+            }
+            if (coordinateLine) {
+                if (coordinateLine.object == object) {
+                    return;
+                }
+                scene.remove(coordinateLine);
+            }
+
+            var geometry = new THREE.Geometry();
+            var x = object.position.x;
+            var y = object.position.y;
+            var z = object.position.z;
+            for (var i = 3; i; i--) {
+                geometry.vertices.push(new THREE.Vector3(x, y, z));
+                geometry.vertices.push(new THREE.Vector3((i != 3) * x, (i != 2) * y, (i != 1) * z));
+            }
+
+            var material = new THREE.LineBasicMaterial({
+                color: 'rgb(0, 60, 60)',
+                opacity: 0.5
+            });
+            coordinateLine = new THREE.LineSegments(geometry, material);
+            coordinateLine.object = object;
+            scene.add(coordinateLine);
+            render();
         }
-        // render();
+
 
 
     }
@@ -538,9 +572,45 @@ function render() {
 function switchRender() {
     render3D = !render3D;
     document.getElementById('controls-2d').style.display = render3D ? 'none' : 'inline-block';
+    document.getElementById('controls-3d').style.display = render3D ? 'inline-block' : 'none';
     document.getElementById('container-2d').style.display = render3D ? 'none' : 'block';
     document.getElementById('container-3d').style.display = render3D ? 'block' : 'none';
     overlay(currX, currY);
+}
+
+function moreGrids() {
+    if (moreGridsLine) {
+        scene.remove(moreGridsLine);
+        moreGridsLine = null;
+        if (coordinateLine) {
+            scene.remove(coordinateLine);
+            coordinateLine = null;
+        }
+        render();
+        return;
+    }
+    var geometry = new THREE.Geometry();
+    var size = 500;
+    var step = 50;
+    for (var i = -size / 2; i <= size / 2; i += step) {
+        geometry.vertices.push(new THREE.Vector3(-size, i, 0));
+        geometry.vertices.push(new THREE.Vector3(size, i, 0));
+        geometry.vertices.push(new THREE.Vector3(i, -size / 2, 0));
+        geometry.vertices.push(new THREE.Vector3(i, size / 2, 0));
+
+        geometry.vertices.push(new THREE.Vector3(0, i, -size));
+        geometry.vertices.push(new THREE.Vector3(0, i, size));
+        geometry.vertices.push(new THREE.Vector3(0, -size / 2, i));
+        geometry.vertices.push(new THREE.Vector3(0, size / 2, i));
+    }
+    var material = new THREE.LineBasicMaterial({
+        color: 'rgb(30,31,50)',
+        opacity: 0.2
+    });
+    var line = new THREE.LineSegments(geometry, material);
+    scene.add(line);
+    moreGridsLine = line;
+    render();
 }
 
 init();

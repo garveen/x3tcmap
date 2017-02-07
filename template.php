@@ -34,6 +34,9 @@
                             <button id='btn-zoomout' onclick="zoomout()"></button>
                             <button id='btn-direction' onclick="switchDirection()"></button>
                         </span>
+                        <span id='controls-3d' style='display: none'>
+                            <button id='btn-moregrids' onclick="moreGrids()">Show Y-Grids</button>
+                        </span>
                         <button id='btn-3d' onclick="switchRender()">3D (Experimental)</button>
                         <button id='btn-close' onclick="closeModal()"></button>
                     </div>
