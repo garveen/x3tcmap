@@ -11,30 +11,32 @@ class Parser
     public $objects = [];
 
     public $files = [
+        // http://www.argonopedia.org/wiki/TFactories.txt_(X3)
         'factories' => [
             'type' => 28,
             'props' => [
-                'id' => 6,
+                'name' => 6,
                 'icon' => 18,
             ],
         ],
         'gates' => [
             'type' => 17,
             'props' => [
-                'id' => 6,
+                'name' => 6,
             ],
         ],
+        // http://www.argonopedia.org/wiki/TDocks.txt_(X3)
         'docks' => [
             'type' => 27,
             'props' => [
-                'id' => 6,
+                'name' => 6,
                 'icon' => 17,
             ],
         ],
         'asteroids' => [
             'type' => 20,
             'props' => [
-                'id' => 6,
+                'name' => 6,
             ],
             'addition' => [
                 'icon' => 'ICON_TRG_ASTEROID',
@@ -271,7 +273,7 @@ class Parser
                                 'y' => $objectY,
                                 'z' => $objectZ,
                                 'icon' => $icon,
-                                'name' => $this->translate(17, $typeInfo['id']),
+                                'name' => $this->translate(17, $typeInfo['name']),
                             ];
                     }
                 }
