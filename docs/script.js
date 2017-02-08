@@ -19,6 +19,8 @@ var ThreeInited = false;
 var container3DRect;
 var moreGridsLine;
 var coordinateLine;
+var objectFrame;
+var baseTexture;
 
 var sMap = {
     0: 'N',
@@ -241,7 +243,8 @@ function renderThree(sector) {
     }
     group = new THREE.Group();
     var loader = new THREE.TextureLoader();
-    var spriteMap = loader.load(pathPrefix + "gui/gui_master_newest.png", function (baseTexture) {
+    var spriteMap = loader.load(pathPrefix + "gui/gui_master_newest.png", function (baseTextureT) {
+        baseTexture = baseTextureT;
         var width = baseTexture.image.width;
         var height = baseTexture.image.height;
         sectorSize = sector.size;
@@ -260,7 +263,6 @@ function renderThree(sector) {
                 sector.objects[index][subType].forEach(function (object, index) {
                     var spriteMap = baseTexture.clone()
                     var icon = icons[object.icon]
-                    var texture = spriteMap.clone();
                     spriteMap.offset = new THREE.Vector2(icon.l / width, 1 - (parseInt(icon.t) + parseInt(icon.h)) / height)
                     spriteMap.repeat = new THREE.Vector2(icon.w / width, icon.h / height)
                     spriteMap.needsUpdate = true
@@ -269,41 +271,40 @@ function renderThree(sector) {
                         color: 0xffffff
                     });
                     var sprite = new THREE.Sprite(spriteMaterial);
-                    sprite.icon = icon;
-                    sprite.scale.set(icon.w, icon.h, 1);
+                    sprite.scale.set(icon.w * 1.5, icon.h * 1.5, 0);
                     sprite.position.set(object.z / ratio, object.y / ratio, object.x / ratio);
-                    sprite.coordinateText = translations[object.name] + ' ' + calcKiloMeter(object)
+                    sprite.object = object;
 
-                    group.add(sprite)
+                    group.add(sprite);
                 })
             }
         });
 
+        var gateSize = 32;
+
         sector.gates.forEach(function (gate) {
             var canvas = document.createElement('canvas');
             var context = canvas.getContext('2d');
-            canvas.height = 16;
-            canvas.width = 16;
-            context.font = "12px Helvetica, Tahoma, Arial";
+            canvas.height = gateSize;
+            canvas.width = gateSize;
+            context.font = "24px Helvetica, Tahoma, Arial";
             var metrics = context.measureText(sMap[gate.s]);
             var textWidth = metrics.width;
             context.fillStyle = "rgb(249,185,111)";
-            context.fillText(sMap[gate.s], 8 - Math.round(textWidth / 2), 12);
+            context.fillText(sMap[gate.s], gateSize / 2 - Math.round(textWidth / 2), 24);
             var texture = new THREE.Texture(canvas);
             texture.needsUpdate = true;
             var spriteMaterial = new THREE.SpriteMaterial({
                 map: texture
             });
             var sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(16, 16, 0);
-            sprite.icon = {
-                w: 16,
-                h: 16
-            }
+            sprite.scale.set(gateSize, gateSize, 0);
+
             sprite.position.set(gate.z / ratio, gate.y / ratio, gate.x / ratio)
             sprite.coordinateText = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
                 sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
             sprite.isGate = true;
+            sprite.object = gate;
             group.add(sprite);
         })
         scene.add(group);
@@ -357,10 +358,9 @@ function renderDom(sector, zoom) {
                 var style = calcStyle(position) + 'width:' + icons[object.icon].w + 'px;height:' + icons[object.icon].h + 'px;background:url(' +
                     pathPrefix + image + ') no-repeat -' + icons[object.icon].l + 'px -' + icons[object.icon].t + 'px';
                 div.style.cssText = style;
-                div.onmouseover = function () {
-                    document.getElementsByClassName('modal-coordinate')[0].innerHTML =
-                        translations[object.name] + ' ' + calcKiloMeter(object)
-                }
+                div.onmouseover = function(evt) {
+                    showCoordinate(object);
+                };
                 map.appendChild(div);
             })
         }
@@ -370,9 +370,8 @@ function renderDom(sector, zoom) {
         div.className = 'map-gate';
         var position = calcPosition(gate);
         div.style.cssText = calcStyle(position);
-        div.onmouseover = function () {
-            document.getElementsByClassName('modal-coordinate')[0].innerHTML = (gate.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
-                sectors[gate.gx + '_' + gate.gy].name] + '] ' + calcKiloMeter(gate)
+        div.onmouseover = function(evt) {
+            showCoordinate(gate);
         }
         div.onclick = function () {
             overlay(gate.gx, gate.gy);
@@ -380,6 +379,19 @@ function renderDom(sector, zoom) {
         div.innerHTML = sMap[gate.s];
         map.appendChild(div);
     })
+}
+
+function showCoordinate(object) {
+    var html;
+    if (object.gid) {
+        // is gate
+        html = (object.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
+                sectors[object.gx + '_' + object.gy].name] + '] ' + calcKiloMeter(object)
+    } else {
+        // not gate
+        html = translations[object.name] + ' ' + calcKiloMeter(object);
+    }
+    document.getElementsByClassName('modal-coordinate')[0].innerHTML = html;
 }
 
 function init() {
@@ -421,7 +433,7 @@ function initThree() {
     var mapSize = 500;
     var container = document.getElementById('container-3d');
     var max = 1000;
-    camera = new THREE.PerspectiveCamera(90, 1, 0.1, 10000000);
+    camera = new THREE.PerspectiveCamera(90, 1, 1, 10000);
     scene = new THREE.Scene();
     // Grid
     var size = 500,
@@ -484,10 +496,19 @@ function initThree() {
 
 
     var raycaster = new THREE.Raycaster();
+    raycaster.near = 2;
     var mouse = new THREE.Vector2();
 
     container3DRect = document.getElementById('container-3d').getBoundingClientRect();
     container3DRect.mapSize = mapSize;
+
+    function getRealIntersect(intersects) {
+        var intersect;
+        for (var i = intersects.length; i--;) {
+            if (intersects[i].distance < 0.0001) continue;
+            return intersects[i];
+        }
+    }
 
     function onClick(event) {
         mouse.x = ((event.clientX - container3DRect.left) / container3DRect.mapSize) * 2 - 1;
@@ -497,12 +518,13 @@ function initThree() {
         }
         raycaster.setFromCamera(mouse, camera);
         var intersects = raycaster.intersectObjects(group.children);
-        if (intersects[0] && intersects[0].object.isGate) {
-            var gate = intersects[0].object;
+        var intersect = getRealIntersect(intersects);
+        if (intersect && intersect.object.isGate) {
+            var gate = intersect.object;
             camera.position.copy(gate.position);
-            camera.position.x *= 0.9;
-            camera.position.y *= 0.9;
-            camera.position.z *= 0.9;
+            // camera.position.x *= 0.9;
+            // camera.position.y *= 0.9;
+            // camera.position.z *= 0.9;
             controls.update();
         }
     }
@@ -518,24 +540,45 @@ function initThree() {
             return;
         }
         raycaster.setFromCamera(mouse, camera);
+
         var intersects = raycaster.intersectObjects(group.children);
-        if (intersects[0] && intersects[0].object) {
-            var object = intersects[0].object;
-            if (object.coordinateText) {
-                document.getElementsByClassName('modal-coordinate')[0].innerHTML = object.coordinateText;
-            }
+        var intersect = getRealIntersect(intersects);
+        if (intersect && intersect.object) {
+            var object = intersect.object;
+            showCoordinate(object.object);
             if (object.isGate) {
                 container.style.cursor = "pointer";
             } else {
                 container.style.cursor = "";
             }
+            if (objectFrame) {
+                if (objectFrame.object == object) {
+                    return;
+                }
+                scene.remove(objectFrame);
+            }
+
+            var spriteMap = baseTexture.clone()
+            spriteMap.offset = new THREE.Vector2(447 / 1024, 1 - 506 / 512)
+            spriteMap.repeat = new THREE.Vector2(30 / 1024, 30 / 512)
+            spriteMap.needsUpdate = true;
+            var spriteMaterial = new THREE.SpriteMaterial({
+                map: spriteMap,
+                color: 0xffffff
+            });
+            objectFrame = new THREE.Sprite(spriteMaterial);
+            objectFrame.scale.set(30 * 1.5, 30 * 1.5, 0);
+            objectFrame.position.copy(object.position);
+            objectFrame.object = object;
+            objectFrame.renderOrder = 1;
+
+            scene.add(objectFrame);
+
             if (!moreGridsLine) {
+                render();
                 return;
             }
             if (coordinateLine) {
-                if (coordinateLine.object == object) {
-                    return;
-                }
                 scene.remove(coordinateLine);
             }
 
@@ -583,12 +626,6 @@ function setControls() {
         PAN: THREE.MOUSE.MIDDLE
     }
     controls.addEventListener('change', function (evt) {
-        if (group) {
-            var zoom = evt.target.object.zoom;
-            group.children.forEach(function (sprite) {
-                sprite.scale.set(sprite.icon.w / zoom, sprite.icon.h / zoom, 1)
-            });
-        }
         render();
     })
     controls.update();
