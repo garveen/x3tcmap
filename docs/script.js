@@ -404,7 +404,7 @@ function renderDom(sector, zoom) {
 
 function showCoordinate(object) {
     var html;
-    if (object.gid) {
+    if (typeof object.gid != 'undefined') {
         // is gate
         html = (object.s > 4 ? texts['gate_T'] : texts['gate']) + ' [' + translations[
                 sectors[object.gx + '_' + object.gy].name] + '] ' + calcKiloMeter(object)
