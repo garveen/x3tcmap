@@ -98,11 +98,11 @@ class Parser
         88 => 'Traditional Chinese',
     ];
 
-    public function __construct($langFile = false, $universeXmlFiles = false)
+    public function __construct($langFiles = false, $universeXmlFiles = false)
     {
         $this->parseText();
-        if ($langFile) {
-            $this->parseLanguage($langFile);
+        if ($langFiles) {
+            $this->parseLanguage($langFiles);
             if ($universeXmlFiles) {
                 $this->parseUniverse($universeXmlFiles);
             }
@@ -140,28 +140,28 @@ class Parser
 
     }
 
-    public function parseLanguage($langFile)
+    public function parseLanguage($langFiles)
     {
         $this->translation = [];
         $this->translationUsed = [];
         $this->translationUsedMap = [];
-        $language = simplexml_load_file($langFile);
-        $pages = [];
-        foreach ($language->page as $page) {
-            $pages[(int) $page['id']] = $page;
-        }
-        foreach ($this->pageIds as $pageId) {
-            foreach (['%d', '30%04d', '35%04d', '38%04d'] as $pattern) {
-                $actualPageId = sprintf($pattern, $pageId);
-                // var_dump($actualPageId);
-                if (isset($pages[$actualPageId])) {
-                    foreach ($pages[$actualPageId] as $text) {
-                        $this->translation[$pageId][(int) $text['id']] = (string) $text;
+        foreach($langFiles as $langFile) {
+            $language = simplexml_load_file($langFile);
+            $pages = [];
+            foreach ($language->page as $page) {
+                $pages[(int) $page['id']] = $page;
+            }
+            foreach ($this->pageIds as $pageId) {
+                foreach (['%d', '30%04d', '35%04d', '38%04d'] as $pattern) {
+                    $actualPageId = sprintf($pattern, $pageId);
+                    if (isset($pages[$actualPageId])) {
+                        foreach ($pages[$actualPageId] as $text) {
+                            $this->translation[$pageId][(int) $text['id']] = (string) $text;
+                        }
                     }
                 }
             }
         }
-
     }
 
     public function parseText()
