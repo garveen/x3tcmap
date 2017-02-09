@@ -21,7 +21,7 @@ $pathPrefix = 'docs/';
 
 $isDynamic = true;
 
-$parser = new Parser(glob("lang/*-L0{$code}.xml"), $config[$map]['maps']);
+$parser = new Parser($config[$map], $code);
 $appendScript = '';
 foreach ([
     'sectors' => $parser->sectors,
@@ -41,4 +41,4 @@ foreach ([
     $appendScript .= "var {$k} = " . json_encode($v, JSON_UNESCAPED_UNICODE) . ';';
 }
 
-include 'template.php';
+include 'templates/universe.php';

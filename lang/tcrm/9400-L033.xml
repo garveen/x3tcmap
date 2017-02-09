@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<language id="33">
+
+	<page id="17" title="Boardcomp. objects" descr="Quad line groups for ware factory pairs or twins (spoken by Boardcomputer)" voice="yes">
+		<t id="9400">OTAS Equipment Dock</t> <!-- OTAS Equipment Dock -->
+		<t id="9402">OTAS Equipment Dock</t> <!-- Dummy for OTAS Equipment Dock -->
+		<t id="9401">The engineers at OTAS succeeded in creating more flexible storage rooms for Equipment Docks. The OTAS Equipment Dock has a capacity of 30.000 units, which can be distributed freely on the various goods.</t>
+		<t id="9403">{17,9401}</t>
+
+		<t id="9404">OTAS Trading Station</t> <!-- OTAS Trading Station -->
+		<t id="9406">OTAS Trading Station</t> <!-- Dummy for OTAS Trading Station -->
+		<t id="9405">The OTAS engineers revised the Argon Trading Station in order to provide more flexible storage rooms. In addition to ultra-modern recreational areas, the OTAS Trading Station provides storage room for 60.000 units for freely use.</t>
+		<t id="9407">{17,9405}</t>
+
+		<t id="9408">OTAS Commercial Port</t>  <!-- OTAS Commercial Port -->
+		<t id="9410">OTAS Commercial Port</t> <!-- Dummy for OTAS Commercial Port -->
+		<t id="9409">Based on the outer structures of Military Outposts, the OTAS engineers developed the OTAS Commercial Port. It is a space station with vast recreational areas and also storage room for 240.000 units for flexibley use.</t>
+		<t id="9411">{17,9409}</t>
+
+		<t id="9412">OTAS Capital Ship Supply Base</t> <!-- OTAS Capital Ship Supply Base -->
+		<t id="9414">OTAS Capital Ship Supply Base</t> <!-- Dummy for OTAS Capital Ship Supply Base -->
+		<t id="9413">Because of ongoing military conflicts, the OTAS Company was commissioned by the Argon Federation to construct a supply base for capital ships. The result was the development of the OTAS Capital Ship Supply Base. It offers nine docking bays for capital ships and also 120.000 units of flexible storage room for weapons and armament. It also provides an integrated repairyard for capital ships and it is only sold to close allies of the Argon Federation.</t>
+		<t id="9415">{17,9413}</t>
+
+		<t id="9416">OTAS Freight Base</t> <!-- OTAS Freight Base -->
+		<t id="9418">OTAS Freight Base</t> <!-- Dummy for OTAS Freight Base -->
+		<t id="9417">Requirements of the Machiel Software Corporation led to the development of the OTAS Freight Base. It is characterized by a freely assignable storage room of 90.000 units and docking bays for a variety of freighters.</t>
+		<t id="9419">{17,9417}</t>
+	</page>
+
+	<page id="9400" title="SaDiablo Modification Development" descr="PageID for the modification named 'verbesserte Ausrüstungsdocks' by Saetan.">
+		<t id="0">{17,9400}</t> <!-- OTAS Equipment Dock -->
+		<t id="1">{17,9401}</t> <!-- Description for OTAS Equipment Dock -->
+		<t id="2">{17,9404}</t> <!-- OTAS Trading Station -->
+		<t id="3">{17,9405}</t> <!-- Description for OTAS Trading STation -->
+		<t id="4">{17,9408}</t> <!-- OTAS Commercial Port -->
+		<t id="5">{17,9409}</t> <!-- Description for OTAS Commercial Port -->
+		<t id="6">{17,9412}</t> <!-- OTAS Capital Ship Supply Base -->
+		<t id="7">{17,9413}</t> <!-- Description for OTAS Capital Ship Supply Base -->
+		<t id="8">{17,9416}</t> <!-- OTAS Freight Base -->
+		<t id="9">{17,9417}</t> <!-- Description for OTAS Freight Base -->
+
+		<t id="1000">Transform dock</t>
+		<t id="1001">Rebuild headquarter</t>
+
+<!-- Index of the eEQ-SubTypes: DON'T change them, except you know what you are doing !! -->
+		<t id="20000">20005</t>
+		<t id="20001">68</t> <!-- OTAS Equipment Dock (SS_DOCK_A_eEQ1) -->
+		<t id="20002">65</t> <!-- OTAS Trading Station (SS_DOCK_A_eEQ2) -->
+		<t id="20003">66</t> <!-- OTAS Commercial Port (SS_DOCK_A_eEQ3) -->
+		<t id="20004">67</t> <!-- OTAS Capital Ship Supply Base (SS_DOCK_A_eEQ4) -->
+		<t id="20005">69</t> <!-- OTAS Freight Base (SS_DOCK_A_eEQ5) -->
+
+		<t id="20050">20055</t>
+		<t id="20051">70</t> <!-- Dummy for OTAS Equipment Dock (SS_DOCK_A_eEQ1_DUMMY) -->
+		<t id="20052">71</t> <!-- Dummy for OTAS Trading Station (SS_DOCK_A_eEQ2_DUMMY) -->
+		<t id="20053">72</t> <!-- Dummy for OTAS Commercial Port (SS_DOCK_A_eEQ3_DUMMY) -->
+		<t id="20054">73</t> <!-- Dummy for OTAS Capital Ship Supply Base (SS_DOCK_A_eEQ4_DUMMY) -->
+		<t id="20055">74</t> <!-- Dummy for OTAS Freight Base (SS_DOCK_A_eEQ5_DUMMY) -->
+
+		<t id="20100">20106</t>
+		<t id="20101">47</t> <!-- Outdated: OTAS Equipment Dock (since X³:TC 2.0) -->
+		<t id="20102">48</t> <!-- Outdated: OTAS Trading Station (since X³:TC 2.7) -->
+		<t id="20103">49</t> <!-- Outdated: OTAS Commercial Port (since X³:TC 2.7) -->
+		<t id="20104">50</t> <!-- Outdated: OTAS Capital Ship Supply Base (since X³:TC 2.7) -->
+		<t id="20105">51</t> <!-- Outdated: OTAS Equipment Dock (since X³:TC 2.7) -->
+		<t id="20106">52</t> <!-- Outdated: OTAS Freight Base (since X³:TC 2.7) -->
+
+		<t id="20150">20155</t>
+		<t id="20151">53</t> <!-- Outdated: Dummy for OTAS Equipment Dock (since X³:TC 2.7) -->
+		<t id="20152">54</t> <!-- Outdated: Dummy for OTAS Trading Station (since X³:TC 2.7) -->
+		<t id="20153">55</t> <!-- Outdated: Dummy for OTAS Commercial Port (since X³:TC 2.7) -->
+		<t id="20154">56</t> <!-- Outdated: Dummy for OTAS Capital Ship Supply Base (since X³:TC 2.7) -->
+		<t id="20155">57</t> <!-- Outdated: Dummy for OTAS Freight Base (since X³:TC 2.7) -->
+
+		<t id="20200">20</t> <!-- Other: Player Headquarter -->
+
+<!-- Script configuration -->
+		<t id="24500">10000</t> <!-- Wait [ms] for dummy to be built -->
+<!-- Index of used command-slots -->
+		<t id="25000">1140</t> <!-- Command-slot for eEQ-Terminal -->
+	</page>
+
+	<page id="2008" title="Script Object Commands" descr="0" voice="no">
+		<t id="1140">COMMAND_EEQ_TERMINAL</t>	<!-- default: 1140 (COMMAND_TYPE_STATION_40) -->
+	</page>
+
+	<page id="2010" title="Script Cmd Names" descr="Long version of commandos. These are the commandos assigned to ships using the commandconsole. Page 2010 and 2011 belong together and hold short and long versions of the same commands" voice="no">
+		<t id="1140">eEQ Terminal</t>		<!-- default: 1140 (COMMAND_TYPE_STATION_40) -->
+	</page>
+
+	<page id="2011" title="Script Cmd Shorts" descr="Short version of commandos. These are the commandos assigned to ships using the commandconsole. Page 2010 and 2011 belong together and hold short and long versions of the same commands" voice="no">
+		<t id="1140">EEQTERM</t>		<!-- default: 1140 (COMMAND_TYPE_STATION_40) -->
+	</page>
+
+	<page id="2022" title="Command Info" descr="0" voice="no">
+		<t id="1140">\n{2022,99998}</t>		<!-- default: 1140 (COMMAND_TYPE_STATION_40) -->
+		<t id="99998">\n\033B© SaDiablo Modification Development\033X\n   in Corporation with \033BMachiel Software Corporation, Herrons Nebula\033X</t>
+	</page> 
+
+</language>

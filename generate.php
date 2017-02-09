@@ -17,20 +17,17 @@ $pathPrefix = '';
 
 $fontSize = 12;
 
-$tc = '';
-$ap = '';
-
 $appendScript = '';
 
 $isDynamic = false;
 ob_start();
-include 'template.php';
+include 'templates/universe.php';
 file_put_contents('docs/universe.html', ob_get_clean());
 
 foreach (Parser::$languageMap as $code => $languageName) {
-    foreach (['tc', 'ap'] as $map) {
+    foreach ($config as $map => $mapConfig) {
         $code = sprintf('%02d', $code);
-        $parser = new Parser(glob("lang/*-L0{$code}.xml"), $config[$map]['maps']);
+        $parser = new Parser($config[$map], $code);
         $html = '';
         foreach ([
             'sectors' => $parser->sectors,
@@ -53,17 +50,9 @@ foreach (Parser::$languageMap as $code => $languageName) {
 
         $name = "{$map}{$code}.js";
         file_put_contents("docs/{$name}", $html);
-        $$map .= "<a href='universe.html?lang={$code}&map={$map}'>{$languageName}</a><br>";
     }
 }
+ob_start();
+include 'templates/index.php';
 
-$html = <<<HTML
-X3:TC Terran Conflict Universe Map: <br>
-$tc
-<br>
-<br>
-<br>
-X3:AP Albion Prelude Universe Map: <br>
-$ap
-HTML;
-file_put_contents('docs/index.html', $html);
+file_put_contents('docs/index.html', ob_get_clean());

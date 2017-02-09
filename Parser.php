@@ -2,38 +2,43 @@
 class Parser
 {
 
-    public $pageIds = [7, 1000, 17, 195, 1266, 35, 1903, 1906, 1951];
+    public $pageIds = [7, 1000, 17, 195, 1266, 35, 1903, 1906, 1951, 12, 13];
 
     // public $objectTypes => [
     //     '18'
     // ]
     public $translation = [];
     public $objects = [];
+    public $config = [];
 
     public $files = [
         // http://www.argonopedia.org/wiki/TFactories.txt_(X3)
-        'factories' => [
+        'TFactories' => [
+            'Tid' => 6,
             'type' => 28,
             'props' => [
                 'name' => 6,
                 'icon' => 18,
             ],
         ],
-        'gates' => [
+        'TGates' => [
+            'Tid' => 18,
             'type' => 17,
             'props' => [
                 'name' => 6,
             ],
         ],
         // http://www.argonopedia.org/wiki/TDocks.txt_(X3)
-        'docks' => [
+        'TDocks' => [
+            'Tid' => 5,
             'type' => 27,
             'props' => [
                 'name' => 6,
                 'icon' => 17,
             ],
         ],
-        'asteroids' => [
+        'TAsteroids' => [
+            'Tid' => 17,
             'type' => 20,
             'props' => [
                 'name' => 6,
@@ -42,7 +47,7 @@ class Parser
                 'icon' => 'ICON_TRG_ASTEROID',
             ],
         ],
-        'icons' => [
+        'IconData' => [
             'type' => 0,
             'props' => [
                 'l' => 2,
@@ -53,30 +58,7 @@ class Parser
         ],
     ];
 
-    public $typeMap = [
-        17 => [
-            0 => 'SS_ASTEROID_01',
-            1 => 'SS_ASTEROID_02',
-            2 => 'SS_ASTEROID_03',
-            3 => 'SS_ASTEROID_04',
-            4 => 'SS_ASTEROID_05',
-            5 => 'SS_ASTEROID_06',
-            6 => 'SS_ASTEROID_07',
-            7 => 'SS_ASTEROID_08',
-            8 => 'SS_ASTEROID_09',
-        ],
-        18 => [
-            0 => 'SS_WG_NORTH',
-            1 => 'SS_WG_SOUTH',
-            2 => 'SS_WG_WEST',
-            3 => 'SS_WG_EAST',
-
-            5 => 'SS_WG_T_NORTH',
-            6 => 'SS_WG_T_SOUTH',
-            7 => 'SS_WG_T_WEST',
-            8 => 'SS_WG_T_EAST',
-        ],
-    ];
+    public $typeMap = [];
 
     public $directionMap = [
         0 => 'N',
@@ -98,15 +80,17 @@ class Parser
         88 => 'Traditional Chinese',
     ];
 
-    public function __construct($langFiles = false, $universeXmlFiles = false)
+    public function __construct($config, $language)
     {
         $this->parseText();
-        if ($langFiles) {
-            $this->parseLanguage($langFiles);
-            if ($universeXmlFiles) {
-                $this->parseUniverse($universeXmlFiles);
-            }
+        $this->config = $config;
+        $files = [];
+        foreach($config['languages'] as $dir) {
+            $files = array_merge($files, glob($dir . "*-L0{$language}.xml"));
         }
+        $this->parseLanguage($files);
+        $this->parseUniverse($config['maps']);
+
     }
 
     public function translate($pageId, $id)
@@ -129,8 +113,12 @@ class Parser
                 if (isset($this->translation[$matches[1]][$matches[2]])) {
                     return $this->translation[$matches[1]][$matches[2]];
                 }
+                return "!!!{$matches[1]}-{$matches[2]}!!!";
             }, $translation, -1, $count);
         } while ($count);
+        if(!$translation) {
+            $translation = "!!!{$pageId}-{$id}!!!";
+        }
         $translation = preg_replace('~\(.+\)~', '', $translation);
 
         $length = count($this->translationUsed);
@@ -169,9 +157,12 @@ class Parser
         foreach ($this->files as $file => $config) {
             $lines = file("data/{$file}.txt");
             foreach ($lines as $line) {
+                if (strncmp($line, '//', 2) == 0) {
+                    continue;
+                }
                 $line = explode(';', $line);
 
-                if (!isset($line[$config['type']])) {
+                if (count($line) < 3) {
                     continue;
                 }
 
@@ -188,6 +179,9 @@ class Parser
                     }
                 }
                 $this->objects[$line[$config['type']]] = $info;
+                if (isset($config['Tid'])) {
+                    $this->typeMap[$config['Tid']][] = $line[$config['type']];
+                }
 
             }
         }

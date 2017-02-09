@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language id="48">
+<page id="17" title="Boardcomp. objects" descr="0">
+ <t id="2843">Rakieta Jedwabnik</t>
+ <t id="2844">Rakieta Jedwabnik to połączenie technologii kwantowej z głowicami będącymi w stanie zniszczyć nawet silnie osłoniete cele.(||) Rakieta ta jest zwykle wykorzystywana do ataków na duże myśliwce lub transportowce.</t>
+ <t id="2853">Rakieta Szerszeń</t>
+ <t id="2854">Rakieta Szerszeń jest jedną z najpotężniejszych broni jakie znane obecnie. Jednocześnie gigantyczne środki potrzebne do produkcji tego potwora są niezwykle drogie.(||) Pocisk działa poprzez odpalenie małego ładunku jądrowego, powodującego reakcję między trzema różnymi elementami, które nastepnie łączą się powodując wybuch wystarczająco silny, aby zakłócić nawet największe osłony. Najlepiej używać jej przeciwko statkom dowodzenia.</t>
+</page>
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+ <t id="6523">Rakieta Ognista Lanca</t>
+ <t id="6524">Rakieta Ognista Lanca został opracowana przez Paranidiańskich wojskowych jako uzbrojenie dla myśliwców M3 przeciwko większym statkom. Jednak jest stopniowo wycofywana ze służby z powodu dostępności alternatywnego uzbrojenia o wiele bardziej dokładnego i skutecznego. Mówi się, że istniejące zapasy zostały sprzedane w celu pokrycia kosztów projektu nowego statku klasy M7.</t>
+ <t id="6543">Rakieta Łowca</t>
+ <t id="6544">Gdy cel musi być absolutnie zniszczony, najlepiej użyć do tego rakieta Łowca. Ulubiona rakieta łowców nagród w całym znanym wszechświecie, jest wystarczająco szybka, aby dogonić wszystkie, nawet najszybsze statki zwiadowcze i posiada wystarczającą moc, aby zniszczyć wszystkie, nawet najlepiej uzbrojone korwety. Jednak od czasu zniszczenia jedynego znanego zakładu produkcyjnego przez Argońskich stróżów prawa, te rakiety są bardzo trudne do zdobycia.</t>
+ <t id="6563">Rakieta Bieługa</t>
+ <t id="6564">Jest to popularny pocisk Terran o nazwie Bieługa. Była ona standardowym pocisk Terran używanym przez myśliwce ich floty, jednak niedawno została zastąpiona przez Spectre. Mówi się, że spora ich ilość została przemycona do przestrzeni Wspólnoty przed komisyjną likwidacją zapasów.</t>
+ <t id="6573">Rakieta Kafar</t>
+ <t id="6574">Kafar jest Terrańską ciężką rakietą bojową, która była niegdyś powszechnie używany na dużych statkach floty Terran. Jednak po opracowaniu zawirających większą ilość pocisków rakiet rojowych, USC porzucił Kafary na rzecz tańszych i bardziej skuteczny rakiet Wraith. Specyfikacje tych rakiet zostały następnie skradzione przez klany piratów, wśród których stały się popularne ze względu na bardzo wysoką wydajność.</t>
+ <t id="6793">Rakieta Tornado</t>
+ <t id="6794">Rakieta Tornado poprawia skuteczność rakiet Ognista Lanca poprzez przytłaczający cel rój pocisków. Dzieki odpowiednim wyrzutniom, rakiety Tornado można w większej ilości równocześnie lub w szybkiej serii, co pozwala pilotowi zarzucić cel baterią pocisków.</t>
+ <t id="6803">Rakieta Tajfun</t>
+ <t id="6804">Bardziej skuteczne niż Tornado, Rakieta Tajfun również pozwala na wystrzelenie wielu pocisków do jednego celu, jednak dzieki systemowi poszukiwania i śledzenia celu, skuteczność trafień została znacznie podniesiona. Przy możliwości wystrzeliwania pocisków jednocześnie lub kolejnych seriach, pilot ma również możliwość prowadzenia ognia, nawet do obiektów, które nie są bezpośrednio wybrane na cel.</t>
+ <t id="6823">Rakieta Aurora</t>
+ <t id="6824">Rakieta Aurora jest prototypem, zaprojektowanym przez Paranidian w celu przeciwdziałania zaawansowanych systemów obrony przeciwrakietowej, takich jak Motion Analysis Relay System \(MARS\) poprzez samą prędkość. Choć oślepiająco szybka, jej przyspieszenie jest przeciętne, jej systemy naprowadzania minimalne a jej ładunek mały. Jest przeznaczony do opalania w dużych salwach w zakresach 25 km lub więcej w celu przeciążania systemów obronnych wrogich statków.</t>
+</page>
+</language>

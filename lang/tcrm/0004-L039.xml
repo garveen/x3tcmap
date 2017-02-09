@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<language id="39">
+
+<page id="13" title="Boardcomp. Misc" descr="Various fragments spoken by shipboard comp. voice" voice="yes">
+  <t id="1286">(ware transferred from ship to ship)Trasferimento avvenuto</t> 
+</page>
+ 
+<page id="35" title="Menu strings misc" descr="Strings for various menus" voice="no">
+  <t id="662">Scudo a prova di Laser</t>
+</page>
+   
+<page id="2003" title="Script Command Names" descr="" voice="no">
+  <t id="1091">change event news availability: %0 race=%1 sector=%2 jumps=%3</t>
+</page>
+    
+<page id="15" title="Mainprogram output" descr="EXE strings such as error messages" voice="no">
+  <t id="581">Nessuna scheda Audio trovata!</t>
+</page>
+   
+<page id="1914" title="Input Adjust dialog" descr="" voice="no">
+   <t id="1225">Opzioni Force feedback:</t>
+</page>
+   
+<page id="130" title="Female Atmo" descr="Friendly female voice for atmospheric messages (lots of echo) " voice="yes">
+  <t id="1005">If you bring any creatures on board, please make sure they are chained. Any loose animals will be vaporised on sight.</t>
+  <t id="1012">We have reports of an outbreak of argon flu in this sector, would all visitors please report to the medic bay for inoculation.</t>
+</page>
+ 
+
+<page id="300943" title="ticaki's-scripts" descr="" voice="no">
+  <t id="200">Rescue teams</t>
+</page>
+ 
+<page id="301311" title="ArcaJeth.SMS" descr="" voice="no">
+  <t id="100">[author]Station Management System[/author]\033GSMS Mini started:\033X %s\n\(to start the Standard-Version you have to adjust the ...(Resource price) using the SMS-Configuration.\)</t>
+  <t id="107">[author]Station Management System[/author]\033GAdvice:\033X Thank you for adjusting the ...(RPs) of your station: %s. The additional fee of %s Credits has been deducted and the management \(SMS Standard\) started.</t>
+   <t id="113">[author]Station Management System[/author]\033RAdvice:\033X Because you did not pay your debts of \033R%s Credits\033X, I had no other choice than detaining your station %s\nMay profit go with you.</t>
+</page>
+ 
+<page id="302498" title="Revens Scripts" descr="Text for Reven's scripts" voice="no">
+  <t id="1110">[center][b]Argon Navy Merchant Marine Program[/b][/center]\n\n[justify][b]From:[/b]   Admiralty of the Argon Navy\n[b]To:[/b]              %s\n[b]Re:[/b]             Cost of Merchant Marine Transport Report\n\nThe Admiralty of the Argon Navy regret to inform you that your current credit balance is insufficient to pay for a report on the current status of our merchant marine military transports.\n\nThe cost of this report is %s credits.  This money helps defray the costs of maintaining liaison officers and transporting military personnel to local trading and equipment docks throughout Argon space.  Your ongoing support will ensure that we are able to continue this program.\n\nWe thank you for your understanding.</t>
+</page>
+
+<page id="351000" title="Job names" descr="Races and job names" voice="yes">
+  <t id="133">OTAS(speak OHHTAS not separate letters!)</t>
+</page>
+   
+<page id="352003" title="Script Command Names" descr="0" voice="no">
+  <t id="1412">%1%0 get passenger transport destination</t>
+  <t id="1456">%0 get notoriety require to buy ware: %1</t>
+  <t id="1471">%0 get fight rank percentage</t>
+  <t id="1473">%1%0 get notoriety percentage to race %2</t>
+  <t id="1478">%0 match regular expression: %1 to string %2</t>
+</page>
+      
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+  <t id="9051">Sphere(Need voice)</t>
+  <t id="9052">{17,9002}</t>
+  <t id="9061">Freyja(Need voice)</t>
+  <t id="9062">{17,9002}</t>  
+  <t id="9071">Repair Drone(Need voice)</t>
+  <t id="9072">{17,9002}</t>
+  <t id="9081">Trade dock(Need voice)</t>
+  <t id="9082">{17,9002}</t>
+  <t id="10014">{17,10007} {17,10012}</t>
+  <t id="10015">{17,10006} {17,10012}</t>
+</page> 
+
+<page id="350022" title="Xenon rank" descr="Xenon rank" voice="no">
+  <t id="95">10101</t>
+  <t id="96">10100</t>
+  <t id="97">10011</t>
+  <t id="98">10010</t>
+  <t id="99">10001</t>
+  <t id="100">00000</t>
+  <t id="101">00001</t>
+  <t id="102">00010</t>
+  <t id="103">00011</t>
+  <t id="104">00100</t>
+  <t id="105">00101</t>
+  <t id="106">00110</t>
+  <t id="107">00111</t>
+  <t id="108">01000</t>
+  <t id="109">01001</t>
+  <t id="110">01010</t>
+</page>
+
+<page id="350029" title="Yaki rank" descr="Yaki rank" voice="no">
+  <t id="95">Chishio Teki (blood enemy)</t>
+  <t id="96">Teki (enemy)</t>
+  <t id="97">Mizu Shobai (yaki entertainer)</t>
+  <t id="98">Boryokudan (the violent ones)</t>
+  <t id="99">Boszuku (speed tribes)</t>
+  <t id="100">Tekiya (peddler)</t>
+  <t id="101">Bakuto (gambler)</t>
+  <t id="102">Wakashu (junior leaders)</t>
+  <t id="103">Shatei (younger brothers)</t>
+  <t id="104">Shateigashira-Hosa (lesser regional boss assistant)</t>
+  <t id="105">Shateigashira (lesser regional boss)</t>
+  <t id="106">Fuku-Honbucho (number-two man assistant)</t>
+  <t id="107">Wakagashira (number-two man)</t>
+  <t id="108">So-Honbuncho (headquarters chief)</t>
+  <t id="109">Saiko Komon (senior adviser)</t>
+  <t id="110">Kumicho (supreme boss)</t>
+</page>
+
+<page id="350827" title="Pirate rank" descr="Pirate rank" voice="no">
+  <t id="95">Enemy of the pirate clans</t>
+  <t id="96">Bounty hunter</t>
+  <t id="97">Police assistant</t>
+  <t id="98">Police sympathizer</t>
+  <t id="99">Syspected informer</t>
+  <t id="100">Worthless prey</t>
+  <t id="101">Honest trader</t>
+  <t id="102">Pirate sympathizer</t>
+  <t id="103">Pirate friend</t>
+  <t id="104">Privateer</t>
+  <t id="105">Runner</t>
+  <t id="106">Smuggler</t>
+  <t id="107">Renowned pirate</t>
+  <t id="108">Clan boss</t>
+  <t id="109">Founder of the clan</t>
+  <t id="110">Most wanted</t>
+</page>
+
+<page id="350828" title="Kha'ak rank" descr="Kha'ak rank" voice="no">
+  <t id="95">Defiler of the hive</t>
+  <t id="96">Scourge of the hive</t>
+  <t id="97">Menace of the hive</t>
+  <t id="98">Disruptor of the hive</t>
+  <t id="99">Harasser of the hive</t>
+  <t id="100">Drone</t>
+  <t id="101">Youngling</t>
+  <t id="102">Worker</t>
+  <t id="103">Broodling</t>
+  <t id="104">Grunt</t>
+  <t id="105">Brute</t>
+  <t id="106">Swarmer</t>
+  <t id="107">Swarm leader</t>
+  <t id="108">Caretaker</t>
+  <t id="109">Guardian</t>
+  <t id="110">Den Mother</t>
+</page>
+
+<page id="351706" title="Bordcomp. player objects" descr="Your ... Object names (not spoken by Bordcomputer!)" voice="no">
+ <t id="6425">{1705,1} {17,6421}(Thor)</t>
+ <t id="6435">{1705,1} {17,6431}(Mjollnir)</t>
+ <t id="6445">{1705,1} {17,6441}(Valkyrie)</t>
+</page>
+
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+ <t id="2707">{17,3931}</t>
+ <t id="2708">{17,2716} {17,7741}</t>
+ <t id="2716">Quest'industria produce </t>
+ <t id="4071">{17,4061} {17,10024}</t>
+ <t id="4072">{17,4062}</t>
+ <t id="4091">{17,4061} {17,10021}</t>
+ <t id="4092">{17,4062}</t>
+ <t id="4141">{17,4061} {17,10101}</t>
+ <t id="4142">{17,4062}</t>
+ <t id="13501">{17,13031} {17,10021}</t>
+ <t id="13502">{17,13032}</t>
+ </page>
+ 
+</language>
