@@ -1,6 +1,10 @@
 <?php
+chdir(__DIR__);
+
 include 'Sector.php';
 include 'Parser.php';
+
+$config = include 'config.php';
 
 $cellWidth = 150;
 $cellHeight = 50;
@@ -26,7 +30,7 @@ file_put_contents('docs/universe.html', ob_get_clean());
 foreach (Parser::$languageMap as $code => $languageName) {
     foreach (['tc', 'ap'] as $map) {
         $code = sprintf('%02d', $code);
-        $parser = new Parser("lang/0001-L0{$code}.xml", ["maps/x3{$map}_universe.xml", "maps/x3_universe_2.0.xml"]);
+        $parser = new Parser(glob("lang/*-L0{$code}.xml"), $config[$map]['maps']);
         $html = '';
         foreach ([
             'sectors' => $parser->sectors,
