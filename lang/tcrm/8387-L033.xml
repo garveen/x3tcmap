@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language id="33">
+    <!--
+    Reference, SubTypes and their respective Lasers
+    0 Impulse Ray Emitter
+    1 Particle Accelerator Cannon
+	2 Plasma Burst Generator
+    3 Mass Driver
+    4 Phased Repeater Gun
+    5 Energy Bolt Chaingun
+    6 Fragmentation Bomb Launcher
+    7 High Energy Plasma Thrower
+    8 Ion Disruptor
+    9 Pulsed Beam Emitter
+    10 Electro-Magnetic Repeater
+    11 Electro-Magnetic Plasma Cannon
+	12 Gamma Pulse Emitter
+    13 Concussion Impulse Generator
+    14 Ion Pulse Generator
+    15 Ion Shard Railgun
+    16 Matter/Anti-Matter Launcher
+	17 Fusion Pulse Disruptor
+	18 Fusion Bomb Launcher
+	19 High Energy Particle Railgun
+	20 Phased Plasma Generator
+    21 Flak Artillery Array
+	22 Electro/Magnetic Disruptor Array
+    23 Cluster Flak Array
+    24 Phased Array Laser Cannon
+	25 Laser Tower Beam Cannon
+    26 Starburst Shockwave Cannon
+	27 Dark Matter Beam Cannon
+    28 Mobile Drilling System
+    29 Tractor Beam
+    30 Incendiary Bomb Launcher
+    31 Tri-Beam Cannon
+    32 Phased Shockwave Generator
+	33 Plasma Burst Projector
+    34 Gauss Cannon
+    35 Repair Laser
+    36 Ion Cannon
+    37 Fusion Beam Cannon
+    38 Point Singularity Projector
+    39 Plasma Beam Cannon
+    40 Photon Pulse Cannon
+	41 Quantum Shockwave Cannon
+    42 Alpha Kyon Emitter
+    43 Beta Kyon Emitter
+    44 Gamma Kyon Emitter
+    45 Experimental Electro-Magnetic Plasma Cannon
+    46 Prototype Matter/Anti-Matter Launcher
+    47 Prototype Starburst Shockwave Cannon
+	48 Quantum Pulse Repair Laser	
+    -->
+
+  <page id="60000" title="Weapon priorities" descr="Weapon Priorities">
+     <t id="1">28</t>    <!--Mobile Drilling System-->
+     <t id="2">29</t>    <!--Tractor Beam-->
+     <t id="3">35</t>    <!--Repair Laser-->
+     <t id="4">48</t>    <!--Quantum Pulse Repair Laser-->
+     <t id="5">0</t>    <!--Impulse Ray Emitter-->
+     <t id="6">42</t>    <!--Alpha Kyon Emitter-->
+     <t id="7">43</t>    <!--Beta Kyon Emitter-->
+     <t id="8">44</t>    <!--Gamma Kyon Emitter-->
+     <t id="9">45</t>    <!--Experimental Electro-Magnetic Plasma Cannon-->
+     <t id="10">46</t>    <!--Prototype Matter/Anti-Matter Launcher-->
+     <t id="11">47</t>    <!--Prototype Starburst Shockwave Cannon-->
+     <t id="12">1</t>    <!--Particle Accelerator Cannon-->
+     <t id="13">10</t>    <!--Electro-Magnetic Repeater-->
+     <t id="14">3</t>    <!--Mass Driver-->
+     <t id="15">4</t>    <!--Phased Repeater Gun-->
+     <t id="16">5</t>    <!--Energy Bolt Chaingun-->
+     <t id="17">6</t>    <!--Fragmentation Bomb Launcher-->
+     <t id="18">7</t>    <!--High Energy Plasma Thrower-->
+     <t id="19">8</t>    <!--Ion Disruptor-->
+     <t id="20">9</t>    <!--Pulsed Beam Emitter-->
+     <t id="21">2</t>    <!--Plasma Burst Generator-->
+     <t id="22">11</t>    <!--Electro-Magnetic Plasma Cannon-->
+     <t id="23">12</t>    <!--Gamma Pulse Emitter-->
+     <t id="24">14</t>    <!--Ion Pulse Generator-->
+     <t id="25">23</t>    <!--Cluster Flak Array-->
+     <t id="26">13</t>    <!--Concussion Impulse Generator-->
+     <t id="27">15</t>    <!--Ion Shard Railgun-->
+     <t id="28">16</t>    <!--Matter/Anti-Matter Launcher-->
+     <t id="29">17</t>    <!--Fusion Pulse Disruptor-->
+     <t id="30">18</t>    <!--Fusion Bomb Launcher-->
+     <t id="31">19</t>    <!--High Energy Particle Railgun-->
+     <t id="32">20</t>    <!--Phased Plasma Generator-->
+     <t id="33">21</t>    <!--Flak Artillery Array-->
+     <t id="34">22</t>    <!--Electro/Magnetic Disruptor Array-->
+     <t id="35">24</t>    <!--Phased Array Laser Cannon-->
+     <t id="36">25</t>    <!--Laser Tower Beam-->
+     <t id="37">26</t>    <!--Starburst Shockwave Cannon-->
+     <t id="38">27</t>    <!--Dark Matter Beam Cannon-->
+     <t id="39">30</t>    <!--Incendiary Bomb Launcher-->
+     <t id="40">34</t>    <!--Gauss Cannon-->
+     <t id="41">31</t>    <!--Tri-Beam Cannon-->
+     <t id="42">32</t>    <!--Phased Shockwave Generator-->
+     <t id="43">33</t>    <!--Plasma Burst Projector-->
+     <t id="44">36</t>    <!--Ion Cannon-->
+     <t id="45">37</t>    <!--Fusion Beam Cannon-->
+     <t id="46">38</t>    <!--Point Singularity Projector-->
+     <t id="47">39</t>    <!--Plasma Beam Cannon-->
+     <t id="48">40</t>    <!--Photon Pulse Cannon-->
+     <t id="49">41</t>    <!--Quantum Shockwave Cannon-->
+  </page>
+  
+
+</language>

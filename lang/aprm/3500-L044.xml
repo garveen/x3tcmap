@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language id="44">
+<page id="17" title="Boardcomp. objects" descr="0">
+ <t id="2843">Silkworm Missile</t>
+ <t id="2844">The Silkworm Missile combines quantum technology with a warhead able to destroy even heavily protected targets.(||) This missile is typically used for attacks on large fighters or transports.</t>
+ <t id="2853">Hornet Missile</t>
+ <t id="2854">The Hornet Class Missile is among the most powerful weapons known today. The gigantic resources needed to produce this monster also make it extremely expensive.(||) The missile works by setting off a small nuclear charge causing a reaction between three differing elements that are then combined on impact to create a large explosion powerful enough to disrupt even the largest shields. It is best used in numbers against capital class targets.</t>
+</page>
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+ <t id="6523">Firelance Missile</t>
+ <t id="6524">The Firelance Missile was developed by the Paranid Military as an equaliser for M3 fighters against much larger ships. However, it was phased out of service due to the availability of much more accurate and reliable alternatives. It is rumoured that existing stocks were sold off in order to pay for the M7 project.</t>
+ <t id="6543">Windstalker Missile</t>
+ <t id="6544">When a target absolutely must be killed, the Windstalker is the missile to do the job. A favourite of bounty hunters across the known universe, it is fast enough to catch all but the fastest scout and carries a warhead powerful enough to destroy all but the most heavily armed corvette. However since the destruction of the only known factory by Argon law enforcement, these missiles are very difficult to come by.</t>
+ <t id="6563">Beluga Missile</t>
+ <t id="6564">This is the popular Terran missile called the Beluga. It was the standard earth fleet missile used onboard fighter craft, however it has recently been replaced by the Spectre. It is rumoured that some stocks were smuggled into Commonwealth space before decommissioning took place.</t>
+ <t id="6573">Hammerhead Missile</t>
+ <t id="6574">The Hammerhead is a Terran heavy assault missile which was once commonly used on Earth Fleet capital ships. However, in their move towards incorporating more swarm class missiles into their inventory, the USC discarded the Hammerhead in favour of the cheaper and more effective Wraith. The specifications for this missile were subsequently stolen by a group of pirate clans, with whom it has become popular due to its very high yield.</t>
+ <t id="6793">Tornado Missile</t>
+ <t id="6794">The Tornado Missile improves on the one-shot one-chance performance of the Firelance by overpowering the target with a swarm of missiles. Using an array of armaments, the Tornado is launched either simultaneously, or in swift succession, allowing the pilot to strafe the target with a battery of attacks.</t>
+ <t id="6803">Typhoon Missile</t>
+ <t id="6804">Holding more accuracy than the Tornado, the Typhoon Missile again allows multiple armaments to be launched at the same target, however with the addition of Image Recognition tracking, the possibility of success has been raised substantially. Again launching simultaneously or in succession, the pilot has the option to fire when not directly pointed at the target at hand.</t>
+ <t id="6823">Aurora Missile</t>
+ <t id="6824">The Aurora is a prototype, designed by the Paranid to counter advanced missile defence systems such as the Motion Analysis Relay System \(MARS\) by sheer speed. Though blindingly fast, its acceleration is mediocre, its guidance systems minimal, and its payload small. It is intended to be fired in large salvoes at ranges of 25km or greater in order to overwhelm heavily defended ships.</t>
+</page>
+</language>

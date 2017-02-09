@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<language id="49">
+
+<page id="13" title="Boardcomp. Misc" descr="Various fragments spoken by shipboard comp. voice" voice="yes">
+  <t id="1286">(Waren werden von Schiff zu Schiff transferiert) transferiert</t> 
+</page>
+ 
+<page id="17" title="Boardcomp. objects" descr="Quad line groups for ware factory pairs or twins (spoken by Boardcomputer)" voice="yes">
+  <t id="2669">Diese Waffe wird meist auf einigen mittleren bis grösseren Kampfschiffen installiert.</t>
+  <t id="3109">Die Schiffswerft der Argonen ist eine grosse, automatisierte Fabrik, in der die gesamte Palette der argonischen Raumschiffe hergestellt wird. Zusätzlich zu den wertvollen Rohmaterialien und der Technologie verfügt diese Fabrik auch über einen Forschungssektor, wo neue Schiffsentwürfe und -verbesserungen entwickelt und getestet werden. Daher ist sie auch schwer bewacht. Man sollte sich ihr nur mit grösster Vorsicht nähern.</t>
+  <t id="3412">Der Zeus ist das Trägerschiff in der Flotte der Paraniden. Bis jetzt sind nur wenig Informationen über dieses Schiff ans Licht gekommen. Man spricht lediglich davon, dass es aufgrund neuer Waffentechnologien tödlich sein soll. Diese Schiffe sind bekannt dafür, dass sie sich meistens im Hintergrund aufhalten und Schwärme von kampfstarken Schiffen in die Schlacht aussenden. Versteckt in dichten Asteroidenfeldern entziehen sie sich oft der Aufmerksamkeit des Feindes.</t>
+  <t id="3422">Dieser Zerstörer ist der Stolz der Flotte der Paraniden. Er wurde aus einem früheren Modell entwickelt, das die Paraniden in ihrer Allianz mit den Split in der Boronschlacht eingesetzt hatten. Man sagt, dass dieser Schiffstyp zuletzt erneuert wurde, als ein Konflikt zwischen den Split und den Boron drohte.</t>
+  <t id="3943">Lebenserhaltung für Frachtram</t>
+  <t id="4182">Schiffswerften sind das Herz und die Seele der modernen Gesellschaften. Die ältere Variante dieser Produktionsstätten wurden wieder in Betrieb genommen, als die argonischen Schiffswerften mit der Produktion immer grösserer Schiffe und neuer Stationen überlastet wurden. Die Raumpiers wurden errichtet, um die Produktion kleinerer Schiffe, Frachter und Korvetten zu übernehmen.(||) Es ist ausserdem weitläufig bekannt, dass die Raumpiers der Argonen ein Anlaufzentrum für Händler und Forscher sind. Raumschiffe anderer Rassen, die hier verkauft werden können, werden entweder demontiert und untersucht, oder aber dem entsprechenden Volk zurückverkauft. Alle argonischen Raumpiers werden von Patrouillen schwer bewacht.</t>
+</page>
+ 
+<page id="37" title="Boardcomp. actions" descr="Actions of ships" voice="no">
+  <t id="1100117">Rundflugmodus</t>
+</page>
+  
+<page id="18" title="Dialog choices" descr="Lines player can select from in COMMs" voice="no"> 
+  <t id="1102433">alle Kampfdrohnen im Sektor</t>
+  <t id="7001582">Setze Waffenmodus: Gamma Energieplasma-Werfer</t>
+  <t id="7001583">Setze Waffenmodus: Hochenergie-Strahlenwaffe</t>
+</page>
+ 
+<page id="19" title="Sectordescription" descr="Long descriptions of all sectors" voice="no">   
+  <t id="1030114">Das Teladi-Unternehmen ist nicht dafür bekannt, dass es sehr militärbezogen ist. Die Bevölkerung dieses Sektors sieht das jedoch anders. Stahlkammer ist mit normalen Mitteln nur schwer zu erreichen, und enthält nichts außer HighTech-Fabriken und kleineren Stationen, die für den Schiffsbau arbeiten. Zudem ist in Stahlkammer die wichtigste Forschungseinrichtung des Teladi-Unternehmens zu finden, an der fieberhaft nach neuen Technologien geforscht wird. Obwohl der Sektor erst vor nicht allzu langer Zeit besiedelt wurde, ist sein Potenzial enorm. Man rechnet damit, dass hier möglicherweise noch weitere militärische Einrichtungen und eine Werft errichtet werden. Die Arbeiten zur Entwicklung eines neuen Großtransporters der TL-Klasse haben bereits begonnen. Er soll in absehbarer Zukunft den veralteten Teladi Albatros ersetzen.</t>
+  <t id="1030419">Dieses System bildete während des letzten Konflikts das Zentrum der Waffentestzone der Xenon. Durch eine experimentelle Waffe - vermutlich den 'Galaxy-Vaporisator' - , mit dem man die immer noch brennenden 'Hadesfire-Nebel' beseitigen wollte, wurde der Planet des Systems gesprengt. Heute ist es eine friedliche Bergbau- und Bauernkolonie der Boronen.</t>
+  <t id="1030714">In Omicron Lyrae ist es unter zahlreichen Verlusten gelungen, die Invasion der Kha'ak aufzuhalten und die Zerstörung des Planeten zu verhindern. Der Heldenmut der Gefallenen ist den Lebenden ein Vorbild und bleibt unvergessen. Die überlebenden halten ihr Andenken in Ehren, bewahren die Hoffnung und werden niemals aufgeben, auch wenn in den Schatten die Zerstörer von Welten lauern. - Das Leben muß weitergehen.</t>
+  <t id="1031006">Dieses System hat für die Paraniden nur geringe Bedeutung und wird von den Boronen geleast, die hier einen Vorposten von Raffinerien und chemischen Fabriken aufbauen. Die Paraniden und Boronen treiben hier begrenzten Handel und unterhalten freundschaftliche Beziehungen. Als Gegenleistung für den Schutz durch die Paraniden stellen die Boronen ihre umfassenden biochemischen Kenntnisse für die weltraumbiologischen Forschungen der Paraniden bereit.</t>
+</page>
+
+<page id="35" title="Menu strings misc" descr="Strings for various menus" voice="no">
+  <t id="662">Lasersicheres Schild</t>
+  <t id="1100000">Frachtscanner nicht installiert</t>
+  <t id="1102300">Erweiterte Einstellungen</t>
+  <t id="1102303">Zeige Warptunnel</t>
+</page>
+   
+<page id="2003" title="Script Command Names" descr="" voice="no">
+  <t id="1041">%1%0 get tradable ware array from station</t>
+  <t id="1071">%1%0 get tradable ware array from ship</t>
+  <t id="1091">change event news availability: %0 race=%1 sector=%2 jumps=%3</t>
+</page>
+    
+<page id="2022" title="Command Info" descr="0" voice="no">
+  <t id="1100">Dieses Kommando überweist Geld vom Stationskonto auf das Spielerkonto. Sobald der eingegebene Grenzbetrag überschritten wird, wird der jeweils überschüssige Betrag minütlich überwiesen.\n{2022,99990}</t>
+</page>
+
+<page id="1293" title="Generic Trading 1" descr="Mission by Dredge - All generic trade offers" voice="no">
+  <t id="109">Ich hätte schwören können, dass ich Ihnen gesagt habe, Sie sollten zur Station $THERE$ fliegen. Welchen Teil davon haben Sie nicht verstanden?! Ich sehe keinen Grund, Ihnen auch nur einen einzigen Credit zu bezahlen. Sie haben das Geld nicht verdient, da Sie noch nicht mal in der Nähe des Ziels sind. Die $REWARD$, die ursprünglich für Ihr Konto bestimmt waren, werden einem anderen Piloten gezahlt, der auch tatsächlich weiß was er tut.</t>
+  <t id="20013">Sie haben gegen den Ehrenkodex verstoßen. Wir haben gehört, dass die Station $THERE$ im Sektor $THERESECTOR$ die $AMOUNT$ Einheiten $WARES$ nicht vollständig erhalten hat. Die Besitzer der Station $THERE$ haben uns berichtet, dass $WARES$ von Ihrer Fracht fehlen. Sie hatten lediglich $PLAYERSAMOUNT$ in ihrem Hangar, nachdem Ihr Schiff entladen war. Das wird nicht ohne Konsequenzen bleiben! Ihre $REWARD$ werden Ihnen nicht überweisen und stattdessen darauf verwendet, sicherzustellen, dass Ihre Zukunft in diesen Sektoren mehr als ungemütlich wird.</t>
+  <t id="20101">[title]Starke Nachfrage von Nervenimplantaten[/title]\n\n[justify]Es steht eine besonders interessante Mission für Piloten zur Verfügung, die vom Handelsrang $TRADERANK$ oder besser sind und ein Schiff der $SHIPTYPE$-Klasse besitzen. Jemand im Sektor $THERESECTOR$ hat Glück gehabt und konnte ein Passagierschiff kapern. Die meisten Passagiere sind sogar noch am Leben und werden in die Sklaverei verkauft. Es hat sich sogar herausgestellt, dass die Glücklichen mit so vielen Gefangenen auf einmal nicht fertig werden, da nicht genügend $WARES$ zur Verfügung stehen. Die Besitzer der Sklaven und ihre Gefangenen verstecken sich gerade auf der Station $THERE$ in $THERESECTOR$ und müssen mit $AMOUNT$ Einheiten Nervenimplantaten versorgt werden. Das wird deren Probleme lösen.\n\nDie Schwierigkeit dabei ist, dass unsere Auftraggeber das Versteck der Sklaven nicht sehr lange geheim halten können. Falls andere von der Sache Wind bekommen sollten, könnte das einen kleinen Krieg auslösen, weil die Nachfrage nach Sklavenarbeitern sehr hoch ist. Sobald die Nervenimplantate aber geliefert wurden, wird es kein Problem mehr sein, die Sklaven abzutransportieren. Deshalb müssen Sie die Chips bis $TIMELIMIT$ liefern. Wenn Sie den Auftrag pünktlich erledigen, erhalten Sie $REWARD$. Sollten Sie besonders schnell sein, erhalten Sie $BONUSREWARD$ als Bonus. Der Pilot wird ein Raumschiff der $SHIPTYPE$-Klasse oder größer benötigen.\n\nWir haben die Nervenimplantate in der Vergangenheit als Unterhaltungschips deklariert und entsprechend getarnt. Leider scheint dies aber in letzter Zeit nicht mehr zu funktionieren, also seien Sie auf der Hut vor Militärschiffen und bleiben Sie ausserhalb von deren Scannerreichweite.[/justify]</t>
+</page>
+
+<page id="1316" title="BBS Assassination" descr="" voice="no">
+</page>
+
+<page id="2032" title="General articles" descr="Articles in this pool are not specific to a race and are not part of a series of articles!" voice="no">
+ <t id="4">[article/][author]{1294,80}[/author][title]GalNet Spezial: Fünf-Nationen-Rennen der Solarsegler[/title][text cols='2'][justify]Jedes Jazura tragen die fünf bekannten Nationen der bekannten Galaxie ihr Wohltätigkeitsrennen aus. Alle fünf Völker \(Argonen, Boronen, Teladi, Split und Paraniden\) bauen Standardschiffe so um, dass keine Extras mehr drin sind und der einzige Antrieb aus einem Sonnensegel besteht, das die Sonnenwinde auffängt. Die Veranstalter legen eine offizielle Route durch eine ganze Reihe Sektoren fest, die normalerweise frei von Piraten sind. Aber selbst wenn die Tour ausnahmsweise durch einen Piratensektor führen sollte, halten sich Gesetzlose meist vom Rennen fern, um nicht unnötig viel Aufmerksamkeit auf sich zu ziehen.\n\nSolarsegeln, das in den frühen Zeiten der Raumfahrt oft als Antrieb genutzt wurde, ist mehr und mehr zu einem Sport der oberen Zehntausend geworden. Im letzten Jazura konnten die Boronen den Titel erringen und dürfen demzufolge den aktuellen Wettbewerb ausrichten, der in Königstal beginnen wird. Die boronische Königin wird persönlich erwartet, um den Startschuss zu geben.\n\nSpec Harley - Sportberichterstatter bei GalNet[/justify][/text]</t>
+ <t id="57">[article/][author]{1294,80}[/author][title]Aschestürme verursachen Chaos auf Planet in Erzgürtel[/title][text cols='2'][justify]Der vulkanisch aktive Hauptplanet im argonischen Sektor Erzgürtel ist nach einer Serie schwerer Vulkanausbrüche mit dichten Aschewolken überzogen, daher muss mit schweren Ascheregen gerechnet werden. Die Siedlungen auf diesem mineralienreichen Planeten werden von den schwarzen Niederschlägen und giftigen Gaswolken bedroht. Vulkanologen und Meteorologen sind bereits zum Ort des Geschehens unterwegs, um den argonischen Behörden ihre Hilfe anzubieten.\n\nElat Fo, eine boronische Meteorologin, meinte: "Die spezielle Wettersituation in Kombination mit den mächtigen Vulkanen auf dem westlichen Kontinent erschweren das Leben der Arbeiter und ihrer Familien erheblich. Viele Bergwerke mussten vorübergehend geschlossen werden und die Solarkollektoren produzieren unter diesen Bedingungen natürlich auch keinen Strom. Wir brauchen hier dringend einige Lieferungen Energiezellen, um wenigstens die notwendigsten Anlagen am Laufen zu halten."\n\nVulkanaktivitäten dieser Größenordnung beeinflussen das Wetter auf diesem relativ jungen Planeten enorm, daher ist die Vorhersage auch so schwierig. Leider gibt es noch kein Vorwarnsystem für die Vulkanausbrüche. Wissenschaftler sind derzeit zwar dabei, derartige Systeme zu entwickeln, aber die Komplexität dieser Aufgabe hat bisher alle Anstrengungen zunichte gemacht.\n\nTomes Smit, Wetterdienst - Galaxy Network[/justify][/text]</t>
+</page>
+
+<page id="2033" title="Argon news" descr="" voice="no">
+  <t id="67">[article/][author]{1294,10}[/author][title]Dramatische Rettungsaktion[/title][text cols='2'][justify]Uns erreichten Berichte, nach denen vor drei Tazuras im Sektor Erzgürtel eine dramatische Rettungsaktion vonstatten gegangen ist. Das Frachtschiff Sternenwind war bei einer Kollision mit einem Asteroiden stark beschädigt worden. Sämtliche Navigationssysteme waren ausgefallen und der Raumer, immer noch von den laufenden Motoren angetrieben, flog steuerungslos durch das asteroidenübersäte Gebiet.\n\nNachdem ein Notsignal ausgesandt worden war, wurde ein Söldner namens Pico Hang auf den Transporter aufmerksam. Er eilte zu dem Schiff und war in der Lage, alle Gesteinsbrocken, die dem Schiff zu nahe kamen, abzuschiessen. Schliesslich zerstörte er mit ein paar gezielten Treffern den Antrieb des Frachters, um ihn endlich zum Stillstand zu bringen. Trotz der schweren Beschädigungen am Schiff konnte die Mannschaft, die bei dem Vorfall nur ein paar Kratzer und Prellungen erlitten hatte, am Ende vollzählig gerettet werden. Der Eigentümer der Handelslinie hat dem Retter eine fette Belohnung verprochen, ausserdem stellten ihm die argonischen Behörden für seine Dienste eine offizielle Polizeilizenz aus.\n\nHack Seldon, Berichterstatter für soziale Angelegenheiten - IRG-Nachrichten[/justify][/text]</t>
+</page>
+
+<page id="2034" title="Boron news" descr="" voice="no">
+  <t id="13">[article/][author]{1294,20}[/author][title]Sektor21-Terroristen festgenommen[/title][text cols='1'][justify]Die Festnahme von einigen Terroristen, die der Gruppe Sektor21 angehören sollen, wird als grosser Erfolg bewertet. Ein maximal getunter Boron Delphin hatte sich anscheinend mit der festen Absicht, eine Station frontal zu rammen, auf den Weg zu einer Kristallfabrik in den argonischen Sektoren gemacht.\n\nDas Frachtschiff war ausschliesslich mit Squash-Minen beladen und hätte die Kristallfabrik mit Sicherheit zerstört, wenn die Behörden zuvor keinen Tipp bekommen hätten. Glücklicherweise konnte das ferngesteuerte Schiff rechtzeitig abgefangen werden. Piloten werden gebeten, besonders auf Schiffe zu achten, die nicht auf Funksprüche reagieren und diese sofort den Behörden zu melden.\n\nBabu Di, Auslandskorrespondent - KRN[/justify][/text]</t>
+  <t id="39">[article/][author]{1294,20}[/author][title]Bedeutende meteorologische Ereignisse auf Tethys[/title][text cols='2'][justify]Ein enormer Sturm auf dem Planeten Tethys hat im boronischen Königreich grosse Besorgnis ausgelöst. Auf der Kolonie tobten gerade die üblichen Stürme, als sich innerhalb kürzester Zeit vier Tiefdruckgebiete zu einem Riesensturm zusammenschlossen. Winde wehen in Rekordstärken und Wellen türmen sich bis zu einer Höhe von 250m auf. Die grösste Kolonie auf dem Planeten liegt auf der Oberfläche und wird vom Sturm bedroht. Dort sind Hunderttausende von Zivilisten in Lebensgefahr. Grosse Transportschiffe sind auf dem Weg dorthin, um Frauen, Kinder und Lar unter den Kolonisten zu evakuieren.\n\nEine der kleineren Kolonien wurde bereits schwer vom Sturm getroffen und völlig verwüstet. Mehrere Transporter sind bei Landeversuchen abgestürzt und nur wenige haben es bisher geschafft, nach Aufnahme der Flüchtlinge unbeschadet den örtlichen Raumhafen zu erreichen. Die boronischen Hilfsorganisationen haben einen Konvoi mit medizinischer Ausrüstung und Hilfsmitteln losgeschickt, um denjenigen zu helfen, die trotz der Gefahr nicht evakuiert werden wollten oder es einfach nicht geschafft haben, dem Sturm zu entkommen.\n\nNini Ba, Wissenschaftskorrespondentin - KRN[/justify][/text]</t>
+</page>
+
+<page id="2035" title="Split news" descr="" voice="no">
+  <t id="9">[article/][author]{1294,30}[/author][title]Familienoberhaupt der Familie K'Taw ermordet[/title][text cols='2'][justify]Die Familie K`Taw gab heute bekannt, dass ihr Führer heimtückisch ermordet wurde. Wie der Sprecher ausführte, startete der Familienclan sofort nach Bekanntwerden der Tat eine der wohl umfangreichsten Untersuchungen in der Geschichte der Split, um die Hintergründe der Ermordung aufzudecken. Unterstützt durch Korvetten und Zerstörer haben die Kampfschiffe der K'Taw-Familie mittlerweile schon über 400 Schiffe geentert und durchsucht. Die Besatzungen der Schiffe wurden ausführlichen Verhören unterzogen. Zwei Piloten, die im Verdacht stehen, Kontakte zum argonischen Geheimdienst zu unterhalten, wurden für weitere Verhöre in Gewahrsam genommen.\n\nIn zwei Tazuras wird die gesamte Regierungsmannschaft gemäss der alten Tradition dem Clanführer bei der Bestattung die letzte Ehre erweisen.\n\nCho't Lt, Berichterstatter für soziale Angelegenheiten für die SCN[/justify][/text]</t>
+  <t id="47">[article/][author]{1294,30}[/author][title]Militärwissenschafter fordern höheres Budget[/title][text cols='2'][justify]"Die Waffen- und Schildtechnologie wird immer komplexer, daher ist es erforderlich, dass die Mittel für die Forschung auf diesen Gebieten ebenfalls erhöht werden", liess der Wissenschaftsrat der Split verlauten. Einige viel versprechende Projekte mussten schon mangels finanzieller Mittel vorzeitig abgebrochen werden. Doktor Kumar äusserte sich sehr verärgert über die aktuelle Situation: "Es ist ein Skandal! Da arbeitet man hart daran, unsere Spitzenposition in der Waffentechnologie zu verteidigen und dann muss man mitten im Projekt aufhören, nur weil irgendein verfluchter Bürokrat die nötigen Mittel dafür nicht bereitstellen will! Sie werden sehen, dass die anderen Völker unsere Situation gnadenlos ausnutzen und uns in der Waffentechnologie überholen werden!"\n\nDas Oberkommando äusserte sich zu den Vorwürfen mit folgenden Worten: "Es ist eine glatte Lüge, dass wir zu wenige Credits in die Forschung investieren. Leider ist es einfach nur so, dass bei den meisten Projekten keine vorzeigbaren Resultate herauskamen. Daher wurden diese gestoppt, um der Verschwendung weiterer Mittel Einhalt zu gebieten."\n\nEchim t'Tsbb - Wissenschaftskorrespondent für die SCN[/justify][/text]</t>
+  <t id="50">[article/][author]{1294,30}[/author][title]Streit zwischen Clans geht an das Clantribunal[/title][text cols='2'][justify]Die schon lange schwelenden Auseinandersetzungen zwischen dem Clan der Chin und der Thi sollen nun endlich durch das Clantribunal geschlichtet werden. Die Chin möchten unbehelligt grössere Truppentransporte durch die Gebiete der Thi schleusen. Diese jedoch weigerten sich in der Vergangenheit, derartig umfangreichen Truppentransporten die Durchflugrechte zu gewähren. Weil sich einige Piloten der Chin nicht an das Durchflugverbot hielten, war es schon zu vereinzelten kleinen Scharmützeln zwischen den Clans gekommen. Die Thi vertreten den Standpunkt, sie hätten die alleinige Souveränität in ihren Sektoren. Daher besässen sie die alleinige Entscheidungsgewalt darüber, wer durch ihre Gebiete fliege und wer nicht.\n\nDas Clantribunal hat nun zu entscheiden, ob der Clan der Thi im Interesse aller Split die Schiffe der Chin passieren lassen muss oder nicht. Möglicherweise wird aber festgelegt, dass die Chin nur eine limitierte Anzahl Kampfschiffe gleichzeitig durch den Raum der Thi schicken. Beide Parteien haben dem Tribunal ihr Wort gegeben, sich an alle Anweisungen zu halten, die der Rat aussprechen wird. Die Familie Thi kündigte gleichzeitig an, sie werde die Familie Chin weiterhin sehr genau im Auge behalten.\n\nUzuth t'Fttf - Sicherheitskorrespondent für die SCN[/justify][/text]</t>
+  <t id="52">[article/][author]{1294,30}[/author][title]Vermehrt argonische Zuschauer bei den Ghok-Turnieren zu beobachten[/title][text cols='2'][justify]Immer mehr Argonen reisen in die Splitgebiete, um den Ghok-Kämpfen beizuwohnen. Während die Clans schon seit einigen Jazuras das Interesse der Argonen begrüssen, sind in letzter Zeit Spannungen zwischen den Völkern zu beobachten gewesen. Dessen ungeachtet scheinen immer mehr Argonen Gefallen an unserem traditionellen Sport zu finden. Zwar besuchen seit langem auch Teladi die Todeskämpfe, aber diese Leute sind wohl eher am möglichen Profit bei ihren Wetten interessiert als am eigentlichen Geschehen in der Arena. Die Argonen, oder zumindest diejenigen, die zu uns reisen, scheinen richtig mit dem Kampf mitzugehen und die hohe Kunst des Sports zu schätzen.\n\nEgi t'Rcss, der leitende Kampfrichter im Sektor Familienstolz äusserte sich folgendermassen: "Es ist toll, wie hoch das Interesse der Argonen an unserem traditionellen Sport ist! Natürlich sind sie nicht so begeisterte Zuschauer wie die Split, aber sie wissen einen guten Kampf auch zu schätzen. Ich finde es ganz in Ordnung, wenn diese Leute im Publikum sitzen, aber in der Kampfarena könnten sie keine zwei Mizuras bestehen. Das wird sich vermutlich auch nicht ändern."\n\nWirtschaftlich ist diese Entwicklung von Vorteil für die Split. Alleine letztes Jazura haben diese Touristen einen zusätzlichen Umsatz von über 36 Mio. Credits in die Kassen gespült. In diesem Jazura rechnet man sogar mit einer weiteren erheblichen Steigerung.\n\nJarac t'Mttj - Sportnachrichten für die SCN[/justify][/text]</t>
+  <t id="56">[article/][author]{1294,30}[/author][title]Innovativer Stresskiller aus dem Verkauf zurückgezogen[/title][text cols='2'][justify]Viele werden ihn wohl schon ihr eigen nennen, den 'Kickschlagmich'. Dieses Ding wurde konstruiert, damit sich die Split auf für sich und andere ungefährliche Weise abreagieren können. Der Hersteller verspricht 'absolut gefahrlosen Stressabbau'. Der 'Kickschlagmich' ist etwas kleiner als ein erwachsener Split und Sie können auf ihn einschlagen und ihn treten. Sogar Laserbeschuss hält er für eine gewisse Zeit stand, ohne Schaden zu nehmen.\n\nAber gerade diese Widerstandskraft hat sich inzwischen als Problem herausgestellt. Viele Split waren so frustriert darüber, dass ihre Attacken auf den 'Kickschlagmich' keine nennenswerten Schäden hinterliessen, dass sie ihre Wut woanders abreagierten. So kam es in letzter Zeit zu vielen Zwischenfällen, sogar Tote waren zu beklagen! Die Regierung hat nun den Verkauf untersagt und angeordnet, dass der Hersteller alle 'Kickschlagmichs' zurücknehmen muss.\n\nCho't Lt - Sozialnachrichten für die SCN[/justify][/text]</t>
+</page>
+
+<page id="2036" title="Paranid news" descr="" voice="no">
+  <t id="4">[article/][author]{1294,40}[/author][title]Kämpfe in Priesterringe[/title][text cols='2'][justify]Im Sektor Priesterringe fanden vor kurzem einige Raumkämpfe statt. Berichten zufolge waren Kampfschiffe aus Königstal angeheuert worden, um einen TL-Frachter der Teladi zu verteidigen.\nDie Informationen darüber, warum ein teladianischer Kapitän boronische Kampfschiffe als Begleitschutz verpflichtet, sind noch lückenhaft. Es wurde jedoch bestätigt, dass paranidische Schiffe davor gewarnt worden waren, sich dem TL zu nähern, da er ein gefährliches Strahlungsleck hatte.\n\nOffensichtlich war der riesige Frachter bereits zuvor in schwere Kämpfe verwickelt gewesen, bei denen die Antriebssysteme schwer in Mitleidenschaft gezogen worden waren. Dies würde auch erklären, warum der TL keine eigenen Begleitschiffe mehr hatte und weshalb er durch den Raum driftete. Bei weiteren Befragungen der boronischen Kampfpiloten zu dem Vorfall gaben sie an, dass "die Angreifer sofort nach dem Erscheinen des Begleitschutzes geflohen sind." Es blieb den Polizeikräften der Paraniden keine andere Wahl, als den TL weiter in den tiefen Raum abdriften zu lassen und ihn dort schliesslich zu zerstören. Die zuständigen Behörden der Teladi wurden über den Vorfall informiert und alle relevanten Daten wurden ihnen zur Verfügung gestellt. Was der Frachter geladen hatte, ist nicht bekannt, da auch die Frachträume schwer beschädigt waren. Es scheint, als würde dies auch ein Rätsel bleiben.\n\nLoakmanckeldong - Auslandskorrespondent der IPN-Nachrichten[/justify][/text]</t>
+  <t id="27">[article/][author]{1294,40}[/author][title]Krise zwischen Sektor21 und argonischer Regierung[/title][text cols='1'][justify]Sektor21 hat sich heute offiziell von der Zusammenarbeit mit den Argonen distanziert, nachdem die Argonen auf fremdem Territorium eigenmächtig gegen Piraten vorgegangen war. Zuvor hatte es eine amtliche Verlautbarung mit der Aufforderung an die Argonen gegeben, sämtliche feindlichen Aktionen gegen die Piraten auf neutralem Territorium einzustellen, andernfalls werde Sektor21 die Piraten mit allen Kräften unterstützen.\n\nEin argonischer Sprecher machte nur ein weiteres Mal den Standpunkt seiner Regierung deutlich, äusserte sich aber nicht zu den neuen Fakten. Es dürfte allgemein bekannt sein, dass Sektor21 in der argonischen Führung Sympathisanten bis in höchste Regierungskreise hat und auf Druck gaben offizielle Stellen dann auch zu, dass eine interne Untersuchung der jüngsten Vorfälle im Gange ist.\n\nLoakmanckeldong - Auslandskorrespondent der IPN-Nachrichten[/justify][/text]</t>
+  <t id="30">[article/][author]{1294,40}[/author][title]Antike Funde[/title][text cols='1'][justify]Der Fund von uralten Dokumenten während Ausbesserungsarbeiten in einer baufälligen Fabrik auf argonischem Territorium bringt neue Erkenntnisse in Bezug auf eine der ältesten Personen der argonischen Geschichte. Versteckt hinter einem Heizungsrohr kamen nun Dokumente zutage, die Bestandteil von Nathan R. Gunnes Tagebüchern sein sollen. Die Schriftstücke werden im Augenblick auf ihre Echtheit untersucht und mit anderen beglaubigten Dokumenten verglichen, die ebenfalls noch Gunnes Handschrift tragen.\n\nKrikmanckelong - Wissenschaftlicher Dokumentar der IPN-Nachrichten[/justify][/text]</t>
+  <t id="50">[article/][author]{1294,40}[/author][title]Neueste Erzeugerpreise veröffentlicht[/title][text cols='2'][justify]Soeben wurden die neuesten Zahlen zu den Erzeugerpreisen veröffentlicht. Nach dem wichtigsten Indikator, den durchschnittlichen Energiepreisen, liegen die Paraniden mit einem Durchschnittspreis von 6,54467 Credits immer noch deutlich hinter den anderen Völkern zurück. Wie jedes Jazura liegen die Argonen auch dieses Mal mit durchschnittlichen Kosten von 6,39857 Credits pro Einheit auf dem ersten Platz. Vorwürfe, nach denen die argonischen Hersteller ihre Produkte in den letzten beiden Mazuras unter den Herstellungskosten verkauft hätten, wurden sogleich als lächerlich zurückgewiesen. In anderen spezialisierten Bereichen wie der Majaglit- und Juwelenproduktion konnte sich die paranidische Industrie jedoch weiterhin behaupten.\n\nACHTUNG! Beachten Sie bitte, dass dieser Bericht keinesfalls eine Einkaufs- oder Verkaufsempfehlung sein soll und auch keine Anbieter bevorzugt hat. Es handelt sich dabei nur um eine von den IPN-Nachrichten in Auftrag gegebene Studie und weder der Autor noch die IPN-Nachrichten oder ihre Tochtergesellschaften können für Verträge verantwortlich gemacht werden, die vorliegende Studie zur Grundlage haben.\n\nLoakmanckeldong - Auslandskorrespondent der IPN-Nachrichten[/justify][/text]</t>
+  <t id="54">[article/][author]{1294,40}[/author][title]Nun ist es offiziell - Split SIND gut für Sie![/title][text cols='2'][justify]Die Auswertung einer lang angelegten Studie hat heute zu einer erstaunlichen Erkenntnis geführt: im Gegensatz zur öffentlichen Meinung ist der Umgang mit Split gut für die Gesundheit. Während all der kleinen und grösseren Fehden zwischen beiden Völkern waren die Beziehungen zwischen Paraniden und Split nie wirklich gut. Wie aber die Studie nun zeigt, sind Piloten, die regelmässig Kontakt zu den Split haben oder häufig durch Split-Territorium fliegen, im Allgemeinen gesünder, haben eine höhere Lebenserwartung und leiden seltener an Herzproblemen. Offizielle Stellen inklusive des offiziellen Sprechers des Priesterherzogs, Tlokmanckelfung, bezeichneten die Untersuchung sofort nach Bekanntgabe der Ergebnisse als im Wesentlichen fehlerhaft und überflüssig. "Das hört sich an, als ob ein Borone, der für kurze Zeit aus dem Wasser gestiegen ist, uns weismachen will, dass ein Sonnenbad in einem System mit drei Sonnen gut für ihn sei", meinte Tlokmanckelfung. Die Debatte wird jedenfalls vorerst weitergehen.\n\nSlokmanckkahyang, wissenschaftlicher Korrespondent bei den IPN-Nachrichten[/justify][/text]</t>
+  <t id="63">[article/][author]{1294,40}[/author][title]'Raumwut' zeigt sich in Priesters Gnade von ihrer schlimmsten Seite[/title][text cols='2'][justify]Leider müssen wir erneut davon berichten, dass das 'Raumwut' genannte Phänomen wieder Opfer gefordert hat, dieses Mal in Priesters Gnade. Uns allen ist bekannt, dass es allgemein üblich ist, sein Schiff in eine angemessene Distanz zum Sprungtor zu bringen, sobald man ein neues System erreicht hat. Es ist eine unangenehme Erfahrung, wenn man sich direkt nach dem Passieren eines Sprungtors mit den riesigen Antriebsaggregaten eines Split Muli konfrontiert sieht, dessen Pilot gar nicht daran denkt, die Einflugschneise frei zu machen. Häufig kommt es bei solchen Gelegenheiten zu bewaffneten Auseinandersetzungen zwischen den Beteiligten, teilweise mit tödlichem Ausgang. Manche schieben die Schuld auf die örtlichen Handelsvertreter, die es in ihrer Geldgier gar nicht erwarten können, Geschäfte zu machen, und Neuankömmlinge im Sektor sofort mit ihren Angeboten bombardieren, bevor diese auch nur die Chance haben, ihr Schiff in eine sichere Warteposition zu navigieren. Andere meinen, dass die jüngere Generation der Piloten einfach noch nicht gelernt hat, wie man sich auf einem Raumflug zu verhalten hat. Als Konsequenz dieser Vorfälle haben die paranidischen Behörden beschlossen, die Patrouillen in den gefährdeten Gebieten zu verdoppeln und jeden empfindlich zu bestrafen, der in einen entsprechenden Vorfall verwickelt ist.\n\nHlokmanckkahsung, Berichterstatter für Kulturfragen bei den IPN-Nachrichten[/justify][/text]</t>
+</page>
+
+<page id="2037" title="Teladi news" descr="" voice="no">
+  <t id="16">[article/][author]{1294,50}[/author][title]Mine explodiert[/title][text cols='2'][justify]Kürzlich wurde auf einem Asteroiden ein ungewöhnliches Metall entdeckt, was der pflichtbewusste Finder auch prompt den Behörden meldete. Daraufhin hatte man mehrere Schiffe losgeschickt, um den Asteroiden genauer zu scannen und Proben des Elements einzusammeln.\n\nNach weiteren Untersuchungen des seltenen Minerals ordnete das Teladi-Unternehmen schliesslich den Bau einer Mine auf dem Felsbrocken an, um die Kostbarkeit abzubauen. Leider explodierte diese Mine nun kurz vor ihrer Fertigstellung. Davonfliegende Trümmer kollidierten mit der Argon Eins, die auch Wind von der Sache bekommen hatte und sich den Asteroiden gerade aus der Nähe anschauen wollte. Dabei wurde das argonische Flaggschiff leicht beschädigt und musste zwecks Reparatur die nächste Werft aufsuchen. Nun ist bei der teladianischen Bergbaugesellschaft ein Streit darüber entbrannt, ob die Argonen etwas mit der Explosion zu tun hatten oder nicht. Zumindest beschuldigt man das argonische Militär, nicht ganz unschuldig an der Sache zu sein.\n\nYoyunis Toisaris Yooses IV, Auslandskorrespondent der ZWN[/justify][/text]</t>
+</page>
+
+<page id="2038" title="Pirate news" descr="" voice="no">
+  <t id="4">[article/][author]{1294,70}[/author][title]Waffenschmugglerring von den Argonen ausgehoben[/title][text cols='2'][justify]Eine sehr lukrative Schmugglerroute durch den argonischen Raum wurde von der argonischen Polizei aufgedeckt. Aufgeflogen ist die ganze Sache, weil einem Schmugglerclan ein Kommunikationsfehler unterlief. Die Schmuggler waren gerade dabei, einen neuartigen boronischen Waffenprototypen durch den argonischen Raum zu schleusen, als die Argonen auf den Funkverkehr der Schiffe aufmerksam wurden. Kurz vor dem Sprung in ein anderes System konnte die argonische Polizei den Schmugglerkonvoi abfangen. Wie die Behörden berichten, wurden dabei alle Schiffe zerstört, das Waffensystem konnte sichergestellt werden. Unabhängigen und unbestätigten Quellen zufolge soll aber mindestens ein Schiff entkommen und auf dem Weg nach Brennans Triumph sein.\n\nLau't Knt für die SID-Nachrichten[/justify][/text]</t>
+</page>
+
+<page id="2039" title="Goner news" descr="" voice="no">
+  <t id="16">[article/][author]{1294,60}[[/author][title]Kommen Bärte aus der Mode?[/title][text cols='2'][justify]Hinter den Kulissen ist eine Debatte darüber entbrannt, was das Tragen von Bärten betrifft. Natürlich muss man sich als Goner keinen Bart wachsen lassen, aber die meisten Männer in unserer Gemeinschaft folgen der Tradition und tun es trotzdem. Nun behaupten Personen ohne Bart, sie würden diskriminiert. Angesichts der Tatsache, dass alle Mitglieder des Hohen Rates einen Bart tragen und noch nie ein kahlrasiertes Mitglied in diesem hohen Gremium vertreten war, ist dieser Vorwurf nicht ganz von der Hand zu weisen. Die Bartträger bezeichnen diese Diskussionen als blanken Unsinn und fordern, dass die Kahlköpfe sich mehr mit Meditation und Studien beschäftigen sollten, als sich um ihre Gesichtsbehaarung zu sorgen. Dann seien sie eines Tazuras auch würdig genug, einen Platz im Rat zu erlangen. Nebenbei bemerkt wurde innerhalb der Gemeinschaft der Goner seit den Debatten um den neuen Farbton bei der Renovierung der Toiletten auf dem C-Deck im letzten Jazura kein Streit mehr so erbittert ausgefochten. Zumindest scheint in dieser Sache das letzte Wort noch nicht gesprochen.\n\nJo Springer, Kulturkorrespondent der KNG[/justify][/text]</t>
+  <t id="31">[article/][author]{1294,60}[[/author][title]Alte Debatte wiederbelebt[/title][text cols='2'][justify]Der Hohe Rat der Goner hat die alte Diskussion um den Handel mit Gonerschiffen wiederbelebt. Es geht um die Frage, ob der An- und Verkauf von gekaperten Schiffen dieser Art auf den Werften nicht doch verboten werden sollte. Der Hauptgrund für diese Debatte liegt darin, dass der Besitz von Gonerschiffen in der Völkergemeinschat nie legal zustande kommen kann. Offiziell werden derartige Schiffe nicht verkauft, sondern nur ab und zu von Freibeutern gekapert. Die Eigentümer der Schiffswerften wehren sich gegen das Ansinnen und behaupten, dies behindere die freie Marktwirtschaft, für die man in der Gemeinschaft der Planeten so lange gekämpft habe. Eine Einschränkung dieser Errungenschaft könne leicht weitere Handelsverbote nach sich ziehen. Unterdessen hat der Hohe Rat zugegeben, dass dies ein gutes Gegenargument sei. Jedoch sei man über eine Untersuchung sehr besorgt, nach der im letzten Jazura 207 Gonerschiffe gekapert und auf den Werften angeboten worden seien. Momentan stehe der Vorschlag im Raum, nach dem jedes auf dem freien Markt auftauchende Gonerschiff der Bruderschaft zurückgegeben und der Besitzer verfolgt werden solle. Diese Forderung wiederum wird von den Betreibern der Schiffswerften rigoros abgelehnt, da sie dadurch vertrauliche Daten ihrer Kunden weitergeben müssten.\n\nMiria Gisler, Historikerin und Kulturkorrespondentin der KNG[/justify][/text]</t>
+</page>
+           
+<page id="2040" title="Complex stories" descr="This page contains news articles that build a story. Every story always can have 10 articles (more if two stories are connected). So a new story must always start with a textid dividable by 10!" voice="no">
+</page>
+
+<page id="300129" title="Salik" descr="" voice="yes">
+  <t id="731201">...direkt im Anschluss an die dramatische Flucht(einige Bilder der Flucht des Gefangenentransports des Spielers und einer Disruptorrakete die ein Patrouillenschiff lahmlegt) dreier Gefangener, darunter Kyle und Julian Brennan, hat das Imperium der Paraniden dem argonischen Senat vorgeworfen, bei dem Fluchtversuch geholfen zu haben. Die Paraniden drohen nun mit militärischen Schritten.</t>
+</page>
+
+<page id="300176" title="Julian COMM" descr="" voice="yes">
+  <t id="710917">Glaubst Du ich wüsste nicht, wie das ist? Deinetwegen habe ich meine Vergangenheit verloren, meinen Freund verlor ich wegen der Kha'ak, und zwei von der Erde Besessene haben mich fast umgebracht!</t>
+  <t id="800169">Wir haben die Beweise. Nur dass uns das nichts mehr nutzen wird, wenn wir alle tot sind!</t>
+</page>
+
+<page id="15" title="Mainprogram output" descr="EXE strings such as error messages" voice="no">
+  <t id="581">Keine Soundhardware gefunden!</t>
+</page>
+   
+<page id="1914" title="Input Adjust dialog" descr="" voice="no">
+   <t id="1225">Force-Feedback-Stärke:</t>
+</page>
+   
+<page id="1916" title="Input remapping dialog" descr="" voice="no">
+   <t id="1126">Sichtmodus ändern</t>
+   <t id="1176">Hauptmenü</t>
+</page>
+
+<page id="130" title="Female Atmo" descr="Friendly female voice for atmospheric messages (lots of echo) " voice="yes">
+  <t id="1005">Bitte denken Sie daran, dass jede Kreatur, die Sie auf diese Station bringen, an der Leine geführt werden muss. Jedes freilaufende Haustier wird umgehend vaporisiert.</t>
+  <t id="1012">Die neuesten Nachrichten aus allen Teilen des Universums erhalten Sie bei Ihrem Infobroker. An- und Verkauf von Informationen aller Art! Wenn wir es nicht wissen, weiß es keiner!</t>
+</page>
+     
+ <page id="501" title="Teladi Variation 1" descr="" voice="yes"> 
+  <t id="80">Hey, haben Sie mich vergessen? Ich muss schnellstens mein Ziel erreichen.</t>
+</page>
+
+<page id="502" title="Teladi Variation 2" descr="" voice="yes">
+  <t id="80">Bitte beeilen Sie sich! Ich möchte mich nicht verspäten.</t>
+</page>
+ 
+<page id="505" title="Teladi Variation 5" descr="" voice="yes">
+  <t id="80">Das dauert alles sehr lange. Sind wir denn noch auf dem richtigen Weg?</t>
+ </page>
+
+<page id="1800" title="Tutorials" descr="All required text for tutorials (mostly including voice, spoken by Instructor)" voice="yes">   
+  <t id="123">Sie sind auf der Brücke eines grossen M2-Klasse Argon Titan Zerstörers. Besiegen Sie die angreifende Flotte. Einige der Feinde verfügen über Torpedos. Es ist überlebsnotwendig, dass Sie Ihre ferngesteuerten Jäger einsetzen, um den M2 zu verteidigen!</t>
+ </page>
+      
+ <page id="1812" title="Beginner Tutorial 2" descr="Beginner Tutorial 2 (spoken by Instructor)" voice="yes">  
+  <t id="32">Kaufen Sie jetzt den 'Landecomputer' und den 'Schnäppchenfinder'. Um das zu erledigen, bewegen Sie die Markierung auf den entsprechenden Eintrag und drücken Sie die 'Menüauswahl rechts/links'-Tasten, um die Menge der Ware einzustellen. Bestätigen Sie die Auswahl mit der 'Auswahl'-Taste.</t>
+</page>
+ 
+<page id="1813" title="Basic Tutorial 3" descr="texts for Basic Tutorial 3 (spoken by Instructor)" voice="yes">       
+  <t id="8">Es gibt auch eine Kameraansicht. Aktivieren Sie diese jetzt, indem Sie im Schiffsmenü 'Aussenansicht'auf Monitor 2 stellen.</t>
+  <t id="9">Sie sehen jetzt Ihr eigenes Schiff von aussen auf Monitor 2. Aktivieren Sie Monitor 2 und bewegen Sie die Kamera mit den 'Kamerakontroll'-Tasten. Zusätzlich können Sie mit den 'Kamerazoom'-Tasten hinein- und herauszoomen.</t>
+  <t id="19">Sehr gut. Nun sind einige Schiffe hinter Ihnen. Wechseln Sie in die hintere Geschützkanzel und zerstören Sie die Schiffe.</t>
+</page>   
+
+<page id="1831" title="Advanced Tutorial 1" descr="Advanced Tutorial1: Two Factories" voice="yes">
+  <t id="70">Es bietet sich an, diesen Transporter auch gleich dafür zu benutzen, um die Cahoona-Fleischblöcke aus Ihrer Cahoona-Presse abzuholen. Geben Sie dem 'Schmiede Transporter 1' den Befehl, in Ihre Cahoona-Presse zu fliegen.</t>
+  <t id="6020">Sie haben zu viel Rohstoffe eingekauft! Die Stationsleitung hat sich aber freundlicherweise bereit erklärt, für einen unerfahrenen Händler eine Ausnahme zu machen, die überschüssigen Energiezellen zurückzunehmen und das Geld rückzuerstatten! Es bietet sich an, diesen Transporter auch gleich dafür zu verwenden, um die Cahoona-Fleischblöcke aus Ihrer Cahoona-Presse abzuholen. Geben Sie dem 'Schmiede Transporter 1' den Befehl, in die Cahoona-Presse zu fliegen.</t>
+</page> 
+         
+<page id="1833" title="Advanced Tutorial 3" descr="Player flies Argon Titan (spoken by Instructor)" voice="yes">         
+  <t id="100000">Wilkommen im Simulator der argonischen Raumakademie. Diese Prüfung wird Sie vor eine völlig neue Herausforderung stellen. In dieser Level 2 Kampfsimulation befehligen Sie ein Schlachtschiff der M2 Klasse. Einen Argon Titan. Eine Flotte von Xenon- und Piratenschiffen will Sie dazu bringen, Ihren Argon Titan - Zerstörer zu verlassen, damit die Gegner ihn kapern können! Natürlich werden sich die Feinde auch nicht scheuen, die Argon Titan zu zerstören, falls Sie Widerstand leisten sollten.</t>
+ </page>
+ 
+<page id="300035" title="Menu strings misc" descr="" voice="no">
+  <t id="4257">,(separator for numbers - 1000 becomes 1,000)</t>
+</page>
+  
+<page id="301406" title="BBS Racing handler" descr="0" voice="no">  
+   <t id="123">[author]$AUTHOR$[/author][title]Slipstream Xtreme - betting agency![/title][text][justify]Thank you for your bet. Should you win some money it will automatically transferred to you after the race. You will also receive notification.[/justify]\n[center][select]Close[/select][/center][/text]</t>
+</page>
+   
+<page id="301417" title="BBS Quest Donation" descr="Texts for the donation quest." voice="no">   
+  <t id="412">[author]Almanckarsat[/author][title]Ihre Opfergabe[/title]\nIm Namen unseres Instituts danke ich Ihnen für Ihre Gabe über $CREDITS$ Credits.\n\n\nAlmanckarsat\nLeiter des Forschungsinstituts der Heiligen Dreidimensionalität, Berater des Priesterherzogs für heilige Angelegenheiten, Mitglied des paranidischen Forscherrates, Günstling des Imperators</t>
+</page>
+
+<page id="300943" title="ticaki's-scripts" descr="" voice="no">
+  <t id="200">Rettungsteams</t>
+</page>
+ 
+<page id="301311" title="ArcaJeth.SMS" descr="" voice="no">
+ <t id="100">[author]Stationsverwaltungsprotokoll[/author]\033GSVP Mini gestartet:\033X %s\n\(Damit auf dieser Station die Standard-Version startet müssen Sie die Ressourcenpreise, mit Hilfe der SVP Konfiguration, festlegen!\)</t>
+ <t id="107">[author]Stationsverwaltungsprotokoll[/author]\033GHinweis:\033X Vielen Dank für das Einstellen der Ressourcenpreise Ihrer Station: %s. Die zusätzliche Gebühr von %s Credits wurde abgebucht und die Verwaltung \(SVP Standard\) gestartet.</t>
+ <t id="113">[author]Stationsverwaltungsprotokoll[/author]\033RHinweis:\033X Da Sie Ihre Schulden für die SVP-Nutzung, in Höhe von \033R%s Credits\033X, nicht gezahlt haben, sah ich keine andere Möglichkeit, als Ihre Station %s zu pfänden.\nWeiterhin großen Profit wünscht Ihnen das Rechnungsmodul des SVP.</t>
+</page>
+ 
+<page id="302498" title="Revens Scripts" descr="Text for Reven's scripts" voice="no">
+ <t id="1110">[center][b]Argonisches Handelsmarine-Programm[/b][/center]\n\n[justify][b]Von:[/b] Admiralstab der argonischen Marine\n[b]To:[/b] %s\n[b]Betrifft:[/b] Bericht über die Transportkosten der Handelsmarine\n\nDie Admiralität der argonischen Marine bedauert, es Ihnen mitteilen zu müssen, dass Ihr Konto nicht über ausreichend Deckung verfügt, um den aktualisierten Bericht über die Handelsmarine-Militärtransporte zu bezahlen.\n\nDie Kosten für diesen Bericht belaufen sich auf %s Credits. Dieses Geld wird benötigt, um die laufenden Kosten für unseren Verbindungsoffizier sowie für die Transporte des militärischen Personals zu den unterschiedlichen Handelsstationen und Ausrüstungsdock im argonischen Raum zu decken. Nur durch Ihre Unterstüzung können wir sicherstellen, dass das Programm fortgesetzt wird.\n\nWir danken Ihnen für Ihr Verständnis.</t>
+</page>
+
+<page id="300106" title="Argon Variation 6" descr="0" voice="yes">
+ <t id="12">(Letzte Warnung)Das ist Ihre absolut letzte Chance! Wir haben Ihr Schiff im Fadenkreuz.</t>
+ <t id="733">(Pilot hat sich verirrt)Was zum...? Diese Koordinaten sind nicht... ähm... (erstaunt)Oh verdammt, die Karte liegt ja verkehrt herum.</t>
+ </page>
+  
+<page id="300406" title="Paranid Variation 6" descr="0" voice="yes">
+ <t id="201">(Player near Gate to clsoed sector)Auf Befehl des großen Pontifex Maximus wurden die heiligen Zentralsektoren des Imperiums gesperrt. Jeder Versuch, diese Sperre zu umgehen, wird die umgehende Bestrafung und Vernichtung des Eindringlings zur Folge haben.</t>
+</page>
+ 
+<page id="300407" title="Paranid Variation 7" descr="0" voice="yes">
+ <t id="520">Ich kann diese Ketzer nicht abschütteln!</t>
+</page>
+ 
+<page id="300409" title="Paranid Variation 9" descr="Paranid Variation 9" voice="no">
+ <t id="201">(Player near Gate to clsoed sector)Paranid central sectors are closed by order of the great Pontifex Maximus Paranidia. Any attempt to enter will meet with lethal force and the ending of your pathetic life.</t>
+</page>
+ 
+<page id="350017" title="Boardcomp. objects" descr="0" voice="yes">
+ <t id="3142">Die Argon Buster war einst der Stolz der Flotte der Argonen und trug maßgeblich zum Sieg im Xenon-Krieg bei. Während der Boronschlacht wurde es jedoch durch das Argon Elite ersetzt.(||) Inzwischen wurde das Design der Buster deutlich verbessert, so wurden unter anderem neue, stärkere Antriebe entworfen und eingebaut. In ihrer jetzigen Form erfreut sich die Buster bei den Offizieren der Argonischen Flotte wieder großer Beliebtheit.</t>
+ <t id="8179">Die Phasenlaserkanone nutzt eine Kombination von schnell einstellbaren Spiegeln, um in kurzer Zeit Energie in einem gebündelten Laserstrahl zu konzentrieren. Die hohe Geschwindigkeit, mit der neue Ziele erfasst werden können, macht die Phasenlaserkanone zu einer effektiven Anti-Jäger Waffe. Diese beeindruckende Leistungsfähigkeit birgt jedoch die Konsequenz, dass sie weniger Schaden als vergleichbare Strahlenwaffen verursacht.</t>
+ <t id="10742">Seitdem der Vali die bisherigen Korvetten abgelöst hat, um Einsatzgruppen zu eskortieren oder Patrouillen zu fliegen, wahren Feinde respektvoll Abstand gegenüber dieser neuen Korvette, die mit besseren Schilden und stärkerer Bewaffnung ausgerüstet ist.</t>
+ <t id="15134">Terranische EMP-Gewehre(illegal) wurden ursprünglich von der AGI Task Force zur Nutzung bei geheimen Einsätzen entwickelt. Mittlerweile sind sie jedoch bei den terranischen Streitkräften weit verbreitet, und so finden auch gelegentlich Exemplare ihren Weg in weniger offizielle Kanäle.</t>
+</page>
+  
+<page id="350019" title="Sectordescriptions" descr="0" voice="no">
+ <t id="1030314">(The Moon)In weit zurückliegenen Zeiten war der Mond nur wenig mehr als ein Schimmer der Träume derer, die zu ihm hinauf sahen. Heute ist die vernarbte Oberfläche des Mondes übersät mit Raffinerien, Basen und Forschungseinrichtungen und nur wenige erinnern sich noch daran, als der Mond nichts weiter als ein unbedeutender Stein unter Vielen im Universum war.</t>
+</page>
+  
+<page id="350037" title="Encyclopaedia Texts" descr="0" voice="no">
+ <t id="1">Enzyklopädie</t>
+</page>
+
+<page id="350292" title="Boardingcrew Variation 12 - Teladi 2" descr="text for speaker 4" voice="yes">  
+ <t id="111">Die Hülle kann nicht durchbrochen werden - Breche Mission ab.(FAILURE CONDITION)</t>
+</page>
+    
+<page id="351000" title="Job names" descr="Races and job names" voice="yes">
+  <t id="133">OTAS(speak OHHTAS not separate letters!)</t>
+</page>
+   
+<page id="352003" title="Script Command Names" descr="0" voice="no">
+  <t id="1412">%1%0 get passenger transport destination</t>
+  <t id="1456">%0 get notoriety require to buy ware: %1</t>
+  <t id="1471">%0 get fight rank percentage</t>
+  <t id="1473">%1%0 get notoriety percentage to race %2</t>
+  <t id="1478">%0 match regular expression: %1 to string %2</t>
+</page>
+      
+<page id="353203" title="L2 Goner Plot" descr="0" voice="no">
+ <t id="151">Obwohl wir uns dem Frieden verschrieben haben, müssen wir einsehen, dass diese Piraten gegen alles stehen, woran wir glauben. Diese Bedrohung durch die Piraten muss ein für alle mal ausgeschaltet werden, bevor noch mehr unserer Anhänger ihr Leben verlieren!</t>
+</page>
+  
+<page id="353211" title="L2 Aldrin Expansion Mission" descr="Mission text for the Aldrin Expansion" voice="no">
+ <t id="2202">In dem neuentdeckten Sektor scheinen sich bereits die Xenon ausgebreitet zu haben. Der Entwicklungsstand dieser AGI entspricht ungefähr dem Niveau der Xenon in der Gemeinschaft der Planeten. Ihre Anwesenheit darf nicht geduldet werden!</t>
+</page>
+
+<page id="353212" title="L2 New Home Mission" descr="Mission text for A New Home mission" voice="no">
+  <t id="10900">Hello, %s. You don't know me, but I know you. I want to play a game. Here's what happens if you lose. You will be vaporised by this ship; not a nice end for your quest, is it? There's only one way to avoid this, so come on and crack my firewall if you can. Better hurry up. Live or die: make your choice.</t>
+</page>
+   
+<page id="353213" title="L2 Yaki Boarding Mission" descr="Yaki Boarding Mission Text. Inc character lines." voice="no"> 
+  <t id="111">Control of {object.name@L2M13.pirate ship} transferred to you.</t>
+</page>
+    
+<page id="353243" title="L2 Jonferco Missions" descr="0" voice="no">
+ <t id="1752">Ein wichtiger Kunde von uns wartet auf {object.name@{param@Cue}.{param@ID} L0Start} in {object.sector.name@{param@Cue}.{param@ID} L0Start} auf eine komfortable Passage hierher. Wir würden Sie gern bitten, sich mit einem TP Passagierkreuzer zu dieser Station zu begeben, {actor.name@{param@Cue}.{param@ID} L0Passenger} abzuholen und zu uns zubringen. Von diesem Kunden hängt eine ganze Menge ab, also setzen sie die Sache nicht in den Raumstaub!</t>
+</page>
+
+<page id="353246" title="L2 Duke's Buccaneers Missions" descr="0" voice="no">
+ <t id="1821">Gut, sie scheinen relativ erholt zurück zu sein. Ich werde mich dann wieder an den Verhandlungstisch begeben. Auf Sie werden wir wieder zurückkommen, wenn wieder einmal ihre Fähigkeiten benötigt werden.</t>
+</page>
+ 
+<page id="353634" title="L0M33 Patrol" descr="0" voice="no">
+ <t id="1001">Patrouille verfügbar</t>
+</page>
+
+<page id="353895" title="Character Lines [TEXT]" descr="0" voice="no">    
+ <t id="560003">{actor.name@CSV_toplevel.csvJeffMarxon} here.\n\nThe CPU ship just jumped to {sector.name@CSV_toplevel.CSV_WegZuFreiheit}. We have no idea what this ship is going to do in {sector.name@CSV_toplevel.CSV_WegZuFreiheit} but we need to destroy it and to rescue the civilians onboard the {object.name@CSV_toplevel.HsWzF} in {object.sector.name@CSV_toplevel.HsWzF}. Unfortunately, the CPU ship is blocking the gate on the other side, so don't jump in this sector using the gate!\n\nThe Goner told us that they rewarded you with a special jump device which provides you with the ability to perform an unfocussed jump. With this device you might be able to jump into the sector {object.sector.name@CSV_toplevel.HsWzF} or at least near to it, so you can fly to the sector centre.\n\nPlease, pilot, try everything you can to get yourself into this sector. Many civilians are trapped on {object.name@CSV_toplevel.HsWzF} and can't escape. You're the only one with the ability to reach the sector with the unfocussed jumpdrive and to rescue the civilians.\n\nAs soon as you've rescued all the civilians, please bring them to the {object.name@CSV_toplevel.MiliDock1} in {sector.name@CSV_toplevel.CSV_ElenasGlueck}. We're going to set up a refugee transit camp aboard this station.\n\nIf you haven't already got one, you need to buy a TM class ship to rescue all the civilians, because the unfocussed jumpdrive may give you only one chance to get into that sector. Dock a fighter in the TM so you can protect yourself, then jump to {sector.name@CSV_toplevel.CSV_WegZuFreiheit}, rescue the civilians and jump back.\n\nGood luck, pilot.\n\n[center][select value='ok']I'll take care, thanks.[/select][/center]</t>
+ <t id="560004">{actor.name@CSV_toplevel.csvJeffMarxon} here.\n\nThanks for rescuing the civilians. Our staff are currently transfering them to the sick bay. That was a pretty risky job you did there. Everybody is talking about the hero who rescued them.\n\nWe're now going to try to destroy this CPU ship. One of the survivors, a Teladi named {actor.name@CSV_toplevel.csvBelisarius}, said that the designation of this CPU ship is #cafe. Until now I didn't realise that the Xenon give their ships names but, hey, it doesn't matter. The most important thing is that these machines keep away from populated sectors.\n\nI can't say it often enough, thank you for your help, pilot. I could arrange it with my superiors that you receive a small reward for your service. The Credits have just been transfered to your account.\n\n{actor.name@CSV_toplevel.csvJeffMarxon}, out.</t>
+ <t id="560005">{actor.name@CSV_toplevel.csvJeffMarxon} here.\n\nThanks for rescuing the civilians. Our staff are currently transfering them to the sick bay. That was a pretty risky job you did there. Everybody is talking about the hero who rescued them.\n\nWe're now going to try to destroy this CPU. One of the survivors, a Teladi named {actor.name@CSV_toplevel.csvBelisarius}, said that the designation of this CPU ship is #cafe. Until now I didn't realise that the Xenon give their ships names but, hey, it doesn't matter. The most important thing is that these machines keep away from populated sectors.\n\nThank you for your help, pilot. Unfortunately you were not able to bring all civilians to the outpost but at least you were able to rescue some.\n\n{actor.name@CSV_toplevel.csvJeffMarxon}, out.</t>
+</page>
+
+<page id="353899" title="Player Lines [TEXT]" descr="0" voice="no">
+  <t id="211102">Perfect, I am transferring the data. When can I expect first results?</t>
+</page>
+
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+  <t id="9051">Sphäre(Need voice)</t>
+  <t id="9052">{17,9002}</t>
+  <t id="9061">Freyja(Need voice)</t>
+  <t id="9062">{17,9002}</t>  
+  <t id="9071">Reperaturdrone(Need voice)</t>
+  <t id="9072">{17,9002}</t>
+  <t id="9081">Handelsdock(Need voice)</t>
+  <t id="9082">{17,9002}</t>
+  <t id="10014">{17,10007} {17,10012}</t>
+  <t id="10015">{17,10006} {17,10012}</t>
+</page> 
+
+<page id="350022" title="Xenon rank" descr="Xenon rank" voice="no">
+  <t id="95">10101</t>
+  <t id="96">10100</t>
+  <t id="97">10011</t>
+  <t id="98">10010</t>
+  <t id="99">10001</t>
+  <t id="100">00000</t>
+  <t id="101">00001</t>
+  <t id="102">00010</t>
+  <t id="103">00011</t>
+  <t id="104">00100</t>
+  <t id="105">00101</t>
+  <t id="106">00110</t>
+  <t id="107">00111</t>
+  <t id="108">01000</t>
+  <t id="109">01001</t>
+  <t id="110">01010</t>
+</page>
+
+<page id="350029" title="Yaki rank" descr="Yaki rank" voice="no">
+  <t id="95">Chishio Teki (blood enemy)</t>
+  <t id="96">Teki (enemy)</t>
+  <t id="97">Mizu Shobai (yaki entertainer)</t>
+  <t id="98">Boryokudan (the violent ones)</t>
+  <t id="99">Boszuku (speed tribes)</t>
+  <t id="100">Tekiya (peddler)</t>
+  <t id="101">Bakuto (gambler)</t>
+  <t id="102">Wakashu (junior leaders)</t>
+  <t id="103">Shatei (younger brothers)</t>
+  <t id="104">Shateigashira-Hosa (lesser regional boss assistant)</t>
+  <t id="105">Shateigashira (lesser regional boss)</t>
+  <t id="106">Fuku-Honbucho (number-two man assistant)</t>
+  <t id="107">Wakagashira (number-two man)</t>
+  <t id="108">So-Honbuncho (headquarters chief)</t>
+  <t id="109">Saiko Komon (senior adviser)</t>
+  <t id="110">Kumicho (supreme boss)</t>
+</page>
+
+<page id="350827" title="Pirate rank" descr="Pirate rank" voice="no">
+  <t id="95">Feind der Piratenklans</t>
+  <t id="96">Kopfgeldjäger</t>
+  <t id="97">Polizeihelfer</t>
+  <t id="98">Polizeisymphatisant</t>
+  <t id="99">Verdächtiger Informant</t>
+  <t id="100">Wertlose Beute</t>
+  <t id="101">Ehrlicher Händler</t>
+  <t id="102">Piratensymphatisant</t>
+  <t id="103">Piratenfreund</t>
+  <t id="104">Freibeuter</t>
+  <t id="105">Bote</t>
+  <t id="106">Schmuggler</t>
+  <t id="107">Bekannter Pirat</t>
+  <t id="108">Klanführer</t>
+  <t id="109">Klangründer</t>
+  <t id="110">Meistgesuchter Verbrecher</t>
+</page>
+
+<page id="350828" title="Kha'ak rank" descr="Kha'ak rank" voice="no">
+  <t id="95">Schänder des Schwarms</t>
+  <t id="96">Geißel des Schwamrs</t>
+  <t id="97">Bedrohung des Schwarms</t>
+  <t id="98">Störenfried des Schwarms</t>
+  <t id="99">Belästigung des Schwarms</t>
+  <t id="100">Drohne</t>
+  <t id="101">Jüngling</t>
+  <t id="102">Arbeiter</t>
+  <t id="103">Brütling</t>
+  <t id="104">Knecht</t>
+  <t id="105">Wüstling</t>
+  <t id="106">Schwärmer</t>
+  <t id="107">Beschützer</t>
+  <t id="108">Verwalter</t>
+  <t id="109">Schwarm-Anführer</t>
+  <t id="110">Schwarm-Mutter</t>
+</page>
+
+<page id="1706" title="Bordcomp. player objects" descr="Your ... Object names (not spoken by Bordcomputer!)" voice="no">
+ <t id="2855">Ihre Raketenfabrik Hornisse</t>
+ <t id="3115">Ihr Argon Colossus</t>
+ <t id="3125">Ihr Argon Titan</t>
+ <t id="3145">Ihr A. Buster</t>
+ <t id="3155">Ihr A. Discoverer</t>
+ <t id="3165">Ihr Argon Mammut</t>
+ <t id="3215">Ihr Boron Hai</t>
+ <t id="3225">Ihr Boron Rochen</t>
+ <t id="3255">Ihr B. Oktopus</t>
+ <t id="3265">Ihr Boron Orca</t>
+ <t id="3275">Ihr B. Delphin</t>
+ <t id="3315">Ihr Split Raptor</t>
+ <t id="3325">Ihre Split Python</t>
+ <t id="3335">Ihre S. Mamba</t>
+ <t id="3345">Ihr S. Skorpion</t>
+ <t id="3365">Ihr Split Elefant</t>
+ <t id="3415">Ihr Paranid Zeus</t>
+ <t id="3425">Ihr Paranid Odysseus</t>
+ <t id="3455">Ihr P. Pegasus</t>
+ <t id="3465">Ihr Paranid Herkules</t>
+ <t id="3475">Ihr P. Ganymed</t>
+ <t id="3515">Ihr Teladi Kondor</t>
+ <t id="3525">Ihre Teladi Phönix</t>
+ <t id="3535">Ihr T. Falke</t>
+ <t id="3565">Ihr Teladi Albatros</t>
+ <t id="3575">Ihr T. Geier</t>
+ <t id="4115">Ihr Argon Zentaur</t>
+ <t id="4135">Ihr Argon Nova</t>
+ <t id="4165">Ihr Argon Express</t>
+ <t id="4175">Ihr Argon Merkur</t>
+ <t id="4215">Ihr Boron Hydra</t>
+ <t id="4235">Ihr Boron Barrakuda</t>
+ <t id="4245">Ihr Boron Mako</t>
+ <t id="4265">Ihr Boron Manta</t>
+ <t id="4315">Ihr Split Drache</t>
+ <t id="4355">Ihr Split Jaguar</t>
+ <t id="4365">Ihr Split Leguan</t>
+ <t id="4375">Ihr Split Kaiman</t>
+ <t id="4415">Ihr Paranid Nemesis</t>
+ <t id="4445">Ihr Paranid Perikles</t>
+ <t id="4465">Ihr Paranid Hermes</t>
+ <t id="4475">Ihr Paranid Demeter</t>
+ <t id="4515">Ihr Teladi Adler</t>
+ <t id="4545">Ihr Teladi Bussard</t>
+ <t id="4555">Ihr Teladi Harrier</t>
+ <t id="4565">Ihr Teladi Tukan</t>
+</page>
+
+<page id="301706" title="Bordcomp. player objects" descr="Your ... Object names (not spoken by Bordcomputer!)" voice="no">
+ <t id="4715">Ihre Starburst</t>
+ <t id="4725">Ihr Arrow</t>
+ <t id="6455">Ihre Susanowa</t>
+ <t id="6465">Ihr Raijin</t>
+</page>
+
+<page id="351706" title="Bordcomp. player objects" descr="Your ... Object names (not spoken by Bordcomputer!)" voice="no">
+ <t id="6425">{1705,1} {17,6421}(Thor)</t>
+ <t id="6435">{1705,1} {17,6431}(Mjollnir)</t>
+ <t id="6445">{1705,1} {17,6441}(Valkyrie)</t>
+</page>
+
+<page id="300017" title="Boardcomp. objects" descr="" voice="yes">
+ <t id="2707">{17,3931}</t>
+ <t id="2708">{17,2716} {17,7741}</t>
+ <t id="2716">This production facility manufactures the </t>
+ <t id="4071">{17,4061} {17,10024}</t>
+ <t id="4072">{17,4062}</t>
+ <t id="4091">{17,4061} {17,10021}</t>
+ <t id="4092">{17,4062}</t>
+ <t id="4141">{17,4061} {17,10101}</t>
+ <t id="4142">{17,4062}</t>
+ <t id="13501">{17,13031} {17,10021}</t>
+ <t id="13502">{17,13032}</t>
+ </page>
+ 
+</language>
