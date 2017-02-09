@@ -14,13 +14,14 @@ var scene;
 var camera;
 var controls;
 var sectorSize;
-var render3D = false;
+var render3D = true;
 var ThreeInited = false;
 var container3DRect;
 var moreGridsLine;
 var coordinateLine;
 var objectFrame;
 var baseTexture;
+var spriteMaterialCache = {};
 
 var sMap = {
     0: 'N',
@@ -255,21 +256,36 @@ function renderThree(sector) {
         controls.rotateLeft(Math.PI / 2);
         renderer.setSize(mapSize, mapSize);
         var ratio = sectorSize * 2 / mapSize;
+
         [17, 5, 6].forEach(function (index) {
             if (typeof sector.objects[index] == 'undefined') {
                 return true;
             }
             for (var subType in sector.objects[index]) {
                 sector.objects[index][subType].forEach(function (object, index) {
-                    var spriteMap = baseTexture.clone()
-                    var icon = icons[object.icon]
-                    spriteMap.offset = new THREE.Vector2(icon.l / width, 1 - (parseInt(icon.t) + parseInt(icon.h)) / height)
-                    spriteMap.repeat = new THREE.Vector2(icon.w / width, icon.h / height)
-                    spriteMap.needsUpdate = true
-                    var spriteMaterial = new THREE.SpriteMaterial({
-                        map: spriteMap,
-                        color: 0xffffff
-                    });
+                    var icon = icons[object.icon];
+                    var spriteMaterial;
+                    if (!spriteMaterialCache[object.icon]) {
+                        var canvas = document.createElement('canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.width = icon.w;
+                        canvas.height = icon.h;
+                        context.drawImage(
+                            baseTexture.image, // source
+                            icon.l, icon.t, // source x, y
+                            icon.w, icon.h, // source w, h
+                            0, 0, // dist x, y
+                            icon.w, icon.h // dist w,h
+                        );
+                        var spriteMap = new THREE.Texture(canvas);
+                        spriteMap.needsUpdate = true;
+                        spriteMaterial = new THREE.SpriteMaterial({
+                            map: spriteMap,
+                            color: 0xffffff
+                        });
+                        spriteMaterialCache[object.icon] = spriteMaterial;
+                    }
+                    spriteMaterial = spriteMaterialCache[object.icon];
                     var sprite = new THREE.Sprite(spriteMaterial);
                     sprite.scale.set(icon.w * 1.5, icon.h * 1.5, 0);
                     sprite.position.set(object.z / ratio, object.y / ratio, object.x / ratio);
@@ -426,13 +442,16 @@ function init() {
         js.src = '' + map + lang + '.js';
         document.body.appendChild(js);
     }
+    if (render3D) {
+        initThree();
+    }
 }
 
 function initThree() {
     ThreeInited = true;
     var mapSize = 500;
     var container = document.getElementById('container-3d');
-    var max = 1000;
+    var nebulaDistance = 1500;
     camera = new THREE.PerspectiveCamera(90, 1, 1, 10000);
     scene = new THREE.Scene();
     // Grid
@@ -464,7 +483,7 @@ function initThree() {
         color: 'rgb(61,62,99)',
         opacity: 1
     });
-    var line = new THREE.LineSegments(geometry, material);
+    line = new THREE.LineSegments(geometry, material);
     scene.add(line);
 
     ['x', 'z'].forEach(function (letter, index) {
@@ -488,11 +507,61 @@ function initThree() {
         scene.add(sprite);
     })
 
+    var a, b, l;
+    for (var j = 3; j--;) {
+        geometry = new THREE.Geometry();
+
+        for ( i = 0; i < 300; i ++ ) {
+            a = Math.acos( 1 - 2 * Math.random());
+            b = Math.random() * Math.PI * 2;
+            l = Math.sin(a);
+            geometry.vertices.push(new THREE.Vector3(
+                Math.sin(b) * l * nebulaDistance,
+                Math.cos(a) * nebulaDistance,
+                Math.cos(b) * l * nebulaDistance
+            ));
+        }
+
+        var starsMaterial = new THREE.PointsMaterial({
+            color: 0x777777 + j * 0x222222,
+            size: (j + 1) * 2
+        });
+
+        var particles = new THREE.Points( geometry, starsMaterial);
+
+        scene.add( particles );
+
+    }
+
+    var geometry = new THREE.SphereGeometry(nebulaDistance - 100, 60, 40);
+    geometry.scale(1, -1, 1);
+    var material = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background.jpg'),
+        transparent: true,
+        alphaMap: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background_mask.jpg')
+    });
+    var mesh = new THREE.Mesh(geometry, material);
+
+    scene.add( mesh );
+
+
     renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor('rgb(13,18,29)');
+    renderer.setClearColor('black');
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mapSize, mapSize);
-    setControls();
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement)
+    controls.mouseButtons = {
+        ORBIT: THREE.MOUSE.LEFT,
+        ZOOM: THREE.MOUSE.RIGHT,
+        PAN: THREE.MOUSE.MIDDLE
+    }
+    controls.maxDistance = nebulaDistance - 1;
+
+    controls.addEventListener('change', function (evt) {
+        render();
+    })
+    controls.update();
 
 
     var raycaster = new THREE.Raycaster();
@@ -608,27 +677,11 @@ function initThree() {
 
 
     }
-    container.addEventListener( 'mousemove', onMouseMove , false);
-    container.addEventListener( 'click', onClick , false);
+    container.addEventListener('mousemove', onMouseMove, false);
+    container.addEventListener('click', onClick, false);
 
 
     container.appendChild(renderer.domElement);
-}
-
-function setControls() {
-    if (controls) {
-        controls.dispose();
-    }
-    controls = new THREE.OrbitControls(camera, renderer.domElement)
-    controls.mouseButtons = {
-        ORBIT: THREE.MOUSE.LEFT,
-        ZOOM: THREE.MOUSE.RIGHT,
-        PAN: THREE.MOUSE.MIDDLE
-    }
-    controls.addEventListener('change', function (evt) {
-        render();
-    })
-    controls.update();
 }
 
 function render() {
@@ -641,6 +694,7 @@ function switchRender() {
     document.getElementById('controls-3d').style.display = render3D ? 'inline-block' : 'none';
     document.getElementById('container-2d').style.display = render3D ? 'none' : 'block';
     document.getElementById('container-3d').style.display = render3D ? 'block' : 'none';
+    document.getElementById('btn-3d').innerHTML = render3D ? '2D' : '3D';
     overlay(currX, currY);
 }
 

@@ -22,22 +22,22 @@
                 </div>
                 <div class="modal-content">
                     <div class='modal-map'>
-                        <div id='container-2d'></div>
-                        <div id='container-3d' style='display:none'></div>
+                        <div id='container-2d' style='display:none'></div>
+                        <div id='container-3d'></div>
                     </div>
                 </div>
                 <div class='modal-footer'>
                     <div class='modal-coordinate'>&nbsp;</div>
                     <div class='controls'>
-                        <span id='controls-2d'>
+                        <span id='controls-2d' style='display: none'>
                             <button id='btn-zoomin' onclick="zoomin()"></button>
                             <button id='btn-zoomout' onclick="zoomout()"></button>
                             <button id='btn-direction' onclick="switchDirection()"></button>
                         </span>
-                        <span id='controls-3d' style='display: none'>
+                        <span id='controls-3d'>
                             <button id='btn-moregrids' onclick="moreGrids()">Show Y-Grids</button>
                         </span>
-                        <button id='btn-3d' onclick="switchRender()">3D (Experimental)</button>
+                        <button id='btn-3d' onclick="switchRender()">2D</button>
                         <button id='btn-close' onclick="closeModal()"></button>
                     </div>
                 </div>

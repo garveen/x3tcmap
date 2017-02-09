@@ -1,5 +1,6 @@
 * {box-sizing: border-box;}
 body{font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei;color:white;font-size: 12px;background-color: #999;}
+button{min-width: 50px}
 
 .sector{position:absolute;border: 2px solid black;}
 .position{display:none}
