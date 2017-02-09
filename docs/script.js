@@ -238,6 +238,7 @@ function renderThree(sector) {
     if (!ThreeInited) {
         initThree();
     }
+    controls.reset();
     mapSize = Math.ceil(mapSize / 2) * 2;
     if (group) {
         scene.remove(group);
