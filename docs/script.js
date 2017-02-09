@@ -505,47 +505,58 @@ function initThree() {
         sprite.scale.set(32, 32, 0);
         sprite.position.set(size * (index == 1), 0, size * (index == 0))
         scene.add(sprite);
-    })
+    });
 
-    var a, b, l;
-    for (var j = 3; j--;) {
-        geometry = new THREE.Geometry();
-
-        for ( i = 0; i < 300; i ++ ) {
-            a = Math.acos( 1 - 2 * Math.random());
-            b = Math.random() * Math.PI * 2;
-            l = Math.sin(a);
-            geometry.vertices.push(new THREE.Vector3(
-                Math.sin(b) * l * nebulaDistance,
-                Math.cos(a) * nebulaDistance,
-                Math.cos(b) * l * nebulaDistance
-            ));
-        }
-
-        var starsMaterial = new THREE.PointsMaterial({
-            color: 0x777777 + j * 0x222222,
-            size: (j + 1) * 2
-        });
-
-        var particles = new THREE.Points( geometry, starsMaterial);
-
-        scene.add( particles );
-
+    // https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
+    var supportWebgl = true;
+    try {
+        var canvas = document.createElement('canvas');
+        supportWebgl = !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+    } catch (e) {
+        supportWebgl = false;
     }
 
-    var geometry = new THREE.SphereGeometry(nebulaDistance - 100, 60, 40);
-    geometry.scale(1, -1, 1);
-    var material = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background.jpg'),
-        transparent: true,
-        alphaMap: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background_mask.jpg')
-    });
-    var mesh = new THREE.Mesh(geometry, material);
+    if (supportWebgl) {
+        var a, b, l;
+        for (var j = 3; j--;) {
+            geometry = new THREE.Geometry();
 
-    scene.add( mesh );
+            for ( i = 0; i < 300; i ++ ) {
+                a = Math.acos( 1 - 2 * Math.random());
+                b = Math.random() * Math.PI * 2;
+                l = Math.sin(a);
+                geometry.vertices.push(new THREE.Vector3(
+                    Math.sin(b) * l * nebulaDistance,
+                    Math.cos(a) * nebulaDistance,
+                    Math.cos(b) * l * nebulaDistance
+                ));
+            }
 
+            var starsMaterial = new THREE.PointsMaterial({
+                color: 0x777777 + j * 0x222222,
+                size: (j + 1) * 2
+            });
 
-    renderer = new THREE.WebGLRenderer();
+            var particles = new THREE.Points( geometry, starsMaterial);
+
+            scene.add( particles );
+        }
+
+        var geometry = new THREE.SphereGeometry(nebulaDistance - 100, 60, 40);
+        geometry.scale(1, -1, 1);
+        var material = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background.jpg'),
+            transparent: true,
+            alphaMap: new THREE.TextureLoader().load(pathPrefix + 'gui/nebula_redreef_background_mask.jpg')
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+
+        scene.add(mesh);
+        renderer = new THREE.WebGLRenderer();
+    } else {
+        renderer = new THREE.CanvasRenderer();
+    }
+
     renderer.setClearColor('black');
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mapSize, mapSize);
