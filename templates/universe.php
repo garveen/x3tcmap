@@ -61,6 +61,7 @@
         </script>
         <script src="<?=$pathPrefix;?>three/three.min.js"></script>
         <script src="<?=$pathPrefix;?>three/OrbitControls.js"></script>
+        <script src="<?=$pathPrefix;?>three/FlyControls.js"></script>
         <script src="<?=$pathPrefix;?>three/Projector.js"></script>
         <script src="<?=$pathPrefix;?>three/CanvasRenderer.js"></script>
         <script src="<?=$pathPrefix;?>script.js"></script>

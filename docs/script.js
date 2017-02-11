@@ -245,7 +245,7 @@ function renderThree(sector) {
     if (!ThreeInited) {
         initThree();
     }
-    controls.reset();
+    // controls.reset();
     mapSize = Math.ceil(mapSize / 2) * 2;
     if (group) {
         scene.remove(group);
@@ -260,8 +260,9 @@ function renderThree(sector) {
         camera.position.x = 0;
         camera.position.y = mapSize / 1.4;
         camera.position.z = 0;
-        camera.updateProjectionMatrix();
-        controls.rotateLeft(Math.PI / 2);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        camera.rotateZ(- Math.PI / 2);
+        // camera.updateProjectionMatrix();
         renderer.setSize(mapSize, mapSize);
         var ratio = sectorSize * 2 / mapSize;
 
@@ -332,20 +333,21 @@ function renderThree(sector) {
             group.add(sprite);
         })
         scene.add(group);
-        controls.update();
-        if (false) {
+        // controls.update(1);
+        /*if (false) {
             window.setTimeout(function(){
                 controls.autoRotate = true;
                 function animate() {
                     requestAnimationFrame( animate );
 
-                    controls.update();
+                    controls.update(1);
                     render();
+                    console.log(1)
                 }
                 animate();
             },10000);
 
-        }
+        }*/
         container3DRect = document.getElementById('container-3d').getBoundingClientRect();
         container3DRect.mapSize = mapSize;
 
@@ -526,10 +528,10 @@ function initThree() {
 
     if (supportWebgl) {
         var a, b, l;
-        for (var j = 3; j--;) {
+        for (var j = 2; j--;) {
             geometry = new THREE.Geometry();
 
-            for ( i = 0; i < 300; i ++ ) {
+            for ( i = 0; i < 500; i ++ ) {
                 a = Math.acos( 1 - 2 * Math.random());
                 b = Math.random() * Math.PI * 2;
                 l = Math.sin(a);
@@ -542,7 +544,8 @@ function initThree() {
 
             var starsMaterial = new THREE.PointsMaterial({
                 color: 0x777777 + j * 0x222222,
-                size: (j + 1) * 2
+                size: j + 1,
+                sizeAttenuation: false
             });
 
             var particles = new THREE.Points( geometry, starsMaterial);
@@ -569,19 +572,30 @@ function initThree() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mapSize, mapSize);
 
-    controls = new THREE.OrbitControls(camera, renderer.domElement)
+/*    controls = new THREE.OrbitControls(camera, renderer.domElement)
     controls.mouseButtons = {
         ORBIT: THREE.MOUSE.LEFT,
         ZOOM: THREE.MOUSE.RIGHT,
         PAN: THREE.MOUSE.MIDDLE
     }
     controls.maxDistance = nebulaDistance - 1;
-
-    controls.addEventListener('change', function (evt) {
+*/
+    controls = new THREE.FlyControls(camera, renderer.domElement)
+    controls.change = function(){
         render();
-    })
-    controls.update();
+        console.log(1)
+        console.log(camera.position)
+    }
+    // controls.addEventListener('change', function (evt) {
+    //     render();
+    // })
+    // controls.update(1);
 
+
+    controls.movementSpeed = 1;
+    controls.rollSpeed = Math.PI / 100;
+    controls.autoForward = false;
+    controls.dragToLook = true;
 
     var raycaster = new THREE.Raycaster();
     raycaster.near = 2;
@@ -613,7 +627,7 @@ function initThree() {
             // camera.position.x *= 0.9;
             // camera.position.y *= 0.9;
             // camera.position.z *= 0.9;
-            controls.update();
+            // controls.update(1);
         }
     }
 
@@ -701,6 +715,12 @@ function initThree() {
 
 
     container.appendChild(renderer.domElement);
+    function animate() {
+        requestAnimationFrame( animate );
+        controls.update(1)
+        render();
+    }
+    animate();
 }
 
 function render() {
@@ -750,7 +770,9 @@ function moreGrids() {
     scene.add(line);
     moreGridsLine = line;
     render();
+
 }
+
 
 init();
 if (isDynamic) {
