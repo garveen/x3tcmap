@@ -4,6 +4,8 @@
 
 THREE.FlyControls = function ( object, domElement ) {
 
+	var scope = this;
+
 	this.object = object;
 
 	this.domElement = ( domElement !== undefined ) ? domElement : document;
@@ -16,6 +18,8 @@ THREE.FlyControls = function ( object, domElement ) {
 
 	this.dragToLook = false;
 	this.autoForward = false;
+
+	this.delta = 1;
 
 	// disable default target object behavior
 
@@ -76,6 +80,10 @@ THREE.FlyControls = function ( object, domElement ) {
 		this.updateMovementVector();
 		this.updateRotationVector();
 
+		if(!animating) {
+			animate(true);
+		}
+
 	};
 
 	this.keyup = function( event ) {
@@ -123,6 +131,7 @@ THREE.FlyControls = function ( object, domElement ) {
 		if ( this.dragToLook ) {
 
 			this.mouseStatus ++;
+			this.mousemove(event);
 
 		} else {
 
@@ -152,6 +161,10 @@ THREE.FlyControls = function ( object, domElement ) {
 
 			this.updateRotationVector();
 
+			if(!animating) {
+				animate(true);
+			}
+
 		}
 
 	};
@@ -163,7 +176,9 @@ THREE.FlyControls = function ( object, domElement ) {
 
 		if ( this.dragToLook ) {
 
-			this.mouseStatus --;
+			this.mouseStatus = 0;
+
+			animating = false;
 
 			this.moveState.yawLeft = this.moveState.pitchDown = 0;
 
@@ -185,7 +200,9 @@ THREE.FlyControls = function ( object, domElement ) {
 	};
 
 	this.update = function( delta ) {
-
+		if (typeof delta == 'undefined') {
+			delta = this.delta;
+		}
 		var moveMult = delta * this.movementSpeed;
 		var rotMult = delta * this.rollSpeed;
 
@@ -211,7 +228,6 @@ THREE.FlyControls = function ( object, domElement ) {
 		this.moveVector.z = ( - forward + this.moveState.back );
 
 		//console.log( 'move:', [ this.moveVector.x, this.moveVector.y, this.moveVector.z ] );
-
 	};
 
 	this.updateRotationVector = function() {
@@ -221,7 +237,6 @@ THREE.FlyControls = function ( object, domElement ) {
 		this.rotationVector.z = ( - this.moveState.rollRight + this.moveState.rollLeft );
 
 		//console.log( 'rotate:', [ this.rotationVector.x, this.rotationVector.y, this.rotationVector.z ] );
-
 	};
 
 	this.getContainerDimensions = function() {
@@ -271,6 +286,22 @@ THREE.FlyControls = function ( object, domElement ) {
 		window.removeEventListener( 'keyup', _keyup, false );
 
 	};
+
+	var animate = function(isInit, delta) {
+
+		if (isInit) {
+			animating = true;
+		} else if (!animating) {
+			return;
+		}
+		requestAnimationFrame( function() {
+			animate(false, delta);
+		} );
+		scope.update( delta );
+		scope.change();
+	}
+
+	var animating = false;
 
 	var _mousemove = bind( this, this.mousemove );
 	var _mousedown = bind( this, this.mousedown );

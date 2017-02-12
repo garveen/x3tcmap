@@ -350,7 +350,7 @@ function renderThree(sector) {
         }*/
         container3DRect = document.getElementById('container-3d').getBoundingClientRect();
         container3DRect.mapSize = mapSize;
-
+        render();
     })
 }
 
@@ -583,8 +583,6 @@ function initThree() {
     controls = new THREE.FlyControls(camera, renderer.domElement)
     controls.change = function(){
         render();
-        console.log(1)
-        console.log(camera.position)
     }
     // controls.addEventListener('change', function (evt) {
     //     render();
@@ -593,7 +591,7 @@ function initThree() {
 
 
     controls.movementSpeed = 1;
-    controls.rollSpeed = Math.PI / 100;
+    controls.rollSpeed = Math.PI / 360;
     controls.autoForward = false;
     controls.dragToLook = true;
 
@@ -715,12 +713,7 @@ function initThree() {
 
 
     container.appendChild(renderer.domElement);
-    function animate() {
-        requestAnimationFrame( animate );
-        controls.update(1)
-        render();
-    }
-    animate();
+
 }
 
 function render() {
