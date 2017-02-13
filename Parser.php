@@ -2,14 +2,23 @@
 class Parser
 {
 
-    public $pageIds = [7, 1000, 17, 195, 1266, 35, 1903, 1906, 1951, 12, 13];
+    public $pageIds = [
+        7,
+        9,
+        12,
+        13,
+        17,
+        35,
+        195,
+        1000,
+        1266,
+        1903,
+        1906,
+        1951,
+    ];
 
-    // public $objectTypes => [
-    //     '18'
-    // ]
     public $translation = [];
     public $objects = [];
-    public $config = [];
 
     public $files = [
         // http://www.argonopedia.org/wiki/TFactories.txt_(X3)
@@ -80,22 +89,25 @@ class Parser
         88 => 'Traditional Chinese',
     ];
 
-    public function __construct($config, $language)
+    public function __construct($map, $language)
     {
-        $this->parseText();
-        $this->config = $config;
+        $this->parseText($map);
         $files = [];
-        foreach($config['languages'] as $dir) {
+        foreach (['lang/', "lang/{$map}/"] as $dir) {
             $files = array_merge($files, glob($dir . "*-L0{$language}.xml"));
         }
         $this->parseLanguage($files);
-        $this->parseUniverse($config['maps']);
+
+        $this->parseUniverse([
+            'maps/x3_universe_2.0.xml',
+            "maps/x3{$map}_universe.xml",
+        ]);
 
     }
 
     public function translate($pageId, $id)
     {
-        if(isset($this->translationUsedMap[$pageId][$id])) {
+        if (isset($this->translationUsedMap[$pageId][$id])) {
             return $this->translationUsedMap[$pageId][$id];
         }
 
@@ -116,7 +128,7 @@ class Parser
                 return "!!!{$matches[1]}-{$matches[2]}!!!";
             }, $translation, -1, $count);
         } while ($count);
-        if(!$translation) {
+        if (!$translation) {
             $translation = "!!!{$pageId}-{$id}!!!";
         }
         $translation = preg_replace('~\(.+\)~', '', $translation);
@@ -133,7 +145,7 @@ class Parser
         $this->translation = [];
         $this->translationUsed = [];
         $this->translationUsedMap = [];
-        foreach($langFiles as $langFile) {
+        foreach ($langFiles as $langFile) {
             $language = simplexml_load_file($langFile);
             $pages = [];
             foreach ($language->page as $page) {
@@ -152,10 +164,13 @@ class Parser
         }
     }
 
-    public function parseText()
+    public function parseText($map)
     {
         foreach ($this->files as $file => $config) {
-            $lines = file("data/{$file}.txt");
+            if (!is_file($filename = "data/{$map}/{$file}.txt")) {
+                $filename = "data/{$file}.txt";
+            }
+            $lines = file($filename);
             foreach ($lines as $line) {
                 if (strncmp($line, '//', 2) == 0) {
                     continue;
@@ -256,7 +271,7 @@ class Parser
                             // (station) factories / shipyards
                         default:
                             $icon = $this->objects[$type]['icon'];
-                            if(!isset($iconUsedMap[$icon])) {
+                            if (!isset($iconUsedMap[$icon])) {
                                 $length = count($iconUsed);
                                 $iconUsedMap[$icon] = $length;
                                 $iconUsed[$length] = $this->objects[$icon];

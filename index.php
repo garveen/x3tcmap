@@ -1,7 +1,6 @@
 <?php
 include 'Sector.php';
 include 'Parser.php';
-$config = include 'config.php';
 
 $code = isset($_GET['lang']) ? $_GET['lang'] : 44;
 $map = isset($_GET['map']) ? $_GET['map'] : 'tc';
@@ -21,7 +20,7 @@ $pathPrefix = 'docs/';
 
 $isDynamic = true;
 
-$parser = new Parser($config[$map], $code);
+$parser = new Parser($map, $code);
 $appendScript = '';
 foreach ([
     'sectors' => $parser->sectors,
