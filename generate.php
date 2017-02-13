@@ -27,7 +27,8 @@ file_put_contents('docs/universe.html', ob_get_clean());
 foreach (Parser::$languageMap as $code => $languageName) {
     foreach ($config as $map => $mapConfig) {
         $code = sprintf('%02d', $code);
-        $parser = new Parser($config[$map], $code);
+        $parser = new Parser($map, $code);
+
         $html = '';
         foreach ([
             'sectors' => $parser->sectors,
