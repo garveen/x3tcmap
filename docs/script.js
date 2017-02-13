@@ -236,6 +236,9 @@ function overlay(x, y, zoom) {
     } else {
         renderDom(sector, zoom);
     }
+    var dataContainer = document.getElementsByClassName('modal-data')[0];
+    dataContainer.style.transform = 'translate(-' + Math.round(dataContainer.offsetWidth / 2) + 'px,-' + Math.round(dataContainer.offsetHeight / 2) + 'px)';
+
 }
 
 function renderThree(sector) {
